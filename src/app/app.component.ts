@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { RadioBrowserApi, Station } from 'radio-browser-api';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,13 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'appRadio';
+
+  ngOnInit(): void {
+    
+  
+    
+  }
+
+
+
 }

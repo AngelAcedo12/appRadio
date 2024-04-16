@@ -1,0 +1,25 @@
+.station{
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
+}
+.poster{
+    display: flex;
+    flex-direction: row;
+    gap:1em;
+    padding: 0.5em;
+    
+    border-radius: 10px;
+    text-align: center;
+    align-items: center;
+    & h1{
+        font-size: medium;
+
+    }
+    & img{
+        width: 50px;
+        height: 50px;
+        aspect-ratio: 1/1;
+    }
+}
