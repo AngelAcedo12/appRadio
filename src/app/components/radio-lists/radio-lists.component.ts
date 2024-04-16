@@ -9,4 +9,8 @@ import { Station } from 'radio-browser-api';
 export class RadioListsComponent {
 
   @Input({required:true}) radios : Station[] | undefined 
+
+
+
+
 }

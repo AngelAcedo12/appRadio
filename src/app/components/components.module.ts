@@ -15,7 +15,8 @@ import { ReproductorComponent } from './reproductor/reproductor.component';
     ReproductorComponent
   ],exports:[
     RadioListsComponent,
-    StationRadioComponent
+    StationRadioComponent,
+    ReproductorComponent
   ],
   imports: [
     CommonModule

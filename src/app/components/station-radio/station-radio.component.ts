@@ -11,9 +11,8 @@ export class StationRadioComponent {
   ngOnInit(): void {
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
     //Add 'implements OnInit' to the class.
-    console.log(this.station?.favicon)
     this.favicon=this.station!.favicon.length>0 ? this.station?.favicon :  "../../../assets/icons8-radio-50.png"
-    console.log(this.favicon)
+  
   }
   favicon : String |undefined
 }

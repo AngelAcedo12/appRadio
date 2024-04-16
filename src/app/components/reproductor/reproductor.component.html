@@ -1,1 +1,15 @@
-<p>reproductor works!</p>
+<div class="reproductor">
+    
+    <div class="propsFirst">
+        @if (reproductorService.actualStation()?.favicon!.length>0) {
+
+            <img class="poster" [src]="reproductorService.actualStation()?.favicon" />
+            
+        }@else {
+            <img class="poster" src="../../../assets/icons8-radio-50.png" />
+            
+        }
+        <h1>{{reproductorService.actualStation()?.name}}</h1> 
+        
+    </div>
+</div>

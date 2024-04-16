@@ -66,7 +66,7 @@
 }
 .props{
     margin-top: 1rem;
-
+    width: 100%;
     display: flex;
     flex-direction: row;
     gap:0.5em;
@@ -89,6 +89,26 @@
 
 
 }
+
+@media (max-width:768px) {
+
+    .poster{
+        padding: 0;
+    }
+   .props{
+    flex-direction: column;
+    & .country{
+        width: fit-content;
+        background-color: var(--color-country);
+    }
+    & .language{
+        width: fit-content;
+            color: black;
+            background-color: var(--color-language);
+    }
+   } 
+}
+
 
 @keyframes fade {
     0%{

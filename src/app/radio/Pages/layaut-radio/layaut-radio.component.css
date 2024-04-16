@@ -1,9 +1,10 @@
-section{
-    padding: 1em;
-
+.listReproductor{
+    
+    overflow-y: hidden;
 }
 @media (max-width: 756px) {
-    section{
+    .listReproductor{
+        
         padding: 0.2em;
     }
 }

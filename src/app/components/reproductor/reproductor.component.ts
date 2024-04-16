@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, computed, signal, Signal } from '@angular/core';
 import { ReproductorServiceService } from '../../services/reproductor-service.service';
+import { Station } from 'radio-browser-api';
 
 @Component({
   selector: 'app-reproductor',
@@ -11,4 +12,10 @@ export class ReproductorComponent {
   constructor(public reproductorService:ReproductorServiceService){
 
   }
+
+
+    
+  
+
+
 }
