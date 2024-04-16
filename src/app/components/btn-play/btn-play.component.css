@@ -1,0 +1,47 @@
+
+
+*{
+    --color-background:#2A1F2D;
+    --color-primary:#59C9A5;
+    --color-secundary:#52BE80;
+    --color-country:#FF6747;
+    --color-language:#DAF7A6;
+    --hover:#939393;
+}
+
+button{
+    padding: 0.5em;
+    padding-left: 1em;
+    padding-right: 1em;
+    border-radius: 10px;
+    border: none;
+    background-color: transparent;
+    z-index: 1;
+    & img:hover{
+        cursor: pointer;
+        transform: scale(1.05);
+        transition: all 0.2s ease-in-out;
+    }
+}
+.box-btn{
+    position: relative;
+    width: auto;
+    align-items: start;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    width: 55px;
+    height: 55px;
+    align-items: center;
+}
+.img{
+    position: absolute;
+    background: #2A1F2D;
+    padding: 0.5em;
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    object-fit: contain;
+   
+  
+}

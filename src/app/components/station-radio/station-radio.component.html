@@ -1,12 +1,24 @@
 <li class="station"> 
-    <div class="poster">
+    <div>
 
-        <img  [src]="favicon " > 
-        <h1>{{station?.name}}</h1>
+        <div class="poster">
+            
+            <app-btn-play [urlImg]="favicon"  [station]="station"> 
+                
+            
+            </app-btn-play>
+            <div>
+                <h1>{{station?.name}}</h1>
+                <a [href]="station?.homepage">Official Page</a>
+            </div>
+           
+        </div>
+         <div class="props">
+            <h2 class="country">{{station?.country}} 🌐</h2>
+            <h2 class="language">{{station?.language}} 🎶</h2>
+         </div>
+
     </div>
-     <div class="props">
-        <h2>{{station?.country}}</h2>
-        <h2>{{station?.language}}</h2>
-     </div>
+   
  
 </li>

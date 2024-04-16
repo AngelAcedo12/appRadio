@@ -1,0 +1,8 @@
+<header class="menu">
+    <h1 class="title">Radio App</h1>
+    <nav class="links">
+        @for (item of  menuItems; track $index) {
+            <a [href]="item.url">{{item.title}}</a>
+        }
+    </nav>
+</header>

@@ -1,8 +1,31 @@
+
+
+*{
+    --color-background:#2A1F2D;
+    --color-primary:#59C9A5;
+    --color-secundary:#52BE80;
+    --color-country:#FF6747;
+    --color-language:#DAF7A6;
+    --hover:#939393;
+}
+
 .station{
     list-style: none;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     padding: 1em;
+    cursor: pointer;
+    border: transparent solid;
+    border-width: 1px;
+    border-radius: 10px;
+    animation: forwards ;
+    animation-name: fade;
+    animation-duration: 0.5s;    
+}
+.station:hover{
+    border-color: #939393 ;
+    transition: all 0.2s ease-in-out;
+    
 }
 .poster{
     display: flex;
@@ -13,13 +36,65 @@
     border-radius: 10px;
     text-align: center;
     align-items: center;
-    & h1{
-        font-size: medium;
+    
+    & div{
 
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: start;
+        text-align: left;
+        & h1{
+            font-weight: bold;
+            font-size: medium;
+            color: whitesmoke;
+            padding: 0.5em;
+            border-radius: 10px;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            text-wrap: nowrap;
+            width: 200px;
+        }   
+    
+        & a{
+            width: 100%;
+            text-wrap: nowrap; 
+            text-decoration: none;
+            color: #52BE80;
+        }
     }
-    & img{
-        width: 50px;
-        height: 50px;
-        aspect-ratio: 1/1;
+}
+.props{
+    margin-top: 1rem;
+
+    display: flex;
+    flex-direction: row;
+    gap:0.5em;
+    font-size: x-small;
+    flex-wrap: wrap;
+    & h2{
+        border-radius: 10px;
+        padding: 0.5em;
+        text-wrap: nowrap;
+        margin: 0;
+    }
+    & .country{
+        background-color: var(--color-country);
+    }
+    & .language{
+            color: black;
+            background-color: var(--color-language);
+    }
+
+
+
+}
+
+@keyframes fade {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
     }
 }

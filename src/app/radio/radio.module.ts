@@ -6,18 +6,24 @@ import { AllRadiosComponent } from './Pages/all-radios/all-radios.component';
 import { LayautRadioComponent } from './Pages/layaut-radio/layaut-radio.component';
 import { Router, RouterModule } from '@angular/router';
 import { ComponentsModule } from '../components/components.module';
+import { CountrisStationsComponent } from './Pages/countris-stations/countris-stations.component';
+import { CountrisStationFilterComponent } from './Pages/countris-station-filter/countris-station-filter.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
   declarations: [
     AllRadiosComponent,
-    LayautRadioComponent
+    LayautRadioComponent,
+    CountrisStationsComponent,
+    CountrisStationFilterComponent
   ],
   imports: [
     CommonModule,
     RadioRoutingModule,
     RouterModule,
-    ComponentsModule
+    ComponentsModule,
+    SharedModule
   ]
 })
 export class RadioModule { }
