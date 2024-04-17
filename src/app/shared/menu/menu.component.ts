@@ -11,7 +11,7 @@ export class MenuComponent {
 
 
   menuItems: MenuItems[] = [
-    {title:"All radio", url:'radio'},
-    {title:"Find your radio", url:''}
+    {title:"All radios", url:'radio'},
+    {title:"Find your radio", url:'radio/find'}
   ]
 }

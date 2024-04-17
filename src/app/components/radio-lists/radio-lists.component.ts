@@ -50,6 +50,7 @@ export class RadioListsComponent implements OnInit{
   setCountryCode(countryCode:string){
     this.countryCode=computed(()=>countryCode)
     this.page=1;
+    this.radios=[]
     this.loadRadios()
 
   }

@@ -2,8 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LayautRadioComponent } from './Pages/layaut-radio/layaut-radio.component';
 import { AllRadiosComponent } from './Pages/all-radios/all-radios.component';
-import { CountrisStationsComponent } from './Pages/countris-stations/countris-stations.component';
-import { CountrisStationFilterComponent } from './Pages/countris-station-filter/countris-station-filter.component';
+import { FindRadioComponent } from './Pages/find-radio/find-radio.component';
 
 const routes: Routes = [{
   path:'',
@@ -14,12 +13,8 @@ const routes: Routes = [{
       component:AllRadiosComponent
     },
     {
-      path:'countries',
-      component:  CountrisStationsComponent
-    },
-    {
-      path:'countries/:countrie',
-      component:CountrisStationFilterComponent
+      path:'find',
+      component:FindRadioComponent
     }
   ]
 }];

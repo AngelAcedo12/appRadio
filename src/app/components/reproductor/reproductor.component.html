@@ -1,6 +1,6 @@
 @if (reproductorService.actualStation()!=undefined ) {
 <div class="reproductor">
-    @if (reproductorService.state==true) {
+    
         <div class="propsFirst active" id="rep">
             <div class="title_image">
 
@@ -12,46 +12,25 @@
                 <img class="poster" src="../../../assets/icons8-radio-50.png" />
 
 
-                <h1>{{reproductorService.actualStation()?.name}}</h1>
-                }
+            }
+            <h1>{{reproductorService.actualStation()?.name}}</h1>
             </div>
 
             <div class="box-btn">
+                @if (reproductorService.state) {
 
-                <button (click)="pause()" class="btn-play">
-                    <img src="../../../assets/icons8-pausa-30.png" />
-                </button>
+                    <button (click)="pause()" class="btn-play">
+                        <img src="../../../assets/icons8-pausa-30.png" />
+                    </button>
+                }@else{
+                    <button (click)="play()" class="btn-play">
+                        <img src="../../../assets/icons8-play-30.png" />
+                    </button>
+                }
 
             </div>
 
         </div>
-    }@else if(reproductorService.state==false){
-        
-        <div class="propsFirst desactive" id="rep">
-            <div class="title_image ">
-
-                @if (reproductorService.actualStation()?.favicon!.length>0) {
-
-                <img class="poster" [src]="reproductorService.actualStation()?.favicon" />
-
-                }@else {
-                <img class="poster" src="../../../assets/icons8-radio-50.png" />
-
-                <h1>{{reproductorService.actualStation()?.name}}</h1>
-                }
-            </div>
-
-            <div class="box-btn">
-
-                <button (click)="play()" class="btn-play">
-                    <img src="../../../assets/icons8-play-30.png">
-                </button>
-
-            </div>
-        </div>
-
-
-    }
     
 </div>
 }

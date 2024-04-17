@@ -24,9 +24,11 @@ export class ReproductorComponent {
   
   play(){
     this.reproductorService.resume()
+    document.getElementById("rep")?.classList.replace("desactive","active")
   }
   pause(){
     this.reproductorService.pause()
+    document.getElementById("rep")?.classList.replace("active","desactive")
   }
 
 
