@@ -1,6 +1,6 @@
     <div class="filters">
         <app-select-countrie (newCountry)="setCountryCode($event)"></app-select-countrie>
-        <app-select-tag-list></app-select-tag-list>
+        <app-select-tag-list (refrestListFilter)="setTagList($event)"></app-select-tag-list>
     </div>
     
     <ul class="list">

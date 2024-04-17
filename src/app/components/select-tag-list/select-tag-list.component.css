@@ -7,21 +7,21 @@
     --hover:#939393;
 }
 input{
-    padding:0.5em;
+    padding: 0.6em;
     padding-left: 1em;
     border: none;    
     border-radius: 50px;
+   
 }
 input:focus{
     outline: none;
 }
 .shearch-box{
     position: relative;
-
     
     display: flex;
     flex-direction: row;
-
+    gap: 0.5em;
 }
 .tagList{
     position: absolute;
@@ -30,20 +30,32 @@ input:focus{
     left: 0;
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
+    overflow-y: scroll;
     z-index: 100;
-    gap:0.2em
+    gap:0.2em;
+    flex-wrap: wrap;
     
 }
 
 .tagSelected{
-    padding: 0.5em;
+    padding: 0.4em;
     background: var(--color-primary);
     color: black;
     border-radius: 10px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-width: 150px;
+    text-wrap: nowrap;
+
+
+}
+.tagSelected:hover{
+    background-color:var(--color-secundary);
+    cursor: pointer;
+    transition: all 0.3s ease-in-out; 
 }
 .tag_not_selected{
-    padding: 0.5em;
+    padding: 0.4em;
     color: #2A1F2D;
     list-style: none;
     border-radius: 10px;
@@ -56,4 +68,6 @@ input:focus{
 }
 .tag_not_selected:hover{
     background-color:var(--color-secundary);
+    cursor: pointer;
+    transition: all 0.3s ease-in-out; 
 }

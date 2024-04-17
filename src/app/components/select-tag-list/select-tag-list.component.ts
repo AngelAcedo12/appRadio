@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, Query } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { CountryResult, RadioBrowserApi } from 'radio-browser-api';
 
@@ -9,6 +9,7 @@ import { CountryResult, RadioBrowserApi } from 'radio-browser-api';
 })
 export class SelectTagListComponent implements OnInit {
  
+  @Output() refrestListFilter = new EventEmitter<CountryResult[]>
   ngOnInit(): void {
     
  }
@@ -25,14 +26,12 @@ export class SelectTagListComponent implements OnInit {
  async shearchTag(){
   
   if(this.tagSherch.value!.length <=1 || this.tagSherch.value==''){
-    console.log("nadad")
-    console.log(this.tagSherch.value,this.tagSherch.value?.length )
    this.tagListShearch=[]
 
   }else{
-
-    var shearch= await this.api.getTags(this.tagSherch.value!)
- 
+    var shearch= await this.api.getTags(this.tagSherch.value!,
+    {limit:10}
+  )
     this.tagListShearch=shearch
   }
     
@@ -40,8 +39,14 @@ export class SelectTagListComponent implements OnInit {
   }
 
   selectedTag(item:CountryResult){
-    this.tagListShearchSelected?.push(item)
-    
+    if(this.tagListShearchSelected.length<3 && !this.tagListShearchSelected.includes(item)){
+      this.tagListShearchSelected?.push(item)
+    }
+    this.refrestListFilter.emit(this.tagListShearchSelected)
+    this.tagSherch.setValue('') 
   }
-
+  removeTag(item:CountryResult){
+    this.tagListShearchSelected=this.tagListShearchSelected.filter((tag)=>tag!=item)
+    this.refrestListFilter.emit(this.tagListShearchSelected)
+  }
 }

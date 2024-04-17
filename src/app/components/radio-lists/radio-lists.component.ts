@@ -1,5 +1,6 @@
 import { Component, computed, Input, OnInit, signal, Signal } from '@angular/core';
-import { RadioBrowserApi, Station } from 'radio-browser-api';
+import { CountryResult, RadioBrowserApi, Station } from 'radio-browser-api';
+import { Country } from '../../models/Country';
 
 @Component({
   selector: 'app-radio-lists',
@@ -20,10 +21,11 @@ export class RadioListsComponent implements OnInit{
   loading :Signal<boolean>  = signal(false)
   totalEmision: number = 0
   countryCode: Signal<string> = signal("ES")
-  
+  tagList : Signal<CountryResult[]> = signal([])
 
   async loadRadios(){
-   
+   var filterTag = this.tagList().map((item)=>item.name)
+   console.log(filterTag)
   if(this.page<=1){
     if(this.loading()!=true){
       this.loading=computed(() => true);
@@ -31,8 +33,9 @@ export class RadioListsComponent implements OnInit{
         countryCode:this.countryCode(),
         offset:0,
         limit:50,
-        tagList:[]
-      }).then(data => {this.radios=data; this.page = this.page+1; this.loading=computed(()=>false); })
+        tagExact:false,
+        tagList:filterTag
+      }).then(data => {this.radios=data; this.page = this.page+1; this.loading=computed(()=>false); console.log(data)})
     }
  
  
@@ -42,7 +45,8 @@ export class RadioListsComponent implements OnInit{
       await this.api.searchStations({
         countryCode:this.countryCode(),
         offset:this.page*50,
-        limit:50
+        limit:50,
+        tagList:filterTag
       }).then(data => { this.radios=this.radios?.concat(data);  this.page= this.page+1;computed(()=>false)})
     }
  
@@ -54,6 +58,12 @@ export class RadioListsComponent implements OnInit{
     this.radios=[]
     this.loadRadios()
 
+  }
+  setTagList(CountryResult : CountryResult[]){
+    this.tagList=computed(()=>CountryResult)
+    this.page=1;
+    this.radios=[]
+    this.loadRadios()
   }
 }
 

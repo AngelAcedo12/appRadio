@@ -38,7 +38,7 @@ export class ReproductorServiceService {
   }
 
   saveActualSong(){
-    console.log("saving",this.actualStation())
+   
     
     if(this.actualStation()==undefined) return;
    

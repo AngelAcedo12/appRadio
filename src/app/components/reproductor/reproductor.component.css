@@ -20,7 +20,7 @@
     display: flex;
     justify-content: end;
 
-    animation: forwards ease-in-out 0.5s fade; 
+  
  
     
 }
@@ -42,9 +42,10 @@
     }
 }
 .box-btn{
-    width: fit-content;
+    width: fit;
     align-items: center;
     align-content: center;
+
 }
 .poster{
     width: 50px;
@@ -84,6 +85,10 @@
 .box-btn{
     display: flex;
     flex-direction: row;
+    & h1{
+        width: 200px;
+        
+    }
 }
 @media (max-width:768px) {
     .reproductor{
