@@ -3,7 +3,7 @@
     @if (reproductorService.actualStation()?.id==station?.id ) {
 
        
-        @if(reproductorService.state==false ){
+        @if(reproductorService.state()==false ){
             <button (click)="play()" class="btn-play">
                 <img src="../../../assets/icons8-play-30.png"/>
              </button>

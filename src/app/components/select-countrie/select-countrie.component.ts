@@ -24,7 +24,6 @@ export class SelectCountrieComponent {
   emitCountrySelected(){  
     var country = this.countrySelecter.value
     this.newCountry.emit(country || "ES")
-    
   }
 
   loadCoutries(){

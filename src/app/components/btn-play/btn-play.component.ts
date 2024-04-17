@@ -1,4 +1,4 @@
-import { Component, Input, signal, Signal } from '@angular/core';
+import { Component, inject, Input, signal, Signal } from '@angular/core';
 import { ReproductorServiceService } from '../../services/reproductor-service.service';
 import { Station } from 'radio-browser-api';
 
@@ -9,9 +9,9 @@ import { Station } from 'radio-browser-api';
 })
 export class BtnPlayComponent {
 
-  constructor(public reproductorService:ReproductorServiceService){
+  public reproductorService = inject(ReproductorServiceService) 
 
-  }
+  
 
   @Input({required:true}) urlImg : String | undefined
   @Input({required:true}) station : Station | undefined
@@ -20,9 +20,13 @@ export class BtnPlayComponent {
 
   play(){
     this.reproductorService.play(this.station?.url!,this.station!)
+    document.getElementById("rep")?.classList.replace("desactive","active")
+
   }
   pause(){
     this.reproductorService.pause();
+    document.getElementById("rep")?.classList.replace("active","desactive")
+
   }
 
 }

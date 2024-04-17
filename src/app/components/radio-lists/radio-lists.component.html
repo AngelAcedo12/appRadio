@@ -1,4 +1,8 @@
-    <app-select-countrie (newCountry)="setCountryCode($event)"></app-select-countrie>
+    <div class="filters">
+        <app-select-countrie (newCountry)="setCountryCode($event)"></app-select-countrie>
+        <app-select-tag-list></app-select-tag-list>
+    </div>
+    
     <ul class="list">
         @for (station of radios; track $index) {
             <app-station-radio [station]="station"></app-station-radio>

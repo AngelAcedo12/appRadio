@@ -1,6 +1,7 @@
 import { Component, computed, signal, Signal, SimpleChanges } from '@angular/core';
 import { ReproductorServiceService } from '../../services/reproductor-service.service';
 import { Station } from 'radio-browser-api';
+import { Sign } from 'crypto';
 
 @Component({
   selector: 'app-reproductor',
@@ -11,11 +12,14 @@ export class ReproductorComponent {
 
   constructor(public reproductorService:ReproductorServiceService){
 
+
   }
+
+  state : Signal<boolean> = signal(false)
 
 
   setState(){
-    if(this.reproductorService.actualStation!=undefined && this.reproductorService.state){
+    if(this.reproductorService.actualStation!=undefined && this.reproductorService.state()){
       document.getElementById("rep")?.classList.replace("desactive","active")
     }else{
       document.getElementById("rep")?.classList.replace("active","desactive")

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ReproductorServiceService } from '../../../services/reproductor-service.service';
 
 @Component({
   selector: 'app-find-radio',
@@ -7,4 +8,7 @@ import { Component } from '@angular/core';
 })
 export class FindRadioComponent {
 
+  constructor(private reproductorService:ReproductorServiceService){
+
+  }
 }

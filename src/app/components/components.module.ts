@@ -9,6 +9,7 @@ import { LoadingComponent } from './loading/loading.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SelectCountrieComponent } from './select-countrie/select-countrie.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { SelectTagListComponent } from './select-tag-list/select-tag-list.component';
 
 
 
@@ -19,7 +20,8 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     BtnPlayComponent,
     ReproductorComponent,
     LoadingComponent,
-    SelectCountrieComponent
+    SelectCountrieComponent,
+    SelectTagListComponent
   ],exports:[
     RadioListsComponent,
     StationRadioComponent,

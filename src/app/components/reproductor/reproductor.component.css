@@ -14,7 +14,7 @@
     position: fixed;
     padding: 1em;
     background: transparent;
-    width: 100%;
+    right: 0;
     z-index: 20;
     align-items: end;
     display: flex;
@@ -25,14 +25,14 @@
     
 }
 .propsFirst{
-    margin-right: 10%;
+    
     background-color: black;
     padding: 1em;
     display: flex;
     flex-direction: row;
     border: transparent solid;
-    
-    & h1{
+    gap:1em;
+    & h1{   
         width: 200px;
         text-overflow: ellipsis;
         text-wrap: nowrap;
@@ -49,6 +49,8 @@
 .poster{
     width: 50px;
     height: 50px;
+    object-fit: contain;
+    animation:forwards  fade 0.2s ease-in-out ;
 }
 .btn-play{
     background-color: transparent;
@@ -79,9 +81,13 @@
     display: flex;
     flex-direction: row;
 }
+.box-btn{
+    display: flex;
+    flex-direction: row;
+}
 @media (max-width:768px) {
     .reproductor{
-        
+        width: 100%;
         margin: 0;
         bottom:  0;
         position: fixed;
@@ -97,10 +103,9 @@
         margin: 0;
         display: flex;
         flex-direction: row;
-    
-           
         width: 100%;
         border: none;
+        gap:0.3em
     }
     .title_image{
         display: flex;

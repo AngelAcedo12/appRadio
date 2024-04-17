@@ -1,7 +1,10 @@
 @if (reproductorService.actualStation()!=undefined ) {
-<div class="reproductor">
+
+
+    <div class="reproductor">
     
-        <div class="propsFirst active" id="rep">
+        <div class="propsFirst open active" id="rep">
+           
             <div class="title_image">
 
                 @if (reproductorService.actualStation()?.favicon!.length>0) {
@@ -13,11 +16,11 @@
 
 
             }
-            <h1>{{reproductorService.actualStation()?.name}}</h1>
-            </div>
-
-            <div class="box-btn">
-                @if (reproductorService.state) {
+        </div>
+        
+        <div class="box-btn">
+                <h1>{{reproductorService.actualStation()?.name}}</h1>
+                @if (reproductorService.state()) {
 
                     <button (click)="pause()" class="btn-play">
                         <img src="../../../assets/icons8-pausa-30.png" />
@@ -33,4 +36,7 @@
         </div>
     
 </div>
+
+
+
 }

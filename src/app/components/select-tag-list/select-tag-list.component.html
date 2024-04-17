@@ -1,0 +1,24 @@
+<div class="shearch-box">
+    
+   
+    <input (input)="shearchTag()" type="text" [formControl]="tagSherch"> 
+    
+   
+</div>
+
+<div >
+    
+    <div class="tagList"> 
+        @for (item of tagListShearchSelected; track $index) {
+            <div class="tagSelected">{{item.name}}</div>
+        }
+        @for (item of tagListShearch; track $index) {
+            @if($index<10){
+                
+                <li (click)="selectedTag(item)" class="tag_not_selected">{{item.name}}</li>
+            }
+
+        }
+
+    </div>
+</div>

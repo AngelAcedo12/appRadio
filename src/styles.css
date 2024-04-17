@@ -18,6 +18,17 @@
 body{
     margin: 0;
 }
+::-webkit-scrollbar {
+    width: 10px;
+  }
+::-webkit-scrollbar-thumb{
+    background:#59C9A5;
+    
+    width: 10px;
+}
+    
+
+
 html{
     overflow-y: scroll;
     overflow-x: hidden;

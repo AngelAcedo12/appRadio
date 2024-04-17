@@ -20,7 +20,7 @@ export class RadioListsComponent implements OnInit{
   loading :Signal<boolean>  = signal(false)
   totalEmision: number = 0
   countryCode: Signal<string> = signal("ES")
-
+  
 
   async loadRadios(){
    
@@ -30,7 +30,8 @@ export class RadioListsComponent implements OnInit{
       await this.api.searchStations({
         countryCode:this.countryCode(),
         offset:0,
-        limit:50
+        limit:50,
+        tagList:[]
       }).then(data => {this.radios=data; this.page = this.page+1; this.loading=computed(()=>false); })
     }
  
