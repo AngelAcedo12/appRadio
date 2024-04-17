@@ -42,8 +42,8 @@ export class SelectTagListComponent implements OnInit {
     if(this.tagListShearchSelected.length<3 && !this.tagListShearchSelected.includes(item)){
       this.tagListShearchSelected?.push(item)
     }
-    this.refrestListFilter.emit(this.tagListShearchSelected)
     this.tagSherch.setValue('') 
+    this.refrestListFilter.emit(this.tagListShearchSelected)
   }
   removeTag(item:CountryResult){
     this.tagListShearchSelected=this.tagListShearchSelected.filter((tag)=>tag!=item)

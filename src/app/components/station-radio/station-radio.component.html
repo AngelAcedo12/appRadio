@@ -15,7 +15,14 @@
         </div>
          <div class="props">
             <h2 class="country">{{station?.country}} 🌐</h2>
-            <h2 class="language">{{station?.language}} 🎶</h2>
+            @if(station?.language!.length>1){
+
+                <h2 class="language">{{station?.language}} 🎶</h2>
+            }
+            @if (station?.tags!.length>1) {
+
+                <h2 class="tags">{{station?.tags}} 🏷️</h2>
+            }
          </div>
 
     </div>

@@ -25,7 +25,6 @@ export class RadioListsComponent implements OnInit{
 
   async loadRadios(){
    var filterTag = this.tagList().map((item)=>item.name)
-   console.log(filterTag)
   if(this.page<=1){
     if(this.loading()!=true){
       this.loading=computed(() => true);

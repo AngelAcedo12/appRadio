@@ -22,6 +22,10 @@ input:focus{
     display: flex;
     flex-direction: row;
     gap: 0.5em;
+    transition: all 0.3s ease-in-out;
+    & h3{
+        margin: 0;
+    }
 }
 .tagList{
     position: absolute;
@@ -34,7 +38,7 @@ input:focus{
     z-index: 100;
     gap:0.2em;
     flex-wrap: wrap;
-    
+    transition: all 0.3s ease-in-out;
 }
 
 .tagSelected{
@@ -46,6 +50,7 @@ input:focus{
     overflow: hidden;
     max-width: 150px;
     text-wrap: nowrap;
+    animation: fade 0.3s ease-in-out;   
 
 
 }
@@ -64,10 +69,20 @@ input:focus{
     overflow: hidden;
     max-width: 150px;
     text-wrap: nowrap;
+    animation: fade 0.3s ease-in-out;   
     
 }
 .tag_not_selected:hover{
     background-color:var(--color-secundary);
     cursor: pointer;
     transition: all 0.3s ease-in-out; 
+}
+
+@keyframes fade {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
 }
