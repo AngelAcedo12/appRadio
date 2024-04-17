@@ -1,0 +1,23 @@
+.select-countries{
+    max-width: 200px;
+    width: 200px;
+    height: fit-content;
+    padding: 0.5em;
+}
+option{
+    width: 100px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+
+}
+h2{
+    margin: 0;
+    text-align: center;
+}
+div{
+    display: flex;
+    flex-direction: row ;
+    padding: 1em;
+    align-items: center; 
+    gap: 1em;
+}

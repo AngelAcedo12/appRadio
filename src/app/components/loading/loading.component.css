@@ -1,0 +1,40 @@
+/* HTML: <div class="loader"></div> */
+
+
+*{
+    --color-background:#2A1F2D;
+    --color-primary:#59C9A5;
+    --color-secundary:#52BE80;
+    --color-country:#FF6747;
+    --color-language:#DAF7A6;
+    --hover:#939393;
+}
+.box-loader{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.loader {
+    width: 40px;
+    aspect-ratio: 1;
+     --c: linear-gradient(#52BE80 0 0 );
+     --m: radial-gradient(farthest-side,#52BE80 92%,#52BE80);
+    background: 
+      var(--c),var(--m),
+      var(--c),var(--m), 
+      var(--c),var(--m);
+    background-size: 8px 12px,8px 8px;
+    background-repeat: no-repeat;
+    animation: l13 1s infinite alternate;
+  }
+  @keyframes l13 {
+    0%,
+    100%  {background-position: 0 0              ,0 100%           ,50% 0              ,50% 100%           ,100% 0              ,100% 100%}
+    20%   {background-position: 0 calc(50% - 6px),0 calc(50% + 4px),50% 0              ,50% 100%           ,100% 0              ,100% 100%}
+    40%   {background-position: 0 calc(50% - 6px),0 calc(50% + 4px),50% calc(50% - 6px),50% calc(50% + 4px),100% 0              ,100% 100%}
+    60%   {background-position: 0 0              ,0 100%           ,50% calc(50% - 6px),50% calc(50% + 4px),100% calc(50% - 6px),100% calc(50% + 4px)}
+    80%   {background-position: 0 0              ,0 100%           ,50% 0              ,50% 100%           ,100% calc(50% - 6px),100% calc(50% + 4px)}
+  }

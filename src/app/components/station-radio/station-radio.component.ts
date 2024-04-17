@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, SimpleChanges } from '@angular/core';
 import { Station } from 'radio-browser-api';
 
 @Component({
@@ -11,8 +11,11 @@ export class StationRadioComponent {
   ngOnInit(): void {
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
     //Add 'implements OnInit' to the class.
-    this.favicon=this.station!.favicon.length>0 ? this.station?.favicon :  "../../../assets/icons8-radio-50.png"
-  
+   
   }
   favicon : String |undefined
+
+  ngOnChanges(changes: SimpleChanges): void {
+    this.favicon= this.station!.favicon.length>0 ? this.station?.favicon :  "../../../assets/icons8-radio-50.png"
+  }
 }

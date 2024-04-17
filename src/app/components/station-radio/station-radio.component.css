@@ -85,9 +85,6 @@
             color: black;
             background-color: var(--color-language);
     }
-
-
-
 }
 
 @media (max-width:768px) {

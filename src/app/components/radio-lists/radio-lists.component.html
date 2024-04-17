@@ -1,7 +1,14 @@
-
-<ul class="list">
-    @for (station of radios; track $index) {
-        <app-station-radio [station]="station"></app-station-radio>
+    <app-select-countrie (newCountry)="setCountryCode($event)"></app-select-countrie>
+    <ul class="list">
+        @for (station of radios; track $index) {
+            <app-station-radio [station]="station"></app-station-radio>
+         
+        }
+        
+        <div infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50"   (scrolled)="loadRadios()"></div>
+    </ul>
+    @if (loading()==true) {
+            
+        <app-loading></app-loading>
     }
 
-</ul>
