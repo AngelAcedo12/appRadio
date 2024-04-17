@@ -16,12 +16,10 @@ export class BtnPlayComponent {
   @Input({required:true}) urlImg : String | undefined
   @Input({required:true}) station : Station | undefined
 
-  isPlaying : Signal<boolean> = signal(false)
 
 
   play(){
     this.reproductorService.play(this.station?.url!,this.station!)
-
   }
   pause(){
     this.reproductorService.pause();

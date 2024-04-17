@@ -19,14 +19,21 @@
     align-items: end;
     display: flex;
     justify-content: end;
+
+    animation: forwards ease-in-out 0.5s fade; 
+ 
+    
 }
 .propsFirst{
     margin-right: 10%;
     background-color: black;
     padding: 1em;
+    display: flex;
+    flex-direction: row;
+    border: transparent solid;
     
     & h1{
-        width: 300px;
+        width: 200px;
         text-overflow: ellipsis;
         text-wrap: nowrap;
         overflow: hidden;
@@ -34,9 +41,43 @@
         
     }
 }
+.box-btn{
+    width: fit-content;
+    align-items: center;
+    align-content: center;
+}
 .poster{
     width: 50px;
     height: 50px;
+}
+.btn-play{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+
+}
+.btn-play:hover{
+    transform: scale(1.05);
+    
+}
+.title_image{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5em;
+}
+
+.active{
+    border-top: #52BE80 solid;
+    transition: all 0.5s ease-in-out;
+}
+.desactive{
+    border-top: #FF6747 solid;
+    transition: all 0.5s ease-in-out;
+}
+.main{
+    display: flex;
+    flex-direction: row;
 }
 @media (max-width:768px) {
     .reproductor{
@@ -52,16 +93,24 @@
      
     }
     .propsFirst{
+        justify-content: space-between;
         margin: 0;
         display: flex;
         flex-direction: row;
         background-color: rgb(255, 255, 255,0.5);
         -webkit-backdrop-filter: blur(5px);
-        backdrop-filter: blur(5px);
-
-        justify-content: space-between;
+        backdrop-filter: blur(5px);        
         width: 100%;
+        border: none;
+    }
+    .title_image{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        gap: 0.5em;
+        margin-left: 0.3em;
         & h1{
+            max-width: 200px;
             width: 50%;
             text-overflow: ellipsis;
             text-wrap: nowrap;
@@ -71,4 +120,24 @@
         }
     }
 
+    .active{
+        border-top: #52BE80 solid;
+        transition: all 0.5s ease-in-out;
+    }
+    .desactive{
+        border-top: #FF6747 solid;
+        transition: all 0.5s ease-in-out;
+    }
+}
+
+
+
+
+@keyframes fade {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
 }

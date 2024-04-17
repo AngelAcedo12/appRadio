@@ -23,4 +23,8 @@ export class ReproductorServiceService {
     this.state=false
   }
 
+  resume(){
+    this.audio.play()
+    this.state=true
+  }
 }

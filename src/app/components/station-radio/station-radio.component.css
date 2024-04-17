@@ -48,7 +48,7 @@
             font-weight: bold;
             font-size: medium;
             color: whitesmoke;
-            padding: 0.5em;
+        
             border-radius: 10px;
             text-overflow: ellipsis;
             overflow: hidden;
@@ -77,6 +77,7 @@
         padding: 0.5em;
         text-wrap: nowrap;
         margin: 0;
+        
     }
     & .country{
         background-color: var(--color-country);
@@ -84,13 +85,17 @@
     & .language{
             color: black;
             background-color: var(--color-language);
+            text-overflow: ellipsis;
+            overflow: hidden;
+           
     }
 }
 
 @media (max-width:768px) {
-
+    
     .poster{
         padding: 0;
+      
     }
    .props{
     flex-direction: column;
@@ -99,6 +104,7 @@
         background-color: var(--color-country);
     }
     & .language{
+        max-width: 50vh;
         width: fit-content;
             color: black;
             background-color: var(--color-language);

@@ -1,4 +1,4 @@
-import { Component, computed, signal, Signal } from '@angular/core';
+import { Component, computed, signal, Signal, SimpleChanges } from '@angular/core';
 import { ReproductorServiceService } from '../../services/reproductor-service.service';
 import { Station } from 'radio-browser-api';
 
@@ -14,8 +14,20 @@ export class ReproductorComponent {
   }
 
 
-    
+  setState(){
+    if(this.reproductorService.actualStation!=undefined && this.reproductorService.state){
+      document.getElementById("rep")?.classList.replace("desactive","active")
+    }else{
+      document.getElementById("rep")?.classList.replace("active","desactive")
+    }
+  }
   
+  play(){
+    this.reproductorService.resume()
+  }
+  pause(){
+    this.reproductorService.pause()
+  }
 
 
 }
