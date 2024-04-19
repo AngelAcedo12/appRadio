@@ -19,7 +19,7 @@ export class BtnPlayComponent {
 
 
   play(){
-    this.reproductorService.play(this.station?.url!,this.station!)
+    this.reproductorService.play(this.station?.urlResolved!,this.station!)
     document.getElementById("rep")?.classList.replace("desactive","active")
 
   }

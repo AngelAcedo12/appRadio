@@ -1,6 +1,7 @@
 import { Component, computed, Input, OnInit, signal, Signal } from '@angular/core';
 import { CountryResult, RadioBrowserApi, Station } from 'radio-browser-api';
 import { Country } from '../../models/Country';
+import { url } from 'inspector';
 
 @Component({
   selector: 'app-radio-lists',
@@ -10,11 +11,13 @@ import { Country } from '../../models/Country';
 export class RadioListsComponent implements OnInit{
 
   ngOnInit(): void {
+    this.api.setBaseUrl("https://at1.api.radio-browser.info")
     this.page = 1
     this.loadRadios()
   }
 
   api : RadioBrowserApi = new RadioBrowserApi("My radio")
+
 
   radios: Station[] | undefined
   page : number = 1
