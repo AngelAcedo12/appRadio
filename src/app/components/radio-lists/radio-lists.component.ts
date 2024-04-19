@@ -38,7 +38,11 @@ export class RadioListsComponent implements OnInit{
         limit:50,
         tagExact:false,
         tagList:filterTag
-      }).then(data => {
+      },{
+        mode:'cors',
+        cache:'default'
+      }
+    ).then(data => {
         this.radios=data; this.page = this.page+1; this.loading=computed(()=>false); 
         
       })
@@ -56,6 +60,9 @@ export class RadioListsComponent implements OnInit{
         limit:50,
         tagExact:false,
         tagList:filterTag
+      },{
+        mode:'cors',
+        cache:'default',
       }).then(data => { 
         this.radios=this.radios?.concat(data); 
         this.page= this.page+1;computed(()=>false)
