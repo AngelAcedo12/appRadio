@@ -18,10 +18,11 @@
         <div class="more_props">
             <span>{{station?.votes}} 👍</span>
             @if(station?.lastCheckOk==false){
-                <h3 class="status" style="color: red;">OFFLINE</h3>
+                <samp class="status" style="color: red;">OFFLINE</samp>
             }@else {
-                <h3 class="status" style="color: green;">ONLINE</h3>
+                <samp class="status" style="color: green;">ONLINE</samp>
             }
+            
         </div>
          <div class="props">
          
