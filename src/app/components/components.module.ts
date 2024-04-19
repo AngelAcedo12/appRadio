@@ -14,6 +14,7 @@ import { FindBarComponent } from './find-bar/find-bar.component';
 import { LblCountryComponent } from './lbl-country/lbl-country.component';
 import { LblLanguageComponent } from './lbl-language/lbl-language.component';
 import { LblTagsComponent } from './lbl-tags/lbl-tags.component';
+import { ErrorMessageComponent } from './error-message/error-message.component';
 
 
 
@@ -29,7 +30,8 @@ import { LblTagsComponent } from './lbl-tags/lbl-tags.component';
     FindBarComponent,
     LblCountryComponent,
     LblLanguageComponent,
-    LblTagsComponent
+    LblTagsComponent,
+    ErrorMessageComponent
   ],exports:[
     RadioListsComponent,
     StationRadioComponent,
@@ -37,7 +39,8 @@ import { LblTagsComponent } from './lbl-tags/lbl-tags.component';
     LoadingComponent,
     LblCountryComponent,
     LblTagsComponent,
-    LblLanguageComponent
+    LblLanguageComponent,
+    ErrorMessageComponent
   ],
   imports: [
     CommonModule,

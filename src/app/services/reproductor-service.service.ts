@@ -15,11 +15,15 @@ export class ReproductorServiceService {
   audio = new Audio();
   actualStation : Signal<Station | undefined> = signal(undefined)
   state = signal(false)
+  stationLoading = signal(false)
+ 
 
-  play(urlSound: string, station: Station){
-    
+  async play(urlSound: string, station: Station){
+    this.state.update(() => false)
+    this.stationLoading.update(() => false)
+   
     this.audio.src=urlSound;
-    this.audio.play()
+    await this.audio.play().then( () => this.stationLoading.update(() => true))
     this.actualStation= computed(() => station)
     this.state.update(() => true)
     this.saveActualSong()
@@ -31,15 +35,14 @@ export class ReproductorServiceService {
     this.saveActualSong()
   }
 
-  resume(){
-    this.audio.play()
+  async  resume(){
+    
+    await this.audio.play().then(() => this.stationLoading.update(() => true))
     this.state.update(() => true)
     this.saveActualSong()
   }
 
   saveActualSong(){
-   
-    
     if(this.actualStation()==undefined) return;
    
     localStorage.setItem("actualStation",JSON.stringify({
@@ -54,5 +57,6 @@ export class ReproductorServiceService {
     this.play(this.actualStation()!.url,this.actualStation()!)
     if(station.state==false) this.pause()
     this.state.update(()=>station.state)
+    
   }
 }

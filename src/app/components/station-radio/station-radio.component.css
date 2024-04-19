@@ -19,7 +19,7 @@
 .station{
     list-style: none;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     padding: 1em;
     border: transparent solid;
     border-width: 1px;
@@ -29,12 +29,17 @@
     animation-duration: 0.5s;    
 }
 
+.title{
+    text-decoration: none;
+    color: white;
+    transition: all 0.2s ease-in-out; 
+}
+
 .poster{
     display: flex;
     flex-direction: row;
     gap:1em;
     padding: 0.5em;
-    
     border-radius: 10px;
     text-align: center;
     align-items: center;
@@ -54,16 +59,22 @@
         margin: 0;
         align-items: center;
         gap: 1em;
-        & h1{
-                font-weight: bold;
-                font-size: medium;
-                color: whitesmoke;
-                width: 200px;
-                border-radius: 10px;
-                text-overflow: ellipsis;
-                overflow: hidden;
-                text-wrap: nowrap;
+        & a{
+            text-decoration: none;
+            font-weight: bold;
+            font-size: medium;
+            color: whitesmoke;
+            width: 200px;
+            border-radius: 10px;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            text-wrap: nowrap;
+            transition: all 0.2s ease-in-out;
                 
+        }
+        & a:hover{   
+            color: var(--color-secundary);
+            transition: all 0.2s ease-in-out;
         }
       
     }
@@ -110,7 +121,7 @@
       
     }
    .props{
-    flex-direction: column;
+    flex-direction: row;
     & .country{
         width: fit-content;
         background-color: var(--color-country);
@@ -121,7 +132,17 @@
             color: black;
             background-color: var(--color-language);
     }
+   
    } 
+   .station{
+    display: flex;
+    flex-direction: column;
+    
+}
+.box{
+    width: max-content;
+   
+}
 }
 
 

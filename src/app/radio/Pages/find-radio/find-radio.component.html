@@ -7,12 +7,13 @@
                 <img class="poster" [src]="setFavicon()">
             </div>
             <div>
-                <h1 class="title">{{station.name}}</h1>
+                <h1 class="title">{{station.name}}  </h1>
                 <div class="lbls">
                     <app-lbl-country [content]="station.country"></app-lbl-country>
                     <app-lbl-language [content]="station.language"></app-lbl-language>
                     <app-lbl-tags [content]="station.tags"></app-lbl-tags>
                 </div>
+                <a [href]="station.homepage" class="link">Official Page</a>
             </div>
         </div>
         

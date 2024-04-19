@@ -1,6 +1,5 @@
 <li class="station"> 
-    <div>
-
+  
         <div class="poster">
             
             <app-btn-play [urlImg]="favicon"  [station]="station"> 
@@ -9,10 +8,8 @@
             </app-btn-play>
             <div>
                 <div class="title_and_more">
-                    <h1>{{station?.name}}</h1>
-                    <a class="link" [href]="'radio/'+station?.id">
-                        More
-                    </a>
+                    <a  [href]="'radio/'+station?.id">{{station?.name}}</a>
+                    
                 </div>
                 <a class="link" [href]="station?.homepage">Official Page</a>
             </div>
@@ -30,5 +27,4 @@
             }
          </div>
 
-    </div>
 </li>
