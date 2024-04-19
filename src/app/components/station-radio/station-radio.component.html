@@ -9,13 +9,22 @@
             <div>
                 <div class="title_and_more">
                     <a  [href]="'radio/'+station?.id">{{station?.name}}</a>
-                    
+                 
                 </div>
                 <a class="link" [href]="station?.homepage">Official Page</a>
             </div>
            
         </div>
+        <div class="more_props">
+            <span>{{station?.votes}} 👍</span>
+            @if(station?.lastCheckOk==false){
+                <h3 class="status" style="color: red;">OFFLINE</h3>
+            }@else {
+                <h3 class="status" style="color: green;">ONLINE</h3>
+            }
+        </div>
          <div class="props">
+         
             <app-lbl-country [content]="station?.country"></app-lbl-country>
             @if(station?.language!.length>1){
 
@@ -25,6 +34,7 @@
 
                <app-lbl-tags [content]="station?.tags"  ></app-lbl-tags>
             }
+            
          </div>
 
 </li>

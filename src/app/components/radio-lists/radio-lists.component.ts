@@ -40,7 +40,11 @@ export class RadioListsComponent implements OnInit{
         offset:0,
         limit:50,
         tagExact:false,
-        tagList:filterTag
+        tagList:filterTag,
+        order:'votes',
+        reverse:true,
+        hideBroken:true,
+
       },{
         mode:'cors',
         cache:'default'
@@ -62,7 +66,10 @@ export class RadioListsComponent implements OnInit{
         offset:this.page*50,
         limit:50,
         tagExact:false,
-        tagList:filterTag
+        tagList:filterTag,
+        order:'votes',
+        reverse:true,
+        hideBroken:true,
       },{
         mode:'cors',
         cache:'default',

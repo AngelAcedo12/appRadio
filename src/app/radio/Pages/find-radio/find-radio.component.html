@@ -7,7 +7,12 @@
                 <img class="poster" [src]="setFavicon()">
             </div>
             <div>
-                <h1 class="title">{{station.name}}  </h1>
+                @if(station.lastCheckOk==true){
+
+                    <h1 class="title">{{station.name}} | ONLINE  </h1>
+                }@else {
+                    <h1 class="title">{{station.name}} | OFFLINE  </h1>
+                }
                 <div class="lbls">
                     <app-lbl-country [content]="station.country"></app-lbl-country>
                     <app-lbl-language [content]="station.language"></app-lbl-language>
