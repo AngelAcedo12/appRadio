@@ -1,0 +1,30 @@
+
+
+*{
+    --color-background:#2A1F2D;
+    --color-primary:#59C9A5;
+    --color-secundary:#52BE80;
+    --color-country:#FF6747;
+    --color-language:#DAF7A6;
+    --hover:#939393;
+}
+.country{
+    font-size: medium;
+    background-color: var(--color-country);
+    text-overflow: ellipsis;
+    overflow: hidden;
+    padding: 0.5em;
+    border-radius: 10px;
+    text-wrap: nowrap;
+    max-width: 200px;
+    width: fit-content;
+    animation: fade forwards 0.5s ease-in-out;
+}
+@keyframes fade {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}

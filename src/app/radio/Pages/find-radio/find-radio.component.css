@@ -1,0 +1,18 @@
+section{
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+}
+.poster{
+    width: 300px;
+    height: 300px;
+    border-radius: 10px;
+}
+.lbls{
+    display: flex;
+    flex-direction: row;
+    gap:0.5em
+}
+.title{
+    font-size: xx-large;
+}

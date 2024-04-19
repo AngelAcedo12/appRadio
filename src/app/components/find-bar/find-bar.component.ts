@@ -10,7 +10,9 @@ export class FindBarComponent {
 
   @Output() newShearchStation  = new EventEmitter<string>()
 
-
+constructor(){
+  this.shearch=new FormControl('')
+}
   shearch = new FormControl('')
 
   onSubmit(){

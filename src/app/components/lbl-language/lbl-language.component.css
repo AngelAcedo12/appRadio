@@ -1,0 +1,30 @@
+
+*{
+    --color-background:#2A1F2D;
+    --color-primary:#59C9A5;
+    --color-secundary:#52BE80;
+    --color-country:#FF6747;
+    --color-language:#DAF7A6;
+    --hover:#939393;
+}
+
+.language{
+    color: black;
+    background-color: var(--color-language);
+    text-overflow: ellipsis;
+    overflow: hidden;
+    padding: 0.5em;
+    text-wrap: nowrap;
+    border-radius: 10px;
+    max-width: 200px;
+    font-size: medium;
+    animation: fade forwards 0.5s ease-in-out;
+}
+@keyframes fade {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}

@@ -11,6 +11,9 @@ import { SelectCountrieComponent } from './select-countrie/select-countrie.compo
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { SelectTagListComponent } from './select-tag-list/select-tag-list.component';
 import { FindBarComponent } from './find-bar/find-bar.component';
+import { LblCountryComponent } from './lbl-country/lbl-country.component';
+import { LblLanguageComponent } from './lbl-language/lbl-language.component';
+import { LblTagsComponent } from './lbl-tags/lbl-tags.component';
 
 
 
@@ -23,12 +26,18 @@ import { FindBarComponent } from './find-bar/find-bar.component';
     LoadingComponent,
     SelectCountrieComponent,
     SelectTagListComponent,
-    FindBarComponent
+    FindBarComponent,
+    LblCountryComponent,
+    LblLanguageComponent,
+    LblTagsComponent
   ],exports:[
     RadioListsComponent,
     StationRadioComponent,
     ReproductorComponent,
-    LoadingComponent
+    LoadingComponent,
+    LblCountryComponent,
+    LblTagsComponent,
+    LblLanguageComponent
   ],
   imports: [
     CommonModule,

@@ -19,14 +19,14 @@
            
         </div>
          <div class="props">
-            <h2 class="country">{{station?.country}} 🌐</h2>
+            <app-lbl-country [content]="station?.country"></app-lbl-country>
             @if(station?.language!.length>1){
 
-                <h2 class="language">{{station?.language}} 🎶</h2>
+                <app-lbl-language [content]="station?.language"></app-lbl-language>
             }
             @if (station?.tags!.length>1) {
 
-                <h2 class="tags">{{station?.tags}} 🏷️</h2>
+               <app-lbl-tags [content]="station?.tags"  ></app-lbl-tags>
             }
          </div>
 
