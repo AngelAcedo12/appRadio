@@ -13,7 +13,7 @@ const routes: Routes = [{
       component:AllRadiosComponent
     },
     {
-      path:'find',
+      path:':id',
       component:FindRadioComponent
     }
   ]

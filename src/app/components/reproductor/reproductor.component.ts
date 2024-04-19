@@ -2,6 +2,7 @@ import { Component, computed, signal, Signal, SimpleChanges } from '@angular/cor
 import { ReproductorServiceService } from '../../services/reproductor-service.service';
 import { Station } from 'radio-browser-api';
 import { Sign } from 'crypto';
+import { of } from 'rxjs';
 
 @Component({
   selector: 'app-reproductor',
@@ -16,6 +17,18 @@ export class ReproductorComponent {
   }
 
   state : Signal<boolean> = signal(false)
+  stateOpen = signal(false)
+
+
+  openOrClose(){
+    if(this.stateOpen()){
+      document.getElementById("rep")?.classList.replace("open","close")
+      this.stateOpen.update(() => false)
+    }else{
+      document.getElementById("rep")?.classList.replace("close","open")
+      this.stateOpen.update(()=>true)
+    }
+  }
 
 
   setState(){

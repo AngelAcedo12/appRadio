@@ -22,6 +22,8 @@ export class RadioListsComponent implements OnInit{
   totalEmision: number = 0
   countryCode: Signal<string> = signal("ES")
   tagList : Signal<CountryResult[]> = signal([])
+  nameStation : Signal<string> = signal('')
+
 
   async loadRadios(){
    var filterTag = this.tagList().map((item)=>item.name)
@@ -29,12 +31,17 @@ export class RadioListsComponent implements OnInit{
     if(this.loading()!=true){
       this.loading=computed(() => true);
       await this.api.searchStations({
+        name:this.nameStation(),
+        nameExact:false,
         countryCode:this.countryCode(),
         offset:0,
         limit:50,
         tagExact:false,
         tagList:filterTag
-      }).then(data => {this.radios=data; this.page = this.page+1; this.loading=computed(()=>false); console.log(data)})
+      }).then(data => {
+        this.radios=data; this.page = this.page+1; this.loading=computed(()=>false); 
+        
+      })
     }
  
  
@@ -42,15 +49,29 @@ export class RadioListsComponent implements OnInit{
     if(this.loading()!=true){
       this.loading=computed(() => true);
       await this.api.searchStations({
+        name:this.nameStation(),
+        nameExact:false,
         countryCode:this.countryCode(),
         offset:this.page*50,
         limit:50,
+        tagExact:false,
         tagList:filterTag
-      }).then(data => { this.radios=this.radios?.concat(data);  this.page= this.page+1;computed(()=>false)})
+      }).then(data => { 
+        this.radios=this.radios?.concat(data); 
+        this.page= this.page+1;computed(()=>false)
+        this.loading=computed(() => false)
+      })
     }
  
   }
   }
+  setRadioName(stationName : string){
+    this.nameStation=computed(()=>stationName)
+    this.page=1
+    this.radios=[]
+    this.loadRadios()
+  }
+
   setCountryCode(countryCode:string){
     this.countryCode=computed(()=>countryCode)
     this.page=1;

@@ -9,12 +9,18 @@
     --hover:#939393;
 }
 
+.link{
+    width: min-content;
+    text-wrap: nowrap; 
+    text-decoration: none;
+    color: #52BE80;
+    text-decoration: none;
+}
 .station{
     list-style: none;
     display: flex;
     flex-direction: row;
     padding: 1em;
-    cursor: pointer;
     border: transparent solid;
     border-width: 1px;
     border-radius: 10px;
@@ -22,11 +28,7 @@
     animation-name: fade;
     animation-duration: 0.5s;    
 }
-.station:hover{
-    border-color: #939393 ;
-    transition: all 0.2s ease-in-out;
-    
-}
+
 .poster{
     display: flex;
     flex-direction: row;
@@ -38,32 +40,35 @@
     align-items: center;
     
     & div{
-
+        
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         flex-wrap: wrap;
         align-items: start;
         text-align: left;
-        & h1{
-            font-weight: bold;
-            font-size: medium;
-            color: whitesmoke;
         
-            border-radius: 10px;
-            text-overflow: ellipsis;
-            overflow: hidden;
-            text-wrap: nowrap;
-            width: 200px;
-        }   
-    
-        & a{
-            width: 100%;
-            text-wrap: nowrap; 
-            text-decoration: none;
-            color: #52BE80;
+    }
+    & .title_and_more{
+        display: flex;
+        flex-direction: row;
+        margin: 0;
+        align-items: center;
+        gap: 1em;
+        & h1{
+                font-weight: bold;
+                font-size: medium;
+                color: whitesmoke;
+                width: 200px;
+                border-radius: 10px;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                text-wrap: nowrap;
+                
         }
+      
     }
 }
+
 .props{
     margin-top: 1rem;
     width: 100%;
@@ -127,4 +132,12 @@
     100%{
         opacity: 1;
     }
+}
+@keyframes floatTextSide {
+    0% {
+      transform: translateX(0%);
+  }
+  100% {
+      transform: translateX(-100%);
+  }
 }

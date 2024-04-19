@@ -12,6 +12,6 @@ export class MenuComponent {
 
   menuItems: MenuItems[] = [
     {title:"All radios", url:'radio'},
-    {title:"Find your radio", url:'radio/find'}
+  
   ]
 }

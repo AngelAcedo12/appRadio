@@ -10,6 +10,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { SelectCountrieComponent } from './select-countrie/select-countrie.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { SelectTagListComponent } from './select-tag-list/select-tag-list.component';
+import { FindBarComponent } from './find-bar/find-bar.component';
 
 
 
@@ -21,7 +22,8 @@ import { SelectTagListComponent } from './select-tag-list/select-tag-list.compon
     ReproductorComponent,
     LoadingComponent,
     SelectCountrieComponent,
-    SelectTagListComponent
+    SelectTagListComponent,
+    FindBarComponent
   ],exports:[
     RadioListsComponent,
     StationRadioComponent,
@@ -29,7 +31,6 @@ import { SelectTagListComponent } from './select-tag-list/select-tag-list.compon
     LoadingComponent
   ],
   imports: [
-    
     CommonModule,
     InfiniteScrollModule,
     ReactiveFormsModule,

@@ -1,0 +1,34 @@
+
+*{
+    --color-background:#2A1F2D;
+    --color-primary:#59C9A5;
+    --color-secundary:#52BE80;
+    --color-country:#FF6747;
+    --color-language:#DAF7A6;
+    --hover:#939393;
+}
+.shearch-box{
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    background:field ;
+    padding: 0.5em;
+    border-radius: 20px;
+    & img{
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+    }
+    & img:hover{
+        transform: scale(1.05);
+        transition: all 0.2s ease-in-out;
+    }
+    & input{
+        border: none;
+
+    }
+    & input:focus{
+        outline: none;
+    }
+}
+

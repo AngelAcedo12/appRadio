@@ -8,8 +8,13 @@
             
             </app-btn-play>
             <div>
-                <h1>{{station?.name}}</h1>
-                <a [href]="station?.homepage">Official Page</a>
+                <div class="title_and_more">
+                    <h1>{{station?.name}}</h1>
+                    <a class="link" [href]="'radio/'+station?.id">
+                        More
+                    </a>
+                </div>
+                <a class="link" [href]="station?.homepage">Official Page</a>
             </div>
            
         </div>

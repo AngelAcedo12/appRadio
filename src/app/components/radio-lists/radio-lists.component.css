@@ -8,6 +8,7 @@
     padding: 0;
     width: 100%;
     height: 100%;
+
     
 }
 .list::-webkit-scrollbar{
@@ -18,6 +19,7 @@
     flex-direction: row;
     align-items:  center;
     flex-wrap: wrap;
+    padding-left: 1em;
 }
 
 @media (max-width: 768px) {

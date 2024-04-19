@@ -4,13 +4,19 @@
     height: fit-content;
     padding: 0.5em;
 }
+select{
+    border: none;
+    border-radius: 20px;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+}
 option{
     width: 100px;
     text-overflow: ellipsis;
     overflow: hidden;
 
 }
-h2{
+h3{
     margin: 0;
     text-align: center;
 }

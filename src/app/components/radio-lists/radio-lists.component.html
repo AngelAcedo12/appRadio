@@ -1,4 +1,5 @@
     <div class="filters">
+        <app-find-bar (newShearchStation)="setRadioName($event)"></app-find-bar>
         <app-select-countrie (newCountry)="setCountryCode($event)"></app-select-countrie>
         <app-select-tag-list (refrestListFilter)="setTagList($event)"></app-select-tag-list>
     </div>
@@ -11,8 +12,7 @@
         
         <div infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50"   (scrolled)="loadRadios()"></div>
     </ul>
-    @if (loading()==true) {
-            
+    @if (loading()==true) {  
         <app-loading></app-loading>
     }
 
