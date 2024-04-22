@@ -11,7 +11,8 @@ export class SelectTagListComponent implements OnInit {
  
   @Output() refrestListFilter = new EventEmitter<CountryResult[]>
   ngOnInit(): void {
-    
+    this.api.setBaseUrl("https://at1.api.radio-browser.info")
+
  }
 
  tagSherch =new FormControl('')

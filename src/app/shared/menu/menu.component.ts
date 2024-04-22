@@ -8,10 +8,16 @@ import { MenuItems } from '../../models/MenuItems';
 })
 export class MenuComponent {
 
+  ngOnInit(): void {
+    
 
+    
+  }
 
   menuItems: MenuItems[] = [
     {title:"All radios", url:'radio'},
-  
+    {title:"History",url:''},
+    {title:"Log In",url:''},
+    {title:'Sing Up',url:''}
   ]
 }

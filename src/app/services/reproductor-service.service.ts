@@ -22,7 +22,8 @@ export class ReproductorServiceService {
     this.state.update(() => false)
     this.stationLoading.update(() => false)
     this.audio.src=urlSound;
-    await this.audio.play().then( () => this.stationLoading.update(() => true))
+    this.audio.load()
+    await this.audio.play().then(() => this.stationLoading.update(() => true))
     this.actualStation= computed(() => station)
     this.state.update(() => true)
     this.saveActualSong()
@@ -35,7 +36,7 @@ export class ReproductorServiceService {
   }
 
   async  resume(){
-    
+    this.audio.load()
     await this.audio.play().then(() => this.stationLoading.update(() => true))
     this.state.update(() => true)
     this.saveActualSong()

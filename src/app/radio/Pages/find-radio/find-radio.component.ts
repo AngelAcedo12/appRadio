@@ -17,7 +17,7 @@ export class FindRadioComponent implements OnInit{
     ngOnInit(): void {
 
       this.id=this.router.snapshot.params["id"]
-      
+      this.api.setBaseUrl("https://at1.api.radio-browser.info")
       this.getStation()
       this.setFavicon()
     }
