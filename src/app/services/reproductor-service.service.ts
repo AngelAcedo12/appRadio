@@ -36,8 +36,7 @@ export class ReproductorServiceService {
   }
 
   async  resume(){
-    this.audio.load()
-    await this.audio.play().then(() => this.stationLoading.update(() => true))
+    await this.audio.play()
     this.state.update(() => true)
     this.saveActualSong()
   }
