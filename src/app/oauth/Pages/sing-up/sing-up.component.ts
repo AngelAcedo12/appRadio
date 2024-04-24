@@ -26,9 +26,13 @@ export class SingUpComponent  {
   setStatePassword(){
 
      this.statePassword.update(()=> this.statePassword()==false ? true : false) 
+
      if(this.statePassword()===false){
-       document.getElementById("input_password")?.setAttribute("type","password")     
+
+      document.getElementById("input_password")?.setAttribute("type","password")   
+
      }else{
+
       document.getElementById("input_password")?.setAttribute("type","text")     
 
      }
