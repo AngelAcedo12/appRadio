@@ -15,9 +15,8 @@ export class MenuComponent {
   }
 
   menuItems: MenuItems[] = [
-    {title:"All radios", url:'radio'},
-    {title:"History",url:''},
-    {title:"Log In",url:''},
-    {title:'Sing Up',url:''}
+    {title:"Radios", url:'radio'},
+    {title:"Historial",url:''},
+    
   ]
 }

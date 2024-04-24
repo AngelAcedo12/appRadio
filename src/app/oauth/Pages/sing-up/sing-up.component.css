@@ -1,0 +1,74 @@
+
+*{
+    --color-background:#2A1F2D;
+    --color-primary:#59C9A5;
+    --color-secundary:#52BE80;
+    --color-country:#FF6747;
+    --color-language:#DAF7A6;
+    --hover:#939393;
+}
+form{
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    padding: 1em;
+    padding-inline: 2em;
+}
+.errors{
+    color: var(--color-secundary);
+    font-size: small;
+}
+input{
+    width: 100%;
+    padding: 0.6em;
+    border: none;    
+    border-radius: 50px;
+}
+img{
+    width: 25px;
+    height: 25px;
+}
+.input_box{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-right: 1em;
+
+    border: none;    
+    border-radius: 50px;
+    background-color: field;
+
+}
+
+input:focus{
+    outline: none;
+}
+
+.singUp{
+    border: none;
+    border-radius: 20px;
+    background-color: #52BE80;
+    padding: 0.6em;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out
+    
+}
+.singUp:hover{
+    background-color: #59C9A5;
+    transition: all 0.2s ease-in-out
+
+}
+.singUp:disabled{
+    
+    background-color: #2A1F2D;
+    transition: all 0.2s ease-in-out;
+}
+
+img{
+    cursor: pointer;
+
+}
+img:hover{
+    transform: scale(1.05);
+    transition: all 0.3s ease-in-out;
+}

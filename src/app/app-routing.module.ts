@@ -8,6 +8,10 @@ const routes: Routes = [
 
   },
   {
+    path:'oauth',
+    loadChildren: () => import("./oauth/Pages/pages.module").then(m => m.PagesModule)
+  },
+  {
     path:'',
     pathMatch:'full',
     redirectTo:'radio'

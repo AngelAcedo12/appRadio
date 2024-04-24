@@ -13,6 +13,7 @@
     bottom:  0;
     position: fixed;
     padding: 1em;
+    
     background: transparent;
     right: 0;
     z-index: 20;
@@ -55,10 +56,12 @@
     animation:forwards  fade 0.2s ease-in-out ;
 }
 .btn-play{
+    display: flex;
     background-color: transparent;
     border: none;
     cursor: pointer;
     z-index: 100;
+    align-items: center;
 }
 .btn-play:hover{
     transform: scale(1.05);
