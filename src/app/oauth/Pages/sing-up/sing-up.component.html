@@ -1,55 +1,83 @@
 <form [formGroup]="singUpForm" >
+    
     <label>Name</label>
+
     <div class="input_box"> 
 
         <input   required="true" [formControl]="singUpForm.controls.name" type="text">
+
     </div>
+
      @if (singUpForm.controls.name.errors!=null) {
         @if (singUpForm.controls.name.errors["required"]) {
+
             <samp class="errors">Campo requerido</samp>
+
         }
-        
      }
+
     <label>Email</label>
+
     <div class="input_box">
 
         <input formControlName="email" email="true" required="true" type="email">
+
     </div>
+
     @if (singUpForm.controls.email.errors!=null) {
         @if (singUpForm.controls.email.errors["required"]) {
+
             <samp class="errors">Campo requerido</samp>
+
         }
         @if(singUpForm.controls.email.errors["email"]){
+            
             <samp class="errors">Formato requerrido de email</samp>
+
         }
     }
     <label>Password</label>
+
     <div class="input_box">
+
         <input id="input_password"  required formControlName="password" type="password">
+
         @if(statePassword()===false){
 
             <img (click)="setStatePassword()" src="../../../../assets/icons8-ojo-cerrado-50.webp">
 
         }@else if(statePassword()===true){
+
             <img (click)="setStatePassword()" src = "../../../../assets/icons8-visible-30.webp">
         }
+
     </div>
+
     @if (singUpForm.controls.password.errors!=null) {
         @if (singUpForm.controls.password.errors["required"]) {
+
             <samp class="errors">Campo requerido</samp>
+
         }
         @if(singUpForm.controls.password.errors["pattern"]){
+
             <samp class="errors">La contraseña debe tener un numero, una letra mayuscula y minuscula, un caracter especial y una longuitud entre 8 y 16 caracteres</samp>
+
         }
     }
     @if (singUpForm.valid) {
 
         <button  class="singUp" >Registrarse</button>
+
     }@else {
+
         <button disabled  class="singUp" value="Registrase">Registrarse</button>
+
     }
 
     <div>
-        <a>¿Ya tienes una cuenta?</a>
+
+        <a href="oauth/logIns">¿Ya tienes una cuenta?</a>
+
     </div>
 </form>

@@ -15,7 +15,8 @@ export class LblTagsComponent {
 
   chageStyle(){
     
-   this.style() == 'limit' ? this.style.update(() => 'full') : this.style.update(()=>'limit') 
+  this.style() == 'limit' ? this.style.update(() => 'full') : this.style.update(()=>'limit') 
+
   }
 
 }

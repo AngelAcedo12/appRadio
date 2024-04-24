@@ -10,12 +10,6 @@ import { Country } from '../../../models/Country';
 })
 export class AllRadiosComponent implements OnInit {
 
-
-  ngOnInit(): void {
-  
-  }
-  
-  
-  
+  ngOnInit(): void {}
   
 }

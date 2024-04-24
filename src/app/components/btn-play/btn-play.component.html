@@ -4,19 +4,25 @@
 
        
         @if(reproductorService.state()==false ){
+
             <button (click)="play()" class="btn-play">
                 <img src="../../../assets/icons8-play-30.webp"/>
              </button>
+
         }
         @else  {
+
             <button (click)="pause()" class="btn-play">
                 <img  src="../../../assets/icons8-pausa-30.webp">
              </button>
+
         }
     }  @else  {
+
         <button (click)="play()" class="btn-play">
             <img src="../../../assets/icons8-play-30.webp">
          </button>
+         
     }
     
 </div>

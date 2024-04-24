@@ -12,15 +12,19 @@ export class SingUpComponent  {
 
 
   statePassword = signal(false)
+
   singUpForm = new FormGroup({
-    name : new FormControl('', [Validators.required,Validators.minLength(1)]
-    ),
+    name : new FormControl('', [Validators.required,Validators.minLength(1)]),
     email : new FormControl('', [Validators.required,Validators.email]),
-    password : new FormControl('',[Validators.required,Validators.pattern(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,15}$/g)])
+    password : new FormControl('',[
+      Validators.required,
+      Validators.pattern(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,15}$/g)
+    ])
   })
 
 
   setStatePassword(){
+
      this.statePassword.update(()=> this.statePassword()==false ? true : false) 
      if(this.statePassword()===false){
        document.getElementById("input_password")?.setAttribute("type","password")     

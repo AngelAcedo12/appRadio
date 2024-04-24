@@ -8,4 +8,5 @@ import { Component, Input } from '@angular/core';
 export class LblCountryComponent {
 
   @Input({required:true}) content : string | undefined
+  
 }

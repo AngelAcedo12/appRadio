@@ -15,7 +15,9 @@
             </div>
            
         </div>
+
         <div class="more_props">
+            
             <span>{{station?.votes}} 👍</span>
             @if(station?.lastCheckOk==false){
                 <samp class="status" style="color: red;">OFFLINE</samp>
@@ -24,6 +26,7 @@
             }
             
         </div>
+
          <div class="props">
          
             <app-lbl-country [content]="station?.country"></app-lbl-country>

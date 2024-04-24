@@ -1,34 +1,37 @@
 @if (style()==='limit') {
-    <div class="box">
+<div class="box">
 
-        @for (item of content; track $index) {
-            @if($index<3){
+    @for (item of content; track $index) {
+
+        @if($index<3){
     
-                <h2 class="tags">{{item}}</h2>
-            }
-            
-        }
-        @if(content!.length>3){
-            <div class="box_more">
+            <h2 class="tags">{{item}}</h2>
 
-                <h2 (click)="chageStyle()" class="more">...</h2>
-            </div>
         }
-    </div>
+            
+    }
+    @if(content!.length>3){
+
+        <div class="box_more">
+
+            <h2 (click)="chageStyle()" class="more">...</h2>
+        </div>
+    }
+</div>
     
 }
 @if(style()==='full'){
-    <div class="box">
+<div class="box">
 
-        @for (item of content; track $index) {
+    @for (item of content; track $index) {
             
         <h2 class="tags">{{item}}</h2>
             
-        }  
-        <div class="box_more">
+    }  
+    <div class="box_more">
 
-            <h2 class="more" (click)="chageStyle()">minus</h2>
-        </div>
-
+        <h2 class="more" (click)="chageStyle()">minus</h2>
     </div>
+
+</div>
 }

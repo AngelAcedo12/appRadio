@@ -13,7 +13,7 @@ export class SelectTagListComponent implements OnInit {
   ngOnInit(): void {
     this.api.setBaseUrl("https://at1.api.radio-browser.info")
 
- }
+  }
 
  tagSherch =new FormControl('')
  
@@ -26,29 +26,33 @@ export class SelectTagListComponent implements OnInit {
 
  async shearchTag(){
   
-  if(this.tagSherch.value!.length <=1 || this.tagSherch.value==''){
-   this.tagListShearch=[]
+    if(this.tagSherch.value!.length <=1 || this.tagSherch.value==''){
+    this.tagListShearch=[]
 
-  }else{
-    var shearch= await this.api.getTags(this.tagSherch.value!,
-    {limit:10}
-  )
-    this.tagListShearch=shearch
-  }
+    }else{
+
+      var shearch= await this.api.getTags(this.tagSherch.value!,{limit:10})
+      this.tagListShearch=shearch
+
+    }
     
 
   }
 
   selectedTag(item:CountryResult){
+
     if(this.tagListShearchSelected.length<3 && !this.tagListShearchSelected.includes(item)){
       this.tagListShearchSelected?.push(item)
     }
+
     this.tagSherch.setValue('')
     this.tagListShearch=[] 
     this.refrestListFilter.emit(this.tagListShearchSelected)
   }
   removeTag(item:CountryResult){
+
     this.tagListShearchSelected=this.tagListShearchSelected.filter((tag)=>tag!=item)
     this.refrestListFilter.emit(this.tagListShearchSelected)
+
   }
 }

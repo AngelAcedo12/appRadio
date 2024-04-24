@@ -1,10 +1,13 @@
 <form [formGroup]="formGroup" >
 
     <label>Email</label>
+
     <div class="input_box">
 
         <input formControlName="email" email="true" required="true" type="email">
+
     </div>
+
     @if (formGroup.controls.email.errors!=null) {
         @if (formGroup.controls.email.errors["required"]) {
             <samp class="errors">Campo requerido</samp>
@@ -12,7 +15,9 @@
       
     }
     <label>Password</label>
+
     <div class="input_box">
+
         <input id="input_password"  required formControlName="password" type="password">
         @if(statePassword()===false){
 
@@ -21,19 +26,20 @@
         }@else if(statePassword()===true){
             <img (click)="setStatePassword()" src = "../../../../assets/icons8-visible-30.webp">
         }
+
     </div>
+
     @if (formGroup.controls.password.errors!=null) {
         @if (formGroup.controls.password.errors["required"]) {
             <samp class="errors">Campo requerido</samp>
         }
-      
     }
-    
-
         <button  class="singUp" >Registrarse</button>
     
 
     <div>
-        <a>¿Ya tienes una cuenta?</a>
+
+        <a href="oauth/singUp">¿No tienes cuenta?</a>
+
     </div>
 </form>

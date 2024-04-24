@@ -1,9 +1,8 @@
-
-<div >
+<div>
     <h3>Pais: </h3>
     <select  class="select-countries" [formControl]="countrySelecter" (change)="emitCountrySelected()">
         @for (item of countries; track $index) {
-            <option [value]="item.cca2">{{item.cca2}} | {{item.name.common}} </option>
+            <option [value]="item.cca2">{{item.cca2}} | {{item.name.common}}</option>
         }
     </select>
 </div>

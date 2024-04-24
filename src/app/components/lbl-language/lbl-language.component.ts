@@ -6,5 +6,7 @@ import { Component, Input } from '@angular/core';
   styleUrl: './lbl-language.component.css'
 })
 export class LblLanguageComponent {
+
   @Input({required:true}) content : string[] | string | undefined
+  
 }

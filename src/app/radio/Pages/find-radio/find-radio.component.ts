@@ -15,20 +15,17 @@ export class FindRadioComponent implements OnInit{
   private router = inject(ActivatedRoute)
 
     ngOnInit(): void {
-
       this.id=this.router.snapshot.params["id"]
       this.api.setBaseUrl("https://at1.api.radio-browser.info")
       this.getStation()
       this.setFavicon()
     }
 
-
-
-
     id: string | undefined
     api : RadioBrowserApi  = new RadioBrowserApi("My api")
     station: Station | undefined
     favicon: String | undefined
+    
     getStation(){
       if(this.id!=undefined){
 
