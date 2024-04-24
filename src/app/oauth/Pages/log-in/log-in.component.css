@@ -72,3 +72,11 @@ img:hover{
     transform: scale(1.05);
     transition: all 0.3s ease-in-out;
 }
+a{
+    text-align: center;
+    text-decoration: none;
+    color: var(--color-secundary);
+}
+a:hover{
+    color: var(--color-primary);
+}
