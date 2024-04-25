@@ -10,7 +10,8 @@ const routes: Routes = [{
   children:[
     {
       path:'',
-      component:AllRadiosComponent
+      component:AllRadiosComponent,
+
     },
     {
       path:':id',
