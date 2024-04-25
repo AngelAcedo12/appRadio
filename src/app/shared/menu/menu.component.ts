@@ -11,17 +11,13 @@ import { CookieService } from 'ngx-cookie-service';
 export class MenuComponent {
 
 
-  private userService = inject(OauthService) 
+  public userService = inject(OauthService) 
   private cookiesService = inject(CookieService)
   ngOnInit(): void {
-      console.log(this.cookiesService.getAll())
-      const token = this.cookiesService.get("oauth-token-app-radio")
-      console.log(token)
-      if(this.userService.logInState()===false || token.length<=0 || token != null || token != undefined){
-        this.userService.logInWhitToken(token)
-      }else{
-        window.location.href = "oauth/logIn"
-      }
+     
+     
+    
+
 
   }
 
@@ -30,4 +26,7 @@ export class MenuComponent {
     {title:"Historial",url:''},
     
   ]
+
+
+
 }

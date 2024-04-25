@@ -1,14 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MenuComponent } from './menu/menu.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 
 
 @NgModule({
   declarations: [
-    MenuComponent
+    MenuComponent,
+    NotFoundComponent
   ],exports:[
-    MenuComponent
+    MenuComponent,
+    NotFoundComponent
   ],
   imports: [
     CommonModule

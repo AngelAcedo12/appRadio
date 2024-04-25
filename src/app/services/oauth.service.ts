@@ -63,8 +63,11 @@ export class OauthService {
       "token": TOKEN
     }
     this.http.post<any>(`${enviroment.base_url_local}api/user/logWhitToken`,body).subscribe( res => { 
-        this.userSave = computed(() => res.result.user) 
+
+        this.userSave = computed(() => res.result.user)
+        
         this.logInState.update(() => true)
+
     } )
   }
   

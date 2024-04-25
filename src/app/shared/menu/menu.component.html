@@ -4,7 +4,15 @@
         @for (item of  menuItems; track $index) {
             <a [href]="item.url">{{item.title}}</a>
         }
-        <a href="oauth/logIn">Iniciar sesion</a>
-        <a href="oauth/singUp">Registrarse</a>
+
+        @if(userService.logInState()===true){
+            <button>Cerrar sesion</button>
+        }@else {
+            
+            <a href="oauth/logIn">Iniciar sesion</a>
+            <a href="oauth/singUp">Registrarse</a>
+            
+
+        }
     </nav>
 </header>

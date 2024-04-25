@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LayautRadioComponent } from './Pages/layaut-radio/layaut-radio.component';
 import { AllRadiosComponent } from './Pages/all-radios/all-radios.component';
 import { FindRadioComponent } from './Pages/find-radio/find-radio.component';
+import { NotFoundComponent } from '../shared/not-found/not-found.component';
 
 const routes: Routes = [{
   path:'',
@@ -16,7 +17,8 @@ const routes: Routes = [{
     {
       path:':id',
       component:FindRadioComponent
-    }
+    },
+
   ]
 }];
 
