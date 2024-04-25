@@ -1,5 +1,6 @@
 import { Component, signal } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { OauthService } from '../../../services/oauth.service';
 
 @Component({
   selector: 'app-log-in',
@@ -7,6 +8,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrl: './log-in.component.css'
 })
 export class LogInComponent {
+
+  constructor(private oauthService:OauthService){}
 
   formGroup = new FormGroup({
     email: new FormControl('',[Validators.required]),
@@ -23,5 +26,13 @@ export class LogInComponent {
 
     }
  }
+  logIn(){
+    const email = this.formGroup.value.email
+    const password = this.formGroup.value.password
+    console.log(email,password)
+    if((email!=undefined || email!=null) && (password!=undefined || password!=null) ){
 
+      this.oauthService.login(email,password)
+    }
+  }
 }

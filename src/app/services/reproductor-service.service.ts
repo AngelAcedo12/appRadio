@@ -10,9 +10,10 @@ export class ReproductorServiceService {
 
   constructor() { 
     this.loadStationInLocalStorage()
-      
+    
   }
-  audio = new Audio();
+
+  audio : HTMLAudioElement  = new Audio();
   actualStation : Signal<Station | undefined> = signal(undefined)
   state = signal(false)
   stationLoading = signal(false)

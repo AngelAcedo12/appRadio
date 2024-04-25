@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { StationRadioComponent } from './components/station-radio/station-radio.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ComponentsModule } from './components/components.module';
+import { CookieService } from 'ngx-cookie-service';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { ComponentsModule } from './components/components.module';
 
   ],
   providers: [
-    provideClientHydration()
+    provideClientHydration(),
+    CookieService
   ],
   bootstrap: [AppComponent]
 })

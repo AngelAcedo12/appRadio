@@ -1,4 +1,4 @@
-<form [formGroup]="formGroup">
+<form (submit)="logIn" [formGroup]="formGroup">
 
     <label>Email</label>
 
@@ -34,12 +34,12 @@
             <samp class="errors">Campo requerido</samp>
         }
     }
-        <button  class="singUp" >Registrarse</button>
-    
+    <input  (click)="logIn()"  class="singUp" type="button"  value="Iniciar sesion">
+     
 
     <div style="display: flex;align-items: center; width: 100%; padding: 1em; justify-content: center;">
 
-        <a href="oauth/sing">¿No tienes cuenta?</a>
+        <a href="oauth/singUp">¿No tienes cuenta?</a>
 
     </div>
 

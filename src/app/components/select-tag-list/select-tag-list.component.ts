@@ -31,7 +31,7 @@ export class SelectTagListComponent implements OnInit {
 
     }else{
 
-      var shearch= await this.api.getTags(this.tagSherch.value!,{limit:10})
+      var shearch= await this.api.getTags(this.tagSherch.value!,{limit:20})
       this.tagListShearch=shearch
 
     }
