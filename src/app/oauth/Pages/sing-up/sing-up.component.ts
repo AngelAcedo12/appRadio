@@ -9,7 +9,16 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class SingUpComponent  {
   
  
+  isInvalid(controlName:string){
+    return this.singUpForm.get(controlName)?.invalid && this.singUpForm.get(controlName)?.touched
 
+  }
+  getErrorMessage(controlName:string){
+    return this.singUpForm.get(controlName)?.hasError('required') ? 'Valor requerido' :
+    this.singUpForm.get(controlName)?.hasError('email') ? 'No es un email valido' :
+    this.singUpForm.get(controlName)?.hasError('pattern') ? 'La contraseña debe contener al menos 8 caracteres, una letra, un número y un caracter especial' :
+    '';
+  }
 
   statePassword = signal(false)
 

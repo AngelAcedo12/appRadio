@@ -8,12 +8,12 @@
 
     </div>
 
-     @if (singUpForm.controls.name.errors!=null) {
-        @if (singUpForm.controls.name.errors["required"]) {
+     @if (isInvalid("name")!==null) {
+      
 
-            <samp class="errors">Campo requerido</samp>
+            <samp class="errors">{{getErrorMessage("name")}}</samp>
 
-        }
+        
      }
 
     <label>Email</label>
@@ -24,17 +24,10 @@
 
     </div>
 
-    @if (singUpForm.controls.email.errors!=null) {
-        @if (singUpForm.controls.email.errors["required"]) {
+    @if (isInvalid("email")!==null) {
+       
+        <samp class="errors">{{getErrorMessage("email")}}</samp>
 
-            <samp class="errors">Campo requerido</samp>
-
-        }
-        @if(singUpForm.controls.email.errors["email"]){
-            
-            <samp class="errors">Formato requerrido de email</samp>
-
-        }
     }
     <label>Password</label>
 
@@ -53,17 +46,10 @@
 
     </div>
 
-    @if (singUpForm.controls.password.errors!=null) {
-        @if (singUpForm.controls.password.errors["required"]) {
+    @if (isInvalid("password")!==null) {
 
-            <samp class="errors">Campo requerido</samp>
+        <samp class="errors">{{getErrorMessage("password")}}</samp>
 
-        }
-        @if(singUpForm.controls.password.errors["pattern"]){
-
-            <samp class="errors">La contraseña debe tener un numero, una letra mayuscula y minuscula, un caracter especial y una longuitud entre 8 y 16 caracteres</samp>
-
-        }
     }
     @if (singUpForm.valid) {
 

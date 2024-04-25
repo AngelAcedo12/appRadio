@@ -19,11 +19,8 @@ export class OauthService {
 
   login(email:string,password:string){
     console.log(email,password)
-    this.http.get(`${enviroment.base_url_backend_dev}/user?email=${email}&password=${password}`,{
-      headers:{
-        'X-Access-Control-Allow-Origin': '*'
-      }
-    }).subscribe( res => {
+    this.http.get<any>(`${enviroment.base_url_local}api/user?email=${email}&password=${password}`
+    ).subscribe( res => {
       console.log(res)
     } 
     )

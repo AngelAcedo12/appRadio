@@ -8,10 +8,10 @@
 
     </div>
 
-    @if (formGroup.controls.email.errors!=null) {
-        @if (formGroup.controls.email.errors["required"]) {
+    @if (isInvalid("email")) {
+       
             <samp class="errors">Campo requerido</samp>
-        }
+        
       
     }
     <label>Password</label>
@@ -29,10 +29,10 @@
 
     </div>
 
-    @if (formGroup.controls.password.errors!=null) {
-        @if (formGroup.controls.password.errors["required"]) {
+    @if (isInvalid("password")) {
+        
             <samp class="errors">Campo requerido</samp>
-        }
+        
     }
     <input  (click)="logIn()"  class="singUp" type="button"  value="Iniciar sesion">
      

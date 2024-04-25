@@ -16,6 +16,9 @@ export class LogInComponent {
     password: new FormControl('',[Validators.required])
   })
 
+  isInvalid(controlName:string){
+    return this.formGroup.get(controlName)?.invalid && this.formGroup.get(controlName)?.touched
+  }
   statePassword = signal(false)
   setStatePassword(){
     this.statePassword.update(()=> this.statePassword()==false ? true : false) 
