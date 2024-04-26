@@ -74,9 +74,19 @@ export class ReproductorServiceService {
 
       this.isPlaying.update(()=>true)
   })
-  this.audio.addEventListener("pause",()=>{
-    this.isPlaying.update(()=>false)
-
-  })
+    this.audio.addEventListener("pause",()=>{
+      this.state.update(()=>false)
+      this.isPlaying.update(()=>false)
+    }) 
   }
+
+  private setColor(){
+    if(this.state()==true){
+      document.getElementById("rep")?.classList.replace("desactive","active")
+    }else{
+      document.getElementById("rep")?.classList.replace("active","desactive")
+    }
+
+  }
+
 }
