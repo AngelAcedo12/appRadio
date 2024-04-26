@@ -2,6 +2,7 @@ import { Component, inject, OnInit, signal } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { OauthService } from '../../../services/oauth.service';
 import { DtoUserSave } from '../../../models/DTOs/DtoUserSave';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-sing-up',
@@ -11,6 +12,8 @@ import { DtoUserSave } from '../../../models/DTOs/DtoUserSave';
 export class SingUpComponent {
 
   private oauthService = inject(OauthService)
+  private cookieService = inject(CookieService)
+
 
   isInvalid(controlName: string) {
     return this.singUpForm.get(controlName)?.invalid && this.singUpForm.get(controlName)?.touched
@@ -55,7 +58,7 @@ export class SingUpComponent {
         control.markAsTouched()
       })
     }
-    console.log(this.singUpForm.value)
+  
     if (this.singUpForm.value == null) {
       return;
     } else {
@@ -64,7 +67,23 @@ export class SingUpComponent {
         email: this.singUpForm.value.email ? this.singUpForm.value.email : "",
         password: this.singUpForm.value.password ? this.singUpForm.value.password : ""
       }
-      this.oauthService.register(userSave)
+      this.oauthService.register(userSave).subscribe((res) => {
+      
+        console.log(res)
+        let token = res.token
+        if (token != null) {
+  
+          this.cookieService.set("oauth-token-app-radio", token, { path: "/", expires: 1 })
+          this.oauthService.logInState.update(() => true)
+        }
+        if (res.result.status == true) {
+  
+          window.location.href = "radio"
+        }
+  
+  
+      }
+      )
     }
 
 

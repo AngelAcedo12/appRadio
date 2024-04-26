@@ -19,28 +19,12 @@ export class OauthService {
 
 
   register(userSave: DtoUserSave) {
-    this.http.post<any>(`${enviroment.base_url_local}api/user`, userSave, { observe: "response" }).subscribe((res) => {
-
-      let token = res.body.token
-      console.log(res)
-      if (token != null) {
-
-        this.cookieService.set("oauth-token-app-radio", token, { path: "/", expires: 1 })
-        this.logInState.update(() => true)
-      }
-      if (res.body.status == true) {
-
-        window.location.href = "radio"
-      }
-
-
-    }
-    )
+   return this.http.post<any>(`${enviroment.base_url_local}api/user`, userSave)
   }
 
   login(email: string, password: string) {
   
-   return this.http.get<any>(`${enviroment.base_url_local}api/user?email=${email}&password=${password}`, { observe: "response" }
+   return this.http.get<any>(`${enviroment.base_url_local}api/user?email=${email}&password=${password}`
     )
     
   }

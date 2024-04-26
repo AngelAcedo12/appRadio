@@ -37,23 +37,23 @@ export class LogInComponent {
 
        this.oauthService.login(email,password).subscribe(res=>{ 
         
-      let token = res.body.token
-    
-      if (token != null) {
+          let token = res.token
+        
+          if (token != null) {
 
-        this.cookieService.set("oauth-token-app-radio", token, { path: "/", expires: 1 })
+            this.cookieService.set("oauth-token-app-radio", token, { path: "/", expires: 1 })
 
-      }
-      if (res.body.status == true) {
-        this.oauthService.userSave = computed(() => res.body.result.user) 
-        this.oauthService.logInState.update(() => true) 
-        window.location.href = "radio"
-       
-      } else {
-        this.oauthService.userSave = computed(() => undefined) 
-        this.oauthService.logInState.update(() => false) 
-        this.formGroup.reset()
-      }
+          }
+          if (res.result.status == true) {
+            this.oauthService.userSave = computed(() => res.result.user) 
+            this.oauthService.logInState.update(() => true) 
+            window.location.href = "radio"
+            
+          } else {
+            this.oauthService.userSave = computed(() => undefined) 
+            this.oauthService.logInState.update(() => false) 
+            this.formGroup.reset()
+          }
 
       
       })
