@@ -3,6 +3,7 @@ import { computed, Injectable, Signal, signal } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import enviroment from '../env/enviroments';
 import { DtoUserSave } from '../models/DTOs/DtoUserSave';
+import { catchError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -19,13 +20,21 @@ export class OauthService {
 
 
   register(userSave: DtoUserSave) {
-   return this.http.post<any>(`${enviroment.base_url_backend_pro}api/user`, userSave)
+   return this.http.post<any>(`${enviroment.base_url_backend_pro}api/user`, userSave).pipe(
+    catchError(err => {
+      console.log(err)
+      return err
+    }))
   }
 
   login(email: string, password: string) {
   
-   return this.http.get<any>(`${enviroment.base_url_backend_pro}api/user?email=${email}&password=${password}`
-    )
+   return this.http.get<any>(`${enviroment.base_url_backend_pro}api/user?email=${email}&password=${password}`).pipe(
+    catchError(err => {
+      console.log(err)
+      return err
+    })
+  )
     
   }
   logInWhitToken(TOKEN: string) {
@@ -34,8 +43,12 @@ export class OauthService {
       "token": TOKEN
     }
 
-   return this.http.post<any>(`${enviroment.base_url_backend_pro}api/user/logWhitToken`, body)
-    
+   return this.http.post<any>(`${enviroment.base_url_backend_pro}api/user/logWhitToken`, body).pipe(
+    catchError(err => {
+      console.log(err)
+      return err
+    })
+   )
 
   }
 
@@ -47,6 +60,7 @@ export class OauthService {
       return true
     }
     return false;
+
   }
 }
 
