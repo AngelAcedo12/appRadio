@@ -1,4 +1,4 @@
-<form (submit)="logIn" [formGroup]="formGroup">
+<form (submit)="logIn()" [formGroup]="formGroup">
 
     <label>Email</label>
 
@@ -8,12 +8,7 @@
 
     </div>
 
-    @if (isInvalid("email")) {
-       
-            <samp class="errors">Campo requerido</samp>
-        
-      
-    }
+  
     <label>Password</label>
 
     <div class="input_box">
@@ -29,12 +24,8 @@
 
     </div>
 
-    @if (isInvalid("password")) {
-        
-            <samp class="errors">Campo requerido</samp>
-        
-    }
-    <input  (click)="logIn()"  class="singUp" type="button"  value="Iniciar sesion">
+   
+    <input  (click)="logIn()"   class="singUp" type="button"  value="Iniciar sesion">
      
 
     <div style="display: flex;align-items: center; width: 100%; padding: 1em; justify-content: center;">

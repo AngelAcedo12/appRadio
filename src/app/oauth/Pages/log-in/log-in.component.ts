@@ -1,6 +1,7 @@
-import { Component, signal } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { OauthService } from '../../../services/oauth.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-log-in',
@@ -9,16 +10,15 @@ import { OauthService } from '../../../services/oauth.service';
 })
 export class LogInComponent {
 
-  constructor(private oauthService:OauthService){}
+  private oauthService = inject(OauthService)
+  private cookieService = inject(CookieService)
 
   formGroup = new FormGroup({
     email: new FormControl('',[Validators.required]),
     password: new FormControl('',[Validators.required])
   })
 
-  isInvalid(controlName:string){
-    return this.formGroup.get(controlName)?.invalid && this.formGroup.get(controlName)?.touched
-  }
+
   statePassword = signal(false)
   setStatePassword(){
     this.statePassword.update(()=> this.statePassword()==false ? true : false) 
@@ -29,13 +29,35 @@ export class LogInComponent {
 
     }
  }
-  logIn(){
+ async logIn(){
     const email = this.formGroup.value.email
     const password = this.formGroup.value.password
     console.log(email,password)
     if((email!=undefined || email!=null) && (password!=undefined || password!=null) ){
 
-      this.oauthService.login(email,password)
+       this.oauthService.login(email,password).subscribe(res=>{ 
+        
+      let token = res.body.token
+    
+      if (token != null) {
+
+        this.cookieService.set("oauth-token-app-radio", token, { path: "/", expires: 1 })
+
+      }
+      if (res.body.status == true) {
+        this.oauthService.userSave = computed(() => res.body.result.user) 
+        this.oauthService.logInState.update(() => true) 
+        window.location.href = "radio"
+       
+      } else {
+        this.oauthService.userSave = computed(() => undefined) 
+        this.oauthService.logInState.update(() => false) 
+        this.formGroup.reset()
+      }
+
+      
+      })
     }
   }
-}
+ }
+
