@@ -20,7 +20,7 @@ export class MenuComponent {
 
 
   }
-
+  menuLaterState = false
   menuItems: MenuItems[] = [
     {title:"Radios", url:'radio'},
     {title:"Historial",url:''},
@@ -33,4 +33,25 @@ export class MenuComponent {
     this.userService.logInState.update(() => false)
   }
 
+  openMenu(){
+    
+    if(this.menuLaterState){
+      document.getElementById("menu-later")?.classList.replace("close", "open")
+
+      this.menuLaterState = false
+      const bodyElement = document.getElementsByTagName("html");
+      if (bodyElement) {
+        bodyElement[0].style.overflowY = "hidden";
+      }
+    }
+    else{
+      const bodyElement = document.getElementsByTagName("html");
+      if (bodyElement) {
+        bodyElement[0].style.overflowY = "auto";
+      }
+      document.getElementById("menu-later")?.classList.replace("open", "close")
+      this.menuLaterState = true
+    }
+   
+  }
 }

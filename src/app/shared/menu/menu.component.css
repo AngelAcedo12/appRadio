@@ -63,3 +63,111 @@
     }   
     
 }
+.btn-close-menu{
+    display: none;
+
+}
+.menu-later{
+    display: none;
+}
+.btn-open-menu{
+    display: none;
+}
+@media (max-width:768px) {
+    .menu{
+        justify-content: start;
+        gap: 1em;
+    }
+    .links{
+        display: none;
+    }
+    .btn-open-menu{
+        display: flex;
+        width: fit-content;
+        padding: 1em;
+        background-color: transparent;
+        color: azure;
+        border: none;
+        border-radius: 10px;
+
+    }
+    .btn-open-menu:active{
+        transform: scale(1.2);
+        transition: all 0.2s ease-in-out;
+    }
+    .btn-close-menu{
+        display: flex;
+        width:100%;
+        padding: 1em;
+        background: #52BE80;
+        color: azure;
+        border: none;
+        text-align: center;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+    }
+    .menu-later{
+        position: fixed;
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+        width: 100%;
+        background: #000;
+        height: 100vh;
+        top: 0;
+        z-index: 10;
+    }
+    .open{
+        transform: translateX(0);
+        transition: all 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+    }
+    .close{
+        transform: translateX(-100%);
+        transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
+    .links-later{
+        display: flex;
+        flex-direction: column;
+        gap:1em;
+        padding-left: 1em;
+        padding-right: 1em;
+        align-items: center;
+        & h2{
+            font-size: medium;
+            color: azure;
+        }
+        & a {
+            text-decoration: none;
+            color: azure;
+            padding: 1em; 
+            width: 100%;
+      
+            font-size: medium;
+            text-align: center;
+        }
+        & a:hover{
+            color: antiquewhite;
+            background: #52BE80;
+            transition: all 0.2s ease-in-out;
+            font-size: medium;
+            
+        }
+        & button{
+            text-decoration: none;
+            color: azure;
+            padding: 1em; 
+            width: 100%;
+            border: none;
+            background-color: transparent;
+            cursor: pointer;
+            font-size: medium;
+        } 
+        & button:hover{
+            color: antiquewhite;
+            background: #52BE80;
+            transition: all 0.2s ease-in-out;
+        }   
+    }
+}

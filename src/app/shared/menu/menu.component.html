@@ -1,4 +1,7 @@
 <header class="menu">
+    <button (click)="openMenu()" class="btn-open-menu">
+        <img width="25" height="25" src="../../../assets/icons8-menú-50.webp">
+    </button>
     <h1 class="title">Radio App</h1>
     <nav class="links">
         @for (item of  menuItems; track $index) {
@@ -6,8 +9,8 @@
         }
 
         @if(userService.logInState()===true){
-            <h2>{{userService.userSave()?.name}}</h2>
-            <button (click)="closedSesion()" >Cerrar sesion</button>
+           
+            <button (click)="closedSesion()">Cerrar sesion</button>
         }@else {
             
             <a href="oauth/logIn">Iniciar sesion</a>
@@ -17,3 +20,23 @@
         }
     </nav>
 </header>
+
+<aside class="menu-later close" id="menu-later">
+    <button (click)="openMenu()" class="btn-close-menu">Cerrar</button> 
+    <ul class="links-later">
+        @for (item of  menuItems; track $index) {
+            <a [href]="item.url">{{item.title}}</a>
+        }
+
+        @if(userService.logInState()===true){
+           
+            <button (click)="closedSesion()" >Cerrar sesion</button>
+        }@else {
+            
+            <a href="oauth/logIn">Iniciar sesion</a>
+            <a href="oauth/singUp">Registrarse</a>
+            
+
+        }
+    </ul>
+</aside>
