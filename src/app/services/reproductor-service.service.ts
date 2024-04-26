@@ -8,84 +8,79 @@ import { ModelSaving } from '../models/ModelSavingStorage';
 })
 export class ReproductorServiceService {
 
-  constructor() { 
+  constructor() {
     this.loadStationInLocalStorage()
-    
+
     this.addListertToAudio()
-    
-  
+
+
   }
 
-  audio : HTMLAudioElement  = new Audio();
-  actualStation : Signal<Station | undefined> = signal(undefined)
+  audio: HTMLAudioElement = new Audio();
+  actualStation: Signal<Station | undefined> = signal(undefined)
   state = signal(false)
-  stationLoading = signal(false)  
-  isPlaying = signal(false) 
+  stationLoading = signal(false)
 
-  async play(urlSound: string, station: Station){
+
+  async play(urlSound: string, station: Station) {
     this.state.update(() => false)
     this.stationLoading.update(() => false)
-    this.audio.src=urlSound;
+    this.audio.src = urlSound;
     this.audio.load()
-    this.isPlaying.update(()=>false)  
-    while(this.isPlaying()==false){
-     
-      await this.audio.play().then(() => {this.stationLoading.update(() => true);})
-     
-    }
-
-    this.actualStation= computed(() => station)
+    await this.audio.play().then(() => { this.stationLoading.update(() => true); })
+    this.actualStation = computed(() => station)
     this.state.update(() => true)
     this.saveActualSong()
   }
 
-  pause(){
+  pause() {
     this.audio.pause()
     this.state.update(() => false)
     this.saveActualSong()
   }
 
-  async  resume(){
+  async resume() {
     await this.audio.play()
     this.state.update(() => true)
     this.saveActualSong()
   }
 
-  saveActualSong(){
-    if(this.actualStation()==undefined) return;
-   
-    localStorage.setItem("actualStation",JSON.stringify({
-     data: this.actualStation(),
-     state:this.state() }))
+  saveActualSong() {
+    if (this.actualStation() == undefined) return;
+
+    localStorage.setItem("actualStation", JSON.stringify({
+      data: this.actualStation(),
+      state: this.state()
+    }))
   }
 
-  loadStationInLocalStorage(){
-    var station : ModelSaving = JSON.parse(localStorage.getItem("actualStation")!)
-    if(station==undefined) return
-    this.actualStation=computed(()=>station.data) 
-    this.play(this.actualStation()!.url,this.actualStation()!)
-    if(station.state==false) this.pause()
-    this.state.update(()=>station.state)
+  loadStationInLocalStorage() {
+    var station: ModelSaving = JSON.parse(localStorage.getItem("actualStation")!)
+    if (station == undefined) return
+    this.actualStation = computed(() => station.data)
+    this.play(this.actualStation()!.url, this.actualStation()!)
+    if (station.state == false) this.pause()
+    this.state.update(() => station.state)
     this.setColor()
   }
 
-  private addListertToAudio(){
-    this.audio.addEventListener("playing",()=>{
-
-      this.isPlaying.update(()=>true)
-  })
-    this.audio.addEventListener("pause",()=>{
-      this.state.update(()=>false)
-      this.isPlaying.update(()=>false)
+  private addListertToAudio() {
+    this.audio.addEventListener("playing", () => {
+      this.state.update(() => true)
       this.setColor()
-    }) 
+
+    })
+    this.audio.addEventListener("pause", () => {
+      this.state.update(() => false)
+      this.setColor()
+    })
   }
 
-  private setColor(){
-    if(this.state()==true){
-      document.getElementById("rep")?.classList.replace("desactive","active")
-    }else{
-      document.getElementById("rep")?.classList.replace("active","desactive")
+  private setColor() {
+    if (this.state() == true) {
+      document.getElementById("rep")?.classList.replace("desactive", "active")
+    } else {
+      document.getElementById("rep")?.classList.replace("active", "desactive")
     }
 
   }
