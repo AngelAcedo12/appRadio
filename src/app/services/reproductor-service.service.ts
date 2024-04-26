@@ -74,5 +74,9 @@ export class ReproductorServiceService {
 
       this.isPlaying.update(()=>true)
   })
+  this.audio.addEventListener("pause",()=>{
+    this.isPlaying.update(()=>false)
+
+  })
   }
 }
