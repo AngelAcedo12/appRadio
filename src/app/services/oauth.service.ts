@@ -29,7 +29,7 @@ export class OauthService {
 
   login(email: string, password: string) {
   
-   return this.http.get<any>(`${enviroment.base_url_local}api/user?email=${email}&password=${password}`).pipe(
+   return this.http.get<any>(`${enviroment.base_url_backend_pro}api/user?email=${email}&password=${password}`).pipe(
     catchError(err => {
       console.log(err)
       return err
@@ -43,7 +43,7 @@ export class OauthService {
       "token": TOKEN
     }
 
-   return this.http.post<any>(`${enviroment.base_url_local}api/user/logWhitToken`, body).pipe(
+   return this.http.post<any>(`${enviroment.base_url_backend_pro}api/user/logWhitToken`, body).pipe(
     catchError(err => {
       console.log(err)
       return err
