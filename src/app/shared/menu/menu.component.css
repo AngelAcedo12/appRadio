@@ -26,18 +26,35 @@
     gap:1em;
     padding-left: 1em;
     padding-right: 1em;
+   
     & a {
         text-decoration: none;
         color: azure;
-        padding: 1em; 
+        padding: 0.5em; 
         border-radius: 10px;
+        font-size: medium;
     }
     & a:hover{
         color: antiquewhite;
         background: #52BE80;
-       
         transition: all 0.2s ease-in-out;
+        font-size: medium;
         
     }
+    & button{
+        text-decoration: none;
+        color: azure;
+        padding: 0.5em; 
+        border-radius: 10px;
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+        font-size: medium;
+    } 
+    & button:hover{
+        color: antiquewhite;
+        background: #52BE80;
+        transition: all 0.2s ease-in-out;
+    }   
     
 }

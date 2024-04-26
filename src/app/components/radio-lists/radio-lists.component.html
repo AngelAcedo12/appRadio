@@ -1,8 +1,8 @@
-<div class="filters">
+<section class="filters">
     <app-find-bar (newShearchStation)="setRadioName($event)"></app-find-bar>
     <app-select-countrie (newCountry)="setCountryCode($event)"></app-select-countrie>
     <app-select-tag-list (refrestListFilter)="setTagList($event)"></app-select-tag-list>
-</div>
+</section>
     
 <ul class="list">
     @for (station of radios; track $index) {

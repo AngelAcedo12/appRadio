@@ -14,13 +14,22 @@
 .list::-webkit-scrollbar{
     opacity: 0;
 }
+
+
 .filters{
     display: flex;
     flex-direction: row;
     align-items:  center;
-    flex-wrap: wrap;
+    overflow-x: auto;
     padding-left: 1em;
+    
+
 }
+.filters::-webkit-scrollbar {
+    display: none;
+}
+
+
 
 @media (max-width: 768px) {
     .list{
