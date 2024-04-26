@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { MenuItems } from '../../models/MenuItems';
 import { OauthService } from '../../services/oauth.service';
 import { CookieService } from 'ngx-cookie-service';
@@ -27,6 +27,10 @@ export class MenuComponent {
     
   ]
 
-
+  closedSesion(){
+    this.cookiesService.delete("oauth-token-app-radio")
+    this.userService.userSave= computed(() => undefined)
+    this.userService.logInState.update(() => false)
+  }
 
 }

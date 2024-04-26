@@ -15,10 +15,10 @@ export const oauthGuard: CanActivateFn = (route, state) => {
   }else{
     oauthService.logInWhitToken(token).subscribe(res => {
 
-      oauthService.userSave = computed(() => res.result.user)
-
-      oauthService.logInState.update(() => true)
       console.log(res)
+      oauthService.userSave = computed(() => res.userLogIn)
+
+      oauthService.logInState.update(() => res.status)
       return res;
       
     })

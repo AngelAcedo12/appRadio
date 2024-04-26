@@ -6,7 +6,8 @@
         }
 
         @if(userService.logInState()===true){
-            <button >Cerrar sesion</button>
+            <h2>{{userService.userSave()?.name}}</h2>
+            <button (click)="closedSesion()" >Cerrar sesion</button>
         }@else {
             
             <a href="oauth/logIn">Iniciar sesion</a>
