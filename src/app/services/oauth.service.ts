@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { computed, Injectable, Signal, signal } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
-import enviroment from '../environments/enviroments';
+import enviroment from '../../environments/environment';
 import { DtoUserSave } from '../models/DTOs/DtoUserSave';
 import { catchError } from 'rxjs';
 

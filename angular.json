@@ -22,8 +22,8 @@
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:application",
+
           "options": {
-            
             "outputPath": "dist/app-radio",
             "index": "src/index.html",
             "browser": "src/main.ts",
@@ -47,6 +47,13 @@
           },
           "configurations": {
             "production": {
+              "optimization": true,
+             "fileReplacements": [
+              {
+                "replace": "src/environments/environment.ts",
+                "with": "src/environments/environment.prod.ts"
+              }
+             ],
               "budgets": [
                 {
                   "type": "initial",
