@@ -22,7 +22,7 @@ export class OauthService {
     this.http.post<any>(`${enviroment.base_url_local}api/user`, userSave, { observe: "response" }).subscribe((res) => {
 
       let token = res.body.token
-
+      console.log(res)
       if (token != null) {
 
         this.cookieService.set("oauth-token-app-radio", token, { path: "/", expires: 1 })
