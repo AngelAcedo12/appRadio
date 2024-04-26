@@ -66,7 +66,7 @@ export class ReproductorServiceService {
     this.play(this.actualStation()!.url,this.actualStation()!)
     if(station.state==false) this.pause()
     this.state.update(()=>station.state)
-    
+    this.setColor()
   }
 
   private addListertToAudio(){
@@ -77,6 +77,7 @@ export class ReproductorServiceService {
     this.audio.addEventListener("pause",()=>{
       this.state.update(()=>false)
       this.isPlaying.update(()=>false)
+      this.setColor()
     }) 
   }
 
