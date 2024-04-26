@@ -74,6 +74,10 @@ export class ReproductorServiceService {
       this.state.update(() => false)
       this.setColor()
     })
+    this.audio.addEventListener("play", () => {
+      this.state.update(() => true)
+      this.setColor()
+    })
   }
 
   private setColor() {
