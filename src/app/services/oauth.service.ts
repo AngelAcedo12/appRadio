@@ -19,12 +19,12 @@ export class OauthService {
 
 
   register(userSave: DtoUserSave) {
-   return this.http.post<any>(`${enviroment.base_url_local}api/user`, userSave)
+   return this.http.post<any>(`${enviroment.base_url_backend_pro}api/user`, userSave)
   }
 
   login(email: string, password: string) {
   
-   return this.http.get<any>(`${enviroment.base_url_local}api/user?email=${email}&password=${password}`
+   return this.http.get<any>(`${enviroment.base_url_backend_pro}api/user?email=${email}&password=${password}`
     )
     
   }
@@ -34,7 +34,7 @@ export class OauthService {
       "token": TOKEN
     }
 
-   return this.http.post<any>(`${enviroment.base_url_local}api/user/logWhitToken`, body)
+   return this.http.post<any>(`${enviroment.base_url_backend_pro}api/user/logWhitToken`, body)
     
 
   }

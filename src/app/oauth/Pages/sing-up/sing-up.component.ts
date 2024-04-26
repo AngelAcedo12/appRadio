@@ -77,6 +77,7 @@ export class SingUpComponent {
           this.oauthService.logInState.update(() => true)
           this.oauthService.userSave = signal(res.result.user)
         }
+        console.log(res.result)
         if (res.result.status == true) {
   
           window.location.href = "radio"
