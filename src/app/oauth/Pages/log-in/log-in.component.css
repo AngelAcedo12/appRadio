@@ -13,6 +13,12 @@ form{
     gap: 1em;
     padding: 1em;
     padding-inline: 2em;
+    padding:5em;
+    padding-inline: 2em;
+    padding-right: 10em;
+    padding-left: 10em;
+    height: 50vh;
+    justify-content: center;
 }
 .errors{
     color: var(--color-secundary);
@@ -20,7 +26,7 @@ form{
 }
 input{
     width: 100%;
-    padding: 0.6em;
+    padding: 1em;
     border: none;    
     border-radius: 50px;
 }
@@ -48,7 +54,7 @@ input:focus{
     border: none;
     border-radius: 20px;
     background-color: #52BE80;
-    padding: 0.6em;
+    padding: 1em;
     cursor: pointer;
     transition: all 0.2s ease-in-out
     
@@ -79,4 +85,11 @@ a{
 }
 a:hover{
     color: var(--color-primary);
+}
+
+@media (max-width: 768px) {
+    form{
+        padding: 2em;
+    }
+    
 }

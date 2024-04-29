@@ -16,10 +16,10 @@
         <input id="input_password"  required formControlName="password" type="password">
         @if(statePassword()===false){
 
-            <img (click)="setStatePassword()" src="../../../../assets/icons8-ojo-cerrado-50.webp">
+            <img (click)="setStatePassword()" class="img_eye " src="../../../../assets/icons8-ojo-cerrado-50.webp">
 
         }@else if(statePassword()===true){
-            <img (click)="setStatePassword()" src = "../../../../assets/icons8-visible-30.webp">
+            <img (click)="setStatePassword()" class="img_eye"  src = "../../../../assets/icons8-visible-30.webp">
         }
 
     </div>

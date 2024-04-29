@@ -2,13 +2,17 @@ import { computed, Injectable, signal, Signal } from '@angular/core';
 import { stat } from 'fs';
 import { Station } from 'radio-browser-api';
 import { ModelSaving } from '../models/ModelSavingStorage';
+import { DtoHistorySaving } from '../models/DTOs/DtoHistorySaving';
+import { HttpClient } from '@angular/common/http';
+import enviroment from '../../environments/environment';
+import { CookieService } from 'ngx-cookie-service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ReproductorServiceService {
 
-  constructor() {
+  constructor(private http: HttpClient, private cookieService: CookieService) {
     this.loadStationInLocalStorage()
 
     this.addListertToAudio()
@@ -28,6 +32,7 @@ export class ReproductorServiceService {
     this.audio.src = urlSound;
     this.audio.load()
     await this.audio.play().then(() => { this.stationLoading.update(() => true); })
+    this.addToHistory({ data: station})
     this.actualStation = computed(() => station)
     this.state.update(() => true)
     this.saveActualSong()
@@ -78,6 +83,7 @@ export class ReproductorServiceService {
       this.state.update(() => true)
       this.setColor()
     })
+    
   }
 
   private setColor() {
@@ -89,4 +95,24 @@ export class ReproductorServiceService {
 
   }
 
+
+
+  private addToHistory(history: DtoHistorySaving) {
+
+      const body= {
+        history: history
+
+      }
+      const token = this.cookieService.get("oauth-token-app-radio")
+      const headers = {
+        'Authorization': `${token}`
+      }
+    
+     this.http.post<any>(`${enviroment.base_url_local}api/user/history`, {
+        headers: headers,
+        body: body
+     }).subscribe((res) => {
+      
+    })
+  }
 }
