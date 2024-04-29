@@ -9,13 +9,15 @@ import { ComponentsModule } from '../components/components.module';
 import { SharedModule } from '../shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FindRadioComponent } from './Pages/find-radio/find-radio.component';
+import { HistoryComponent } from './Pages/history/history.component';
 
 
 @NgModule({
   declarations: [
     AllRadiosComponent,
     LayautRadioComponent,
-    FindRadioComponent
+    FindRadioComponent,
+    HistoryComponent
   ],
   imports: [
     CommonModule,
