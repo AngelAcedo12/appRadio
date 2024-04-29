@@ -12,7 +12,7 @@ import { HistoryService } from '../../services/history.service';
 export class RadioListsComponent implements OnInit{
 
 
-  private historyService = inject(HistoryService)
+  public historyService = inject(HistoryService)
 
   @Input() type : string | undefined
 
@@ -38,9 +38,7 @@ export class RadioListsComponent implements OnInit{
 
 
   async loadHistory(){
-
-
-
+    this.historyService.getHistory()
   }
 
   selectLoad(){

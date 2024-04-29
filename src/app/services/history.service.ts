@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable, Signal } from '@angular/core';
+import { computed, Injectable, signal, Signal } from '@angular/core';
 import enviroment from '../../environments/environment';
 import { CookieService } from 'ngx-cookie-service';
+import { DtoHistory } from '../models/DTOs/DtoHistory';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ export class HistoryService {
 
   }
 
-  history : Signal<>
+  history : Signal<DtoHistory | undefined> = signal(undefined)
 
 
   getHistory() {
@@ -22,9 +23,12 @@ export class HistoryService {
        'Authorization': `${token}`
       
     }
-    return this.http.get<any>(`${enviroment}api/user/history`,{
+    return this.http.get<DtoHistory>(`${enviroment}api/user/history`,{
       headers: headers
-    })
+    }).subscribe((data) => {
+      this.history = computed(() => data)
+    }
+    )
   }
 
 }

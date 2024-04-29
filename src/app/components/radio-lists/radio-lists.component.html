@@ -9,12 +9,17 @@
 }
 <ul class="list">
 
-    @for (station of radios; track $index) {
-        <app-station-radio [station]="station"></app-station-radio>
-    }
     @if (type=="radio") {
-
+        
+        @for (station of radios; track $index) {
+            <app-station-radio [station]="station"></app-station-radio>
+        }
         <div infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50"   (scrolled)="loadRadios()"></div>
+    }
+    @if(type == "history"){
+        @for (item of historyService.history()?.data; track $index) {
+            <app-station-radio [station]="item"></app-station-radio>
+        }
     }
 </ul>
 
