@@ -16,13 +16,13 @@ const routes: Routes = [{
 
     },
     {
-      path:':id',
-      component:FindRadioComponent
-    },
-    {
       path:'history',
       component:HistoryComponent
-    }
+    },
+    {
+      path:'station/:id',
+      component:FindRadioComponent
+    },
   ]
 }];
 

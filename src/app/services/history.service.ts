@@ -23,10 +23,13 @@ export class HistoryService {
        'Authorization': `${token}`
       
     }
-    return this.http.get<DtoHistory>(`${enviroment}api/user/history`,{
+    console.log("Cargando historial")
+    return this.http.post<DtoHistory>(`${enviroment.base_url_local}api/user/history/findHistory`,{
       headers: headers
     }).subscribe((data) => {
+     
       this.history = computed(() => data)
+      
     }
     )
   }

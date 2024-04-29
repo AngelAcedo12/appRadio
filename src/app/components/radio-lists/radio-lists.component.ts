@@ -20,6 +20,7 @@ export class RadioListsComponent implements OnInit{
   ngOnInit(): void {
     this.api.setBaseUrl("https://at1.api.radio-browser.info")
     this.page = 1
+    console.log(this.type)
     this.selectLoad()
   }
 
@@ -39,6 +40,7 @@ export class RadioListsComponent implements OnInit{
 
   async loadHistory(){
     this.historyService.getHistory()
+    console.log(this.historyService.history())
   }
 
   selectLoad(){

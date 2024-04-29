@@ -7,4 +7,12 @@ import { Component } from '@angular/core';
 })
 export class HistoryComponent {
 
+  constructor() { }
+
+  ngOnInit(): void {
+    console.log("hsitory component")
+  }
+
+
+
 }

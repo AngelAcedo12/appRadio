@@ -18,6 +18,7 @@
     }
     @if(type == "history"){
         @for (item of historyService.history()?.data; track $index) {
+           
             <app-station-radio [station]="item"></app-station-radio>
         }
     }
