@@ -1,0 +1,8 @@
+export interface DtoHistory{
+    data:[
+        {
+            
+
+        }
+    ]
+}

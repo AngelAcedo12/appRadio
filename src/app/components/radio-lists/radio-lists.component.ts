@@ -1,7 +1,8 @@
-import { Component, computed, Input, OnInit, signal, Signal } from '@angular/core';
+import { Component, computed, inject, Input, OnInit, signal, Signal } from '@angular/core';
 import { CountryResult, RadioBrowserApi, Station } from 'radio-browser-api';
 import { Country } from '../../models/Country';
 import { url } from 'inspector';
+import { HistoryService } from '../../services/history.service';
 
 @Component({
   selector: 'app-radio-lists',
@@ -10,10 +11,16 @@ import { url } from 'inspector';
 })
 export class RadioListsComponent implements OnInit{
 
+
+  private historyService = inject(HistoryService)
+
+  @Input() type : string | undefined
+
+
   ngOnInit(): void {
     this.api.setBaseUrl("https://at1.api.radio-browser.info")
     this.page = 1
-    this.loadRadios()
+    this.selectLoad()
   }
 
   api : RadioBrowserApi = new RadioBrowserApi("My radio")
@@ -26,6 +33,26 @@ export class RadioListsComponent implements OnInit{
   countryCode: Signal<string> = signal("ES")
   tagList : Signal<CountryResult[]> = signal([])
   nameStation : Signal<string> = signal('')
+
+
+
+
+  async loadHistory(){
+
+
+
+  }
+
+  selectLoad(){
+
+    if(this.type=="radio"){
+
+      this.loadRadios()
+    }
+    if(this.type=="history"){
+      this.loadHistory()
+    }
+  }
 
 
   async loadRadios(){

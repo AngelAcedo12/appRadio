@@ -23,8 +23,7 @@ export class MenuComponent {
   menuLaterState = false
   menuItems: MenuItems[] = [
     {title:"Radios", url:'radio'},
-    {title:"Historial",url:''},
-    
+    {title:"Historial",url:'radio/history'},
   ]
 
   closedSesion(){
