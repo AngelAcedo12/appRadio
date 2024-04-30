@@ -30,6 +30,7 @@ export class LogInComponent {
     }
  }
  async logIn(){
+    event?.preventDefault()
     const email = this.formGroup.value.email
     const password = this.formGroup.value.password
     console.log(email,password)
