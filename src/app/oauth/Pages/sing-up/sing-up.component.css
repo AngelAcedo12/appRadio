@@ -37,7 +37,7 @@ img{
     padding-right: 1em;
     border: none;    
     border-radius: 50px;
-    background-color: field;
+    background-color: #2A1F2D;
 
 }
 
@@ -48,21 +48,31 @@ input:focus{
 .singUp{
     border: none;
     border-radius: 20px;
-    background-color: #52BE80;
+    background-color: #52be80;
     padding: 1em;
     cursor: pointer;
     transition: all 0.2s ease-in-out;
     text-align: center;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
 }
 .singUp:hover{
     background-color: #59C9A5;
-    transition: all 0.2s ease-in-out
-
+    transition: all 0.2s ease-in-out;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
 }
 .singUp:disabled{
-    
     background-color: #2A1F2D;
     transition: all 0.2s ease-in-out;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
 }
 
 img{
@@ -72,6 +82,14 @@ img{
 img:hover{
     transform: scale(1.05);
     transition: all 0.3s ease-in-out;
+    -webkit-transform: scale(1.05);
+    -moz-transform: scale(1.05);
+    -ms-transform: scale(1.05);
+    -o-transform: scale(1.05);
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
 }
 a{
     text-align: center;

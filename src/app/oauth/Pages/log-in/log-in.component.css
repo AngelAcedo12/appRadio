@@ -39,11 +39,13 @@ img{
     flex-direction: row;
     align-items: center;
     padding-right: 1em;
-
-    border: none;    
+    border: none;
     border-radius: 50px;
-    background-color: field;
-
+    background-color: #2A1F2D;
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    -ms-border-radius: 50px;
+    -o-border-radius: 50px;
 }
 
 input:focus{
@@ -56,18 +58,27 @@ input:focus{
     background-color: #52BE80;
     padding: 1em;
     cursor: pointer;
-    transition: all 0.2s ease-in-out
-    
+    transition: all 0.2s ease-in-out;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
 }
 .singUp:hover{
     background-color: #59C9A5;
-    transition: all 0.2s ease-in-out
-
+    transition: all 0.2s ease-in-out;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
 }
 .singUp:disabled{
-    
     background-color: #2A1F2D;
     transition: all 0.2s ease-in-out;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
 }
 
 img{
@@ -77,6 +88,14 @@ img{
 img:hover{
     transform: scale(1.05);
     transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    -webkit-transform: scale(1.05);
+    -moz-transform: scale(1.05);
+    -ms-transform: scale(1.05);
+    -o-transform: scale(1.05);
 }
 a{
     text-align: center;
