@@ -39,8 +39,7 @@ export class LogInComponent {
        this.oauthService.login(email,password).subscribe(res=>{ 
           
           let token = res.token
-          console.log(token, "token")
-          console.log(res, "res")
+        
           if (res.result.status == true) {
            
             this.cookieService.set("oauth-token-app-radio", token, { path: "/", expires: 30 })

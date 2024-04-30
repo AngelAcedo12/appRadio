@@ -69,7 +69,6 @@ export class SingUpComponent {
       }
       this.oauthService.register(userSave).subscribe((res) => {
       
-        console.log(res)
         let token = res.token
         if (token != null) {
   
