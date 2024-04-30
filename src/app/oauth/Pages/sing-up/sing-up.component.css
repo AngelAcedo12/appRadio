@@ -25,6 +25,7 @@ input{
     padding: 1em;
     border: none;    
     border-radius: 50px;
+    background-color: black;
 }
 img{
     width: 25px;
@@ -37,7 +38,7 @@ img{
     padding-right: 1em;
     border: none;    
     border-radius: 50px;
-    background-color: field;
+    background-color: black;
 
 }
 
