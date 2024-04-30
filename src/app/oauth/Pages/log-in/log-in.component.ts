@@ -33,24 +33,24 @@ export class LogInComponent {
     event?.preventDefault()
     const email = this.formGroup.value.email
     const password = this.formGroup.value.password
-    console.log(email,password)
+
     if((email!=undefined || email!=null) && (password!=undefined || password!=null) ){
 
        this.oauthService.login(email,password).subscribe(res=>{ 
-        
+          
           let token = res.token
-        
-          if (token != null) {
-
-            this.cookieService.set("oauth-token-app-radio", token, { path: "/", expires: 1 })
-
-          }
+          console.log(token, "token")
+          console.log(res, "res")
           if (res.result.status == true) {
+           
+            this.cookieService.set("oauth-token-app-radio", token, { path: "/", expires: 30 })
             this.oauthService.userSave = computed(() => res.result.user) 
             this.oauthService.logInState.update(() => true) 
-            window.location.href = "radio"
+
+           // window.location.href = "radio"
             
           } else {
+
             this.oauthService.userSave = computed(() => undefined) 
             this.oauthService.logInState.update(() => false) 
             this.formGroup.reset()

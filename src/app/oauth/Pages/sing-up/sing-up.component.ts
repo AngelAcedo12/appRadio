@@ -73,7 +73,7 @@ export class SingUpComponent {
         let token = res.token
         if (token != null) {
   
-          this.cookieService.set("oauth-token-app-radio", token, { path: "/", expires: 1 })
+          this.cookieService.set("oauth-token-app-radio", token, { path: "/", expires: 30 })
           this.oauthService.logInState.update(() => true)
           this.oauthService.userSave = signal(res.result.user)
         }
