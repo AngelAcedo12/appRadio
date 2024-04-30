@@ -1,0 +1,15 @@
+<div class="box">
+   
+    <ul class="list"> 
+        @for (item of imagenes; track $index) {
+            @if ($index === 0) {
+                <img  [id]="$index" class="imgSelected" (click)="onSelect(item.imgSlected)" [src]="item.imgUrl">
+            }@else {
+
+                <img [id]="$index" class="imgNotSelected" (click)="onSelect(item.imgSlected)" [src]="item.imgUrl">
+            }
+        }
+    </ul>
+
+
+</div>

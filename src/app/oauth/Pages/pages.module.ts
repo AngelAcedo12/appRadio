@@ -8,6 +8,7 @@ import { LayautComponent } from './layaut/layaut.component';
 import { SingUpComponent } from './sing-up/sing-up.component';
 import { LogInComponent } from './log-in/log-in.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ComponentsModule } from '../../components/components.module';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     LogInComponent
   ],
   imports: [
+    ComponentsModule,
     CommonModule,
     PagesRoutingModule,
     SharedModule,

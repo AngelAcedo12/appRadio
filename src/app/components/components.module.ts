@@ -15,6 +15,7 @@ import { LblCountryComponent } from './lbl-country/lbl-country.component';
 import { LblLanguageComponent } from './lbl-language/lbl-language.component';
 import { LblTagsComponent } from './lbl-tags/lbl-tags.component';
 import { ErrorMessageComponent } from './error-message/error-message.component';
+import { ImgSelectedComponent } from './imgSelected/imgSelected.component';
 
 
 
@@ -31,7 +32,8 @@ import { ErrorMessageComponent } from './error-message/error-message.component';
     LblCountryComponent,
     LblLanguageComponent,
     LblTagsComponent,
-    ErrorMessageComponent
+    ErrorMessageComponent,
+    ImgSelectedComponent
   ],exports:[
     RadioListsComponent,
     StationRadioComponent,
@@ -40,7 +42,8 @@ import { ErrorMessageComponent } from './error-message/error-message.component';
     LblCountryComponent,
     LblTagsComponent,
     LblLanguageComponent,
-    ErrorMessageComponent
+    ErrorMessageComponent,
+    ImgSelectedComponent
   ],
   imports: [
     CommonModule,

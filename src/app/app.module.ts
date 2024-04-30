@@ -7,6 +7,7 @@ import { StationRadioComponent } from './components/station-radio/station-radio.
 import { HttpClientModule, provideHttpClient, withFetch } from '@angular/common/http';
 import { ComponentsModule } from './components/components.module';
 import { CookieService } from 'ngx-cookie-service';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { CookieService } from 'ngx-cookie-service';
   providers: [
     provideHttpClient(withFetch()),
     provideClientHydration(),
-    CookieService
+    CookieService,
+    provideAnimationsAsync()
   ],
   bootstrap: [AppComponent]
 })

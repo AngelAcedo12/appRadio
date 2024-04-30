@@ -15,6 +15,7 @@ export class SingUpComponent {
   private cookieService = inject(CookieService)
 
 
+
   isInvalid(controlName: string) {
     return this.singUpForm.get(controlName)?.invalid && this.singUpForm.get(controlName)?.touched
 
@@ -34,8 +35,15 @@ export class SingUpComponent {
     password: new FormControl('', [
       Validators.required,
       Validators.pattern(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,15}$/g)
-    ])
+    ]),
+
   })
+
+  imgSelected = "0";
+
+  setImgSelected(number: string) {
+    this.imgSelected = number
+  }
 
 
   setStatePassword() {
@@ -65,7 +73,8 @@ export class SingUpComponent {
       const userSave: DtoUserSave = {
         name: this.singUpForm.value.name ? this.singUpForm.value.name : "",
         email: this.singUpForm.value.email ? this.singUpForm.value.email : "",
-        password: this.singUpForm.value.password ? this.singUpForm.value.password : ""
+        password: this.singUpForm.value.password ? this.singUpForm.value.password : "",
+        imgProfile: this.imgSelected
       }
       this.oauthService.register(userSave).subscribe((res) => {
       

@@ -51,6 +51,9 @@
         <samp class="errors">{{getErrorMessage("password")}}</samp>
 
     }
+    <app-img-selected (setImgSelected)="setImgSelected($event)"></app-img-selected>
+
+
     @if (singUpForm.valid) {
 
         <button  class="singUp" >Registrarse</button>
