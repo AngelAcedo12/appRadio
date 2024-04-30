@@ -114,8 +114,11 @@ h3{
         padding: 0.5em;
         text-wrap: nowrap;
         margin: 0;
-        
-    }
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        -ms-border-radius: 10px;
+        -o-border-radius: 10px;
+}
     & .country{
         background-color: var(--color-country);
     }

@@ -25,6 +25,11 @@ input:focus{
     padding-left: 1em;
     padding-right: 1em;
     transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    
     & h3{
         margin: 0;
     }
@@ -41,6 +46,10 @@ input:focus{
     gap:0.2em;
     flex-wrap: wrap;
     transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
 }
 
 .tagSelected{
@@ -52,14 +61,21 @@ input:focus{
     overflow: hidden;
     max-width: 150px;
     text-wrap: nowrap;
-    animation: fade 0.3s ease-in-out;   
-
-
+    animation: fade 0.3s ease-in-out;
+    -webkit-animation: fade 0.3s ease-in-out;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
 }
 .tagSelected:hover{
     background-color:var(--color-secundary);
     cursor: pointer;
-    transition: all 0.3s ease-in-out; 
+    transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
 }
 .tag_not_selected{
     padding: 0.4em;
@@ -71,13 +87,21 @@ input:focus{
     overflow: hidden;
     max-width: 150px;
     text-wrap: nowrap;
-    animation: fade 0.3s ease-in-out;   
-    
+    animation: fade 0.3s ease-in-out;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    -webkit-animation: fade 0.3s ease-in-out;
 }
 .tag_not_selected:hover{
     background-color:var(--color-secundary);
     cursor: pointer;
-    transition: all 0.3s ease-in-out; 
+    transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
 }
 
 @keyframes fade {

@@ -14,6 +14,10 @@
     background:field ;
     padding: 0.5em;
     border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
     & img{
         width: 20px;
         height: 20px;
@@ -22,7 +26,11 @@
     & img:hover{
         transform: scale(1.05);
         transition: all 0.2s ease-in-out;
-    }
+        -webkit-transition: all 0.2s ease-in-out;
+        -moz-transition: all 0.2s ease-in-out;
+        -ms-transition: all 0.2s ease-in-out;
+        -o-transition: all 0.2s ease-in-out;
+}
     & input{
 
         border: none;
