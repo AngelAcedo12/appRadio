@@ -46,7 +46,7 @@ export class LogInComponent {
             this.oauthService.userSave = computed(() => res.result.user) 
             this.oauthService.logInState.update(() => true) 
 
-           // window.location.href = "radio"
+           window.location.href = "radio"
             
           } else {
 
