@@ -52,7 +52,13 @@ img{
 input:focus{
     outline: none;
 }
-
+._box{
+    display: flex;
+    align-items: center;
+    width: auto;
+    padding: 1em;
+    justify-content: center;
+}
 .singUp{
     border: none;
     border-radius: 20px;

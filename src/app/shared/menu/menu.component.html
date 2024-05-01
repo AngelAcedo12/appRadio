@@ -1,6 +1,6 @@
 <header class="menu">
 
-        <img  (click)="openMenu()" class="btn-open-menu" width="25" height="25" [src]="'../../../assets/profile/'+userService.userSave()?.imgProfile+'.webp'">
+        <img  (click)="openMenu()" class="btn-open-menu" width="25" height="25" [src]="'../../../assets/profile/'+getImageProfile()">
         <img alt="RadioGlobal"   class="logo" src="../../../assets/LogoRGH_sinFondo.webp" >
     <nav class="links">
         @for (item of  menuItems; track $index) {
