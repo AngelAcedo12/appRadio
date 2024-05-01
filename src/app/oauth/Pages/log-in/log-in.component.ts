@@ -42,7 +42,7 @@ export class LogInComponent {
         
           if (res.result.status == true) {
            
-            this.cookieService.set("oauth-token-app-radio", token, { path: "/", expires: 30 })
+            this.cookieService.set("oauth-token-app-radio", token, { path: "/", expires: 300 })
             this.oauthService.userSave = computed(() => res.result.user) 
             this.oauthService.logInState.update(() => true) 
 

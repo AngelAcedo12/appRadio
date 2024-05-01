@@ -8,6 +8,7 @@ import {
   MatSnackBar,
 
 } from '@angular/material/snack-bar';
+import { DtoProfile } from '../models/DTOs/DtoProfile';
 @Injectable({
   providedIn: 'root'
 })
@@ -17,7 +18,7 @@ export class OauthService {
 
   state = signal(false)
 
-  userSave: Signal<DtoUserSave | undefined> = signal(undefined)
+  userSave: Signal<DtoProfile | undefined> = signal(undefined)
   logInState = signal(false)
  
 

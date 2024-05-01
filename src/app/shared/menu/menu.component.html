@@ -1,22 +1,29 @@
 <header class="menu">
-    <button (click)="openMenu()" class="btn-open-menu">
-        <img width="25" height="25" src="../../../assets/icons8-menú-50.webp">
-    </button>
-    <h1 class="title">RaidoGlobal-Hub</h1>
+
+        <img  (click)="openMenu()" class="btn-open-menu" width="25" height="25" [src]="'../../../assets/profile/'+userService.userSave()?.imgProfile+'.webp'">
+        <img alt="RadioGlobal"   class="logo" src="../../../assets/LogoRGH_sinFondo.webp" >
     <nav class="links">
         @for (item of  menuItems; track $index) {
-            <a [href]="item.url">{{item.title}}</a>
+            <a class="link_btn" [href]="item.url">{{item.title}}</a>
         }
 
         @if(userService.logInState()===true){
-           
-            <button (click)="closedSesion()">Cerrar sesion</button>
+            @if (userService.userSave()?.imgProfile!=null) {
+                <div class="box-contex-menu-img-profile">
+                    <img (click)="openContex()" class="img_profile" [src]="'../../../assets/profile/'+userService.userSave()?.imgProfile+'.webp'">
+                    
+                    <menu id="contex"  class="contexMenu closeContex">
+                        <a class="item_contex">Perfil</a>
+                        <button (click)="closedSesion()" class="item_contex">Cerrar Sesion</button>
+                    </menu>
+                </div>
+            }
+             
         }@else {
             
-            <a href="oauth/logIn">Iniciar sesion</a>
-            <a href="oauth/singUp">Registrarse</a>
-            
-
+            <a class="link_btn " href="oauth/logIn">Iniciar sesion</a>
+            <a class="link_btn "href="oauth/singUp">Registrarse</a>
+        
         }
     </nav>
 </header>
@@ -25,16 +32,17 @@
     <button (click)="openMenu()" class="btn-close-menu">Cerrar</button> 
     <ul class="links-later">
         @for (item of  menuItems; track $index) {
-            <a [href]="item.url">{{item.title}}</a>
+            <a class="item_later" [href]="item.url">{{item.title}}</a>
         }
 
         @if(userService.logInState()===true){
            
-            <button (click)="closedSesion()" >Cerrar sesion</button>
+            <a class="item_later" >Perfil</a>
+            <button class="item_later" (click)="closedSesion()" >Cerrar sesion</button>
         }@else {
             
-            <a href="oauth/logIn">Iniciar sesion</a>
-            <a href="oauth/singUp">Registrarse</a>
+            <a  class="item_later" href="oauth/logIn">Iniciar sesion</a>
+            <a class="item_later" href="oauth/singUp">Registrarse</a>
             
 
         }

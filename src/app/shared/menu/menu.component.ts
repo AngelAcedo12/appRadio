@@ -11,6 +11,7 @@ import { CookieService } from 'ngx-cookie-service';
 export class MenuComponent {
 
 
+
   public userService = inject(OauthService) 
   private cookiesService = inject(CookieService)
   ngOnInit(): void {
@@ -20,10 +21,12 @@ export class MenuComponent {
 
 
   }
+  contexState = false
   menuLaterState = false
   menuItems: MenuItems[] = [
     {title:"Radios", url:'radio'},
     {title:"Historial",url:'radio/history'},
+    
   ]
 
   closedSesion(){
@@ -53,4 +56,15 @@ export class MenuComponent {
     }
    
   }
+  openContex() {
+      if(this.contexState==false){
+        document.getElementById("contex")?.classList.replace("closeContex", "openContex")
+        this.contexState = true
+      }else{
+        document.getElementById("contex")?.classList.replace("openContex", "closeContex")
+        this.contexState = false
+      }
+  
+  }
+  
 }

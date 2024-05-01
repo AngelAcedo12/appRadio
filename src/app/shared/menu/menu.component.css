@@ -8,7 +8,16 @@
     --color-language:#DAF7A6;
     --hover:#939393;
 }
+.logo{
+    object-fit: cover;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
 
+}
 .menu{
     display: flex;
     flex-direction: row;
@@ -16,6 +25,17 @@
     justify-content: space-between;
     flex-wrap: wrap;
     padding: 1em;
+}
+.img_profile{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    transition: all 0.2s ease-in-out;
+}
+.img_profile:hover{
+    cursor: pointer;
+    outline: #52BE80 solid 2px;
+
 }
 .title{
     color: #59C9A5;
@@ -31,49 +51,88 @@
         font-size: medium;
         color: azure;
     }
-    & a {
-        text-decoration: none;
-        color: azure;
-        padding: 0.5em; 
-        border-radius: 10px;
-        font-size: medium;
-        text-align: center;
-    }
-    & a:hover{
-        color: antiquewhite;
-        background: #52BE80;
-        transition: all 0.2s ease-in-out;
-        font-size: medium;
-        
-    }
-    & button{
-        text-decoration: none;
-        color: azure;
-        padding: 0.5em; 
-        border-radius: 10px;
-        border: none;
-        background-color: transparent;
-        cursor: pointer;
-        font-size: medium;
-    } 
-    & button:hover{
-        color: antiquewhite;
-        background: #52BE80;
-        transition: all 0.2s ease-in-out;
-    }   
+    
+    
+   
+      
+    
+}
+.link_btn {
+    text-decoration: none;
+    color: azure;
+    padding: 0.5em; 
+    border-radius: 10px;
+    font-size: medium;
+    text-align: center;
+}
+.link_btn:hover{
+    color: antiquewhite;
+    background: #52BE80;
+    transition: all 0.2s ease-in-out;
+    font-size: medium;
     
 }
 .btn-close-menu{
     display: none;
-
+    cursor: pointer;
 }
 .menu-later{
     display: none;
 }
 .btn-open-menu{
     display: none;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    padding: 0;
+}
+.box-contex-menu-img-profile{
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+.contexMenu{
+    position: absolute;
+    width: 200px;
+    background: #000;
+    border-radius: 10px;
+    padding: 1em;
+    top: 50px;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 0.5em;
+    z-index: 100;   
+}
+.openContex{
+    animation: fadeIn 0.1s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+.closeContex{
+    animation: fadeOut 0.1s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+
+.item_contex{
+    text-align: center;
+    width: 100%;
+    padding: 0.5em;
+    cursor: pointer;
+    background-color: transparent;   
+    border: none;
+    text-wrap: nowrap;
+
+    transition: all 0.2s ease-in-out;
+}
+.item_contex:hover{
+    color: var(--color-secundary);
 }
 @media (max-width:768px) {
+    
     .menu{
         justify-content: start;
         gap: 1em;
@@ -83,19 +142,15 @@
     }
     .btn-open-menu{
         display: flex;
-        width: fit-content;
-        padding: 1em;
-        background-color: transparent;
         color: azure;
         border: none;
-        border-radius: 10px;
-
     }
-    .btn-open-menu:active{
-        transform: scale(1.2);
-        transition: all 0.2s ease-in-out;
+    .btn-open-menu:hover{
+        outline: #52BE80 solid 2px;
+        transition: all 0.2s ease;
     }
     .btn-close-menu{
+        
         display: flex;
         width:100%;
         padding: 1em;
@@ -131,43 +186,55 @@
         display: flex;
         flex-direction: column;
         gap:1em;
-        padding-left: 1em;
-        padding-right: 1em;
         align-items: center;
+        padding: 0;
         & h2{
             font-size: medium;
             color: azure;
         }
-        & a {
-            text-decoration: none;
-            color: azure;
-            padding: 1em; 
-            width: 100%;
-      
-            font-size: medium;
-            text-align: center;
-        }
-        & a:hover{
-            color: antiquewhite;
-            background: #52BE80;
-            transition: all 0.2s ease-in-out;
-            font-size: medium;
-            
-        }
-        & button{
-            text-decoration: none;
-            color: azure;
-            padding: 1em; 
-            width: 100%;
-            border: none;
-            background-color: transparent;
-            cursor: pointer;
-            font-size: medium;
-        } 
-        & button:hover{
-            color: antiquewhite;
-            background: #52BE80;
-            transition: all 0.2s ease-in-out;
-        }   
+        
     }
+    .item_later{
+        text-align: center;
+        text-decoration: none;
+        color: azure;
+        padding: 1em; 
+        width: 100%;
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+        font-size: medium;
+    } 
+    .item_later:hover{
+        color: antiquewhite;
+        background: #52BE80;
+        transition: all 0.2s ease-in-out;
+    }   
+    
+
+}
+
+@keyframes fadeIn {
+    from {
+        display: flex;
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+    
+}
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: scale(1);
+    }
+    to {
+        display: none;
+        opacity: 0;
+        transform: scale(0);
+    }
+    
 }
