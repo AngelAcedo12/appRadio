@@ -7,6 +7,10 @@
   --color-language:#DAF7A6;
   --hover:#939393;
 }
+::-webkit-scrollbar{
+  height: 2px;
+  border-radius: 20px;
+}
 .box{
   display: flex;
   flex-direction: row;
@@ -32,12 +36,13 @@ img{
   -moz-border-radius: 50%;
   -ms-border-radius: 50%;
   -o-border-radius: 50%;
+  background-color: black;
 }
 .list{
   display: flex;
   flex-direction: row;
   gap: 1em;
-  padding-left: 0.5em;
+  padding: 1em;
 }
 .imgSelected{
   filter: grayscale(0%);

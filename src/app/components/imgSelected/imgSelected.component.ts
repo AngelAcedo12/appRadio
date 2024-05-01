@@ -28,6 +28,7 @@ export class ImgSelectedComponent {
   ]
 
   onSelect(number: number){
+    if(this.imgSlected === number) return
     document.getElementById(number.toString())?.classList.replace("imgNotSelected", "imgSelected")
     document.getElementById(this.imgSlected.toString())?.classList.replace("imgSelected", "imgNotSelected")
     this.imgSlected= number
