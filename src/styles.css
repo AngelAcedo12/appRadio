@@ -12,7 +12,9 @@
     font-weight: 600;
 
 }
-
+img{
+    -webkit-tap-highlight-color: transparent;
+}
 :root{
 
     color-scheme: dark;
