@@ -14,6 +14,11 @@ const routes: Routes = [
     loadChildren: () => import("./oauth/Pages/pages.module").then(m => m.PagesModule)
   },
   {
+    path:'profile',
+    loadChildren: () => import("./profile/pages/pages.module").then(m => m.PagesModule),
+    canActivate: [oauthGuard]
+  },
+  {
     path:'',
     pathMatch:'full',
     redirectTo:'radio'

@@ -26,7 +26,7 @@ export class MenuComponent {
   menuItems: MenuItems[] = [
     {title:"Radios", url:'radio'},
     {title:"Historial",url:'radio/history'},
-    
+
   ]
 
   closedSesion(){
@@ -66,5 +66,7 @@ export class MenuComponent {
       }
   
   }
-  
+  getImageProfile(){
+    return this.userService.userSave()==null ? "../../../assets/profile/0.webp" : this.userService.userSave()?.imgProfile+".webp"
+  }
 }

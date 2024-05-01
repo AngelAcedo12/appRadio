@@ -10,7 +10,7 @@
         @if(userService.logInState()===true){
             @if (userService.userSave()?.imgProfile!=null) {
                 <div class="box-contex-menu-img-profile">
-                    <img (click)="openContex()" class="img_profile" [src]="'../../../assets/profile/'+userService.userSave()?.imgProfile+'.webp'">
+                    <img (click)="openContex()" class="img_profile" [src]="'../../../assets/profile/'+getImageProfile()">
                     
                     <menu id="contex"  class="contexMenu closeContex">
                         <a class="item_contex">Perfil</a>
@@ -44,7 +44,6 @@
             <a  class="item_later" href="oauth/logIn">Iniciar sesion</a>
             <a class="item_later" href="oauth/singUp">Registrarse</a>
             
-
         }
     </ul>
 </aside>
