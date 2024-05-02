@@ -1,3 +1,7 @@
+<div id="detecter" class="detecter">
+     
+</div>
+
 @if (userSevice.profile()!=undefined) {
     <article>
         <div class="firstProps">
@@ -5,17 +9,24 @@
             <div class="name_email">
                 <h1 class="name">{{userSevice.profile()?.name}}</h1>
                 <h2 class="email">{{userSevice.profile()?.email}}</h2>
+                <div class="links_btn">
+                    @if (oauthService.userSave()?.name===userSevice.profile()?.name) {
+                        <a  class="item_links">Editar perfil</a>
+                        <button (click)="changeStateMenuOpcion()" class="item_links">Otras opciones</button>
+                    }
+                </div>
             </div>
+            
            
         </div>
         <div class="utl_box">
-            <h1>Eschuchado por ultima vez:</h1>
+            <h1 class="esc">Eschuchado por ultima vez:</h1>
             <div class="list_ult">
 
                 @for (item of getHystory(); track $index) {
-                    @if($index<5 ){
+                 
                         <app-station-radio  [station]="item"></app-station-radio>
-                    }
+                    
                 }
             </div>
         </div>
@@ -24,3 +35,5 @@
     <app-loading></app-loading>
 }
 
+
+<app-opcion-menu (stateMenuOpcion)="changeStateMenuOpcion()" [stateMenu]="stateMenuOpcion()"></app-opcion-menu>

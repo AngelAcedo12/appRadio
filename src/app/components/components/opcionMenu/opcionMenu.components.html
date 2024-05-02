@@ -1,3 +1,23 @@
-<aside>
+
+
+
+<div id="detecter" class="detecter">
+
+</div>
+
+<aside class="opcionMenu "[ngClass]="stateMenu ? 'open' : 'close'" >
     
+    <div class="opcions">
+        <div class="lineClose">
+            <img class="btnClose" (click)="closeOpcionMenu()" width="25px" height="25px"src="../../../../assets/close.webp">
+        </div>
+        <div class="links_opcions">
+
+            @for (item of menuItems; track $index) {
+                <a class="item_opcion" [href]="item.url">{{item.title}}</a>
+            }
+        </div>
+
+    </div>
+  
 </aside>

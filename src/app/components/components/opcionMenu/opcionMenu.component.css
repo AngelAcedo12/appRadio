@@ -1,3 +1,98 @@
-:host {
-  display: block;
+
+
+*{
+  --color-background:#2A1F2D;
+  --color-primary:#59C9A5;
+  --color-secundary:#52BE80;
+  --color-country:#FF6747;
+  --color-language:#DAF7A6;
+  --hover:#939393;
+}
+
+a{
+  text-decoration: none;
+  color : azure;
+
+}
+.opcionMenu{
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  z-index: 1000;
+  width: 100%;
+  height: 25%;
+
+  bottom: 0;
+  justify-content: center;
+  
+}
+.opcions{
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  width: auto;
+  height: 100%;
+  padding: 1em;
+  padding-left: 4em;
+  padding-right: 4em;
+  background-color: black;
+  border-radius: 20px 20px 0px 0;
+  
+}
+.lineClose{
+  display: flex;
+  flex-direction: row;
+  gap: 1em;
+  justify-content: flex-end;
+
+}
+
+.open{
+  transform: translateY(0);
+  transition: all 0.5s ease-in-out;
+}
+.close{
+  transform: translateY(110%);
+  transition: all 0.5s ease-in-out;
+}
+.btnClose{
+  padding: 1em;
+  transition: all 0.2s ease-in-out;  
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.btnClose:hover{
+  color: black;
+  background: var(--hover);
+  transition: all 0.2s ease-in-out;
+}
+.links_opcions{
+  display: flex;
+  flex-direction: row;
+  gap: 1em;
+  align-items: center;
+
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+
+}
+.item_opcion{
+  width: fit-content;
+  background-color: transparent;
+  border: 1px solid var(--color-primary);
+  padding: 1em;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+@media (max-width: 768px){
+  .opcions{
+    padding: 0;
+    padding-left: 1em;
+    padding-right:1em;
+    justify-content: start;
+  }
 }

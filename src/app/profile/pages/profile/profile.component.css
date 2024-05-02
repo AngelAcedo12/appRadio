@@ -29,7 +29,7 @@ article{
 .name_email{
     display: flex;
     flex-direction: column; 
-    gap: 0.2em;
+    gap: 0.5em;
     margin-left: 0.5em;
 
 }
@@ -59,6 +59,9 @@ article{
     margin-top: 1em;
 
 }
+.esc {
+    padding: 1em;
+}
 .list_ult{
     display: flex;
     flex-direction: row;
@@ -68,6 +71,26 @@ article{
     
     margin-top: 1em;
 
+}
+.links_btn{
+    display: flex;
+    flex-direction: row;
+    gap: 0.5em;
+}
+
+.item_links{
+    background-color: transparent;
+    border: 1px solid var(--color-primary);
+    padding: 0.5em;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+.item_links:hover{
+    color: black;
+    background: var(--color-primary);
+    transition: all 0.2s ease-in-out;
+   
 }
 @media (max-width: 768px){
     .firstProps{
