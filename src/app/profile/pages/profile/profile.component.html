@@ -1,9 +1,26 @@
-<article>
-    Profile
-    <div>
-        <img >
-    </div>
-    <div>
+@if (userSevice.profile()!=undefined) {
+    <article>
+        <div class="firstProps">
+            <img class="imgProfile" [src]="'../../../../assets/profile/'+getProfileImg()">
+            <div class="name_email">
+                <h1 class="name">{{userSevice.profile()?.name}}</h1>
+                <h2 class="email">{{userSevice.profile()?.email}}</h2>
+            </div>
+           
+        </div>
+        <div class="utl_box">
+            <h1>Eschuchado por ultima vez:</h1>
+            <div class="list_ult">
 
-    </div>
-</article>
+                @for (item of getHystory(); track $index) {
+                    @if($index<5 ){
+                        <app-station-radio  [station]="item"></app-station-radio>
+                    }
+                }
+            </div>
+        </div>
+    </article>
+}@else {
+    <app-loading></app-loading>
+}
+

@@ -17,27 +17,26 @@ export class UserService {
 
   getProfileWithName(name:string){
       
-    this.http.post<DtoProfile>(`${enviroment.base_url_local}api/user/getProfileByName`,{
+    this.http.post<any>(`${enviroment.base_url_local}api/user/getProfileByName`,{
       body:{
         name:name
       }
-      
     }).subscribe((data)=>{  
       console.log(data)
-      this.profile = computed(()=>data)
+      this.profile = computed(()=>data.profile.profile)
     })
   }
 
   getProfileWithToken(){
     let token = this.cookieService.get("oauth-token-app-radio")
 
-    this.http.post<DtoProfile>(`${enviroment.base_url_local}api/user/getProfileByToken`,{
+    this.http.post<any>(`${enviroment.base_url_local}api/user/getProfileByToken`,{
       body:{
         token:token
       }
     }).subscribe((data)=>{
       console.log(data)
-      this.profile = computed(()=>data)
+      this.profile = computed(()=>data.profile)
     })
   }
 

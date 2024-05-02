@@ -33,5 +33,7 @@ export class HistoryService {
     }
     )
   }
-
+  getHistoryByName(name: string){
+    return this.http.get<DtoHistory>(`${enviroment.base_url_local}api/user/history/findHistory/name?name=${name}`)
+  }
 }

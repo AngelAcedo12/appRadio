@@ -67,6 +67,6 @@ export class MenuComponent {
   
   }
   getImageProfile(){
-    return this.userService.userSave()==null ? "../../../assets/profile/0.webp" : this.userService.userSave()?.imgProfile+".webp"
+    return this.userService.userSave()==null ? "avatar.webp" : this.userService.userSave()?.imgProfile+".webp"
   }
 }

@@ -1,31 +1,34 @@
+
 <header class="menu">
 
         <img   (click)="openMenu()" class="btn-open-menu" width="25" height="25" [src]="'../../../assets/profile/'+getImageProfile()">
         <img alt="RadioGlobal"   class="logo" src="../../../assets/LogoRGH_sinFondo.webp" >
-    <nav class="links">
-        @for (item of  menuItems; track $index) {
-            <a class="link_btn" [href]="item.url">{{item.title}}</a>
-        }
-
-        @if(userService.logInState()===true){
+      
+            <nav class="links">
+            @for (item of  menuItems; track $index) {
+                <a class="link_btn" [href]="item.url">{{item.title}}</a>
+            }
             
-                <div class="box-contex-menu-img-profile">
-                    <img (click)="openContex()" class="img_profile" [src]="'../../../assets/profile/'+getImageProfile()">
-                    
-                    <menu id="contex"  class="contexMenu closeContex">
-                        <a class="item_contex">Perfil</a>
-                        <button (click)="closedSesion()" class="item_contex">Cerrar Sesion</button>
-                    </menu>
-                </div>
+            @if(userService.logInState()===true){
+                
+                    <div class="box-contex-menu-img-profile">
+                        <img (click)="openContex()" class="img_profile" [src]="'../../../assets/profile/'+getImageProfile()">
+                        
+                        <menu id="contex"  class=" closeContex contexMenu">
+                            <a href="profile" class="item_contex">Perfil</a>
+                            <button (click)="closedSesion()" class="item_contex">Cerrar Sesion</button>
+                        </menu>
+                    </div>
+                
+                 
+            }@else {
+                
+                <a class="link_btn " href="oauth/logIn">Iniciar sesion</a>
+                <a class="link_btn "href="oauth/singUp">Registrarse</a>
             
-             
-        }@else {
-            
-            <a class="link_btn " href="oauth/logIn">Iniciar sesion</a>
-            <a class="link_btn "href="oauth/singUp">Registrarse</a>
-        
-        }
-    </nav>
+            }
+        </nav>
+    
 </header>
 
 <aside class="menu-later close" id="menu-later">

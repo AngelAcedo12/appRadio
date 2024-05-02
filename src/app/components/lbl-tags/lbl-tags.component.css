@@ -14,6 +14,8 @@ div{
     
 }
 .tags{
+  
+    
     max-width: 200px;
     background-color: var(--color-secundary);
     text-overflow: ellipsis;
@@ -46,6 +48,7 @@ div{
     align-items: baseline;
     display: flex;
     justify-content: baseline;
+    
 }
 @keyframes fade {
     0%{

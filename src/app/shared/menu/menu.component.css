@@ -8,6 +8,10 @@
     --color-language:#DAF7A6;
     --hover:#939393;
 }
+a{
+    text-decoration: none;
+    color : azure;
+}
 .logo{
     object-fit: cover;
     width: 100px;
@@ -25,6 +29,13 @@
     justify-content: space-between;
     flex-wrap: wrap;
     padding: 1em;
+    animation:fadeIn forwards 1.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+    -webkit-animation:fadeIn forwards 1.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+    border:  var(--color-language) solid 1px;
+    border-left: 0px;
+    border-top: 0px;
+    border-right: 0px;
+
 }
 .img_profile{
     width: 50px;
@@ -48,6 +59,7 @@
     padding-left: 1em;
     padding-right: 1em;
     align-items: center;
+    
     & h2{
         font-size: medium;
         color: azure;
@@ -106,12 +118,16 @@
     flex-direction: row;
     gap: 0.5em;
     z-index: 100;   
+ 
 }
 .openContex{
     animation: fadeIn 0.1s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+    display: flex;
+    -webkit-animation: fadeIn 0.1s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
 }
-.closeContex{
-    animation: fadeOut 0.1s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+.closeContex{   
+    display: none;
+   
 }
 
 .item_contex{
@@ -128,11 +144,24 @@
 .item_contex:hover{
     color: var(--color-secundary);
 }
+.loadingOpcion{
+    width: 40%;
+    height: 70px;
+    border-radius: 10px;
+    background: #939393;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    animation:loading  infinite  1s  linear;
+    -webkit-animation:loading  infinite  1s  linear;
+}
 @media (max-width:768px) {
     
     .menu{
         justify-content: start;
         gap: 1em;
+       
     }
     .links{
         display: none;
@@ -215,23 +244,37 @@
     from {
         display: flex;
         opacity: 0;
-        transform: scale(0.5);
     }
     to {
         opacity: 1;
-        transform: scale(1);
+   
     }
     
 }
 @keyframes fadeOut {
     from {
         opacity: 1;
-        transform: scale(1);
-    }
+     
+}
     to {
         display: none;
         opacity: 0;
-        transform: scale(0);
+        
     }
     
+}
+@keyframes loading {
+    0% {
+      
+        opacity: 0.5;
+    }
+    50% {
+     
+        opacity: 1;
+    }
+    100% {
+        
+        opacity: 0.5;
+    }
+
 }

@@ -1,4 +1,6 @@
-<li class="station"> 
+
+
+<li class="station" *ngIf="station!=null"> 
   
         <div class="poster">
             
@@ -8,18 +10,18 @@
             </app-btn-play>
             <div>
                 <div class="title_and_more">
-                    <a  [href]="'radio/station/'+station?.id">{{station?.name}}</a>
+                    <a  [href]="'radio/station/'+station.id">{{station.name}}</a>
                  
                 </div>
-                <a class="link" [href]="station?.homepage">Pagina oficial</a>
+                <a class="link" [href]="station.homepage">Pagina oficial</a>
             </div>
            
         </div>
 
         <div class="more_props">
             
-            <span>{{station?.votes}} 👍</span>
-            @if(station?.lastCheckOk==false){
+            <span>{{station.votes}} 👍</span>
+            @if(station.lastCheckOk==false){
                 <samp class="status" style="color: red;">OFFLINE</samp>
             }@else {
                 <samp class="status" style="color: green;">ONLINE</samp>
@@ -29,16 +31,20 @@
 
          <div class="props">
          
-            <app-lbl-country [content]="station?.country"></app-lbl-country>
-            @if(station?.language!.length>1){
+            <app-lbl-country [content]="station.country"></app-lbl-country>
+            @if(station.language!.length>1){
 
-                <app-lbl-language [content]="station?.language"></app-lbl-language>
+                <app-lbl-language [content]="station.language"></app-lbl-language>
             }
-            @if (station?.tags!.length>1) {
+            @if (station.tags!.length>1) {
 
-               <app-lbl-tags [content]="station?.tags"  ></app-lbl-tags>
+               <app-lbl-tags [content]="station.tags"  ></app-lbl-tags>
             }
             
          </div>
 
+</li>
+
+<li *ngIf="station==null">
+    <samp>Estacion no encontrada</samp>
 </li>

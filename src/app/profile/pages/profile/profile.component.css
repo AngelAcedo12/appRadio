@@ -1,0 +1,102 @@
+
+*{
+    --color-background:#2A1F2D;
+    --color-primary:#59C9A5;
+    --color-secundary:#52BE80;
+    --color-country:#FF6747;
+    --color-language:#DAF7A6;
+    --hover:#939393;
+}
+
+::-webkit-scrollbar{
+    height: 2px;
+    border-radius: 20px;
+}
+h1{
+    margin: 0;
+}
+article{
+    padding: 2em;
+    padding: 1em;
+    animation: fadeIn forwards 0.5s cubic-bezier(0.075, 0.82, 0.165, 1) ;
+}
+
+.imgProfile{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+}
+.name_email{
+    display: flex;
+    flex-direction: column; 
+    gap: 0.2em;
+    margin-left: 0.5em;
+
+}
+.name{
+    margin: 0;
+    font-size: xx-large;
+    color: var(--color-primary);
+}
+.email{
+    margin: 0;
+    font-size: large;
+    color: var(--color-language);
+}
+.firstProps{
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+    margin-top: 1em;
+    align-items: center;
+    border-radius: 1em;
+ 
+}
+.utl_box{
+    display: flex;
+    flex-direction: column;
+    gap: 0.2em;
+    margin-top: 1em;
+
+}
+.list_ult{
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+    align-items: center;
+    flex-wrap: wrap;
+    
+    margin-top: 1em;
+
+}
+@media (max-width: 768px){
+    .firstProps{
+        flex-direction: column;
+        gap: 1em;
+        align-items: start;
+    }
+    
+}
+
+@keyframes fadeIn {
+    from {
+       
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+   
+    }
+    
+}
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+      
+        opacity: 0;
+        
+    }
+    
+}
