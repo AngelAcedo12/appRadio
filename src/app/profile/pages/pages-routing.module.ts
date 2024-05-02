@@ -13,7 +13,7 @@ const routes: Routes = [
         component:ProfileComponent
       },
       {
-        path:'name',
+        path:':name',
         component:ProfileComponent
       }
     ]
