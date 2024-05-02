@@ -44,7 +44,10 @@ export class ProfileComponent {
 
   getHystory() : historyItem[] | undefined{
     let history = this.userSevice.profile()?.history.reverse()
-    history= history?.slice(0,5)
+    if(history!=null) {
+
+      history= [history[0],history[1],history[2],history[3],history[4],history[5]]
+    };
   
     return history;
   
