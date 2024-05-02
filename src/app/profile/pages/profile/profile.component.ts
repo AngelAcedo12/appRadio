@@ -22,34 +22,37 @@ export class ProfileComponent {
 
   ngOnInit(): void {
     let queryName =this.activeRoute.snapshot.params["name"];
-    console.log(queryName)
-    if(queryName!=null){
-      console.log("queryName",queryName)
-      console.log("Cogiendo perfil con nombre")
-      this.userSevice.getProfileWithName(queryName)
 
+    if(queryName!=null){
+      
+      this.userSevice.getProfileWithName(queryName)
+ 
     }else{
-      console.log("Cogiendo perfil con token")
+    
+    
       this.userSevice.getProfileWithToken()
       this.historyService.getHistory()
-      
-    }
+     
+    } 
+
     
 
   }
 
   name : string | null = null;
   stateMenuOpcion = signal(false)
+  history : historyItem[] | undefined
 
-
-  getHystory() : historyItem[] | undefined{
-    let history = this.userSevice.profile()?.history.reverse()
+  getHystory() {
+    let history = this.userSevice.profile()?.history
     if(history!=null) {
 
-      history= [history[0],history[1],history[2],history[3],history[4],history[5]]
+      this.history = history.slice(history.length-5,history.length).reverse();
+      
+    
     };
-  
-    return history;
+    
+    return this.history
   
   }
 
