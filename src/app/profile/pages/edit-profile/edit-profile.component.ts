@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { UserService } from '../../../services/user.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-edit-profile',
@@ -9,9 +10,14 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class EditProfileComponent {
 
-  constructor(private userService : UserService) {
+  constructor(private userService : UserService,private activeData: ActivatedRoute) {
 
+    this.activeData.queryParams.subscribe((params)=>{
+      let name = params["name"]
+      this.formProfile.controls.name.setValue(name)
+    })
 
+    
    }
 
    formProfile = new FormGroup({
