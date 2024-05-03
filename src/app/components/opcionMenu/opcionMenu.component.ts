@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, Output, signal, SimpleChanges } from '@angular/core';
-import { MenuItems } from '../../../models/MenuItems';
+import { MenuItems } from '../../models/MenuItems';
 
 @Component({
   selector: 'app-opcion-menu',
