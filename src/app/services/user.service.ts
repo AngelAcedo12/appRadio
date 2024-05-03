@@ -22,7 +22,7 @@ export class UserService {
         name:name
       }
     }).subscribe((data)=>{  
-      console.log(data)
+
       this.profile = computed(()=>data.profile.profile)
     })
   }
@@ -35,7 +35,7 @@ export class UserService {
         token:token
       }
     }).subscribe((data)=>{
-      console.log(data)
+    
       this.profile = computed(()=>data.profile)
     })
   }

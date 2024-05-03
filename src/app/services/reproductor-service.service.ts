@@ -94,9 +94,7 @@ export class ReproductorServiceService {
     }
 
   }
-
-
-
+  
   private addToHistory(history: DtoHistorySaving) {
 
       const body= {

@@ -15,9 +15,6 @@ export const oauthGuard: CanActivateFn = (route, state) => {
   }else{
     oauthService.logInWhitToken(token).subscribe(res => {
 
- 
-      
-      
       oauthService.userSave = computed(() => res.findUserInDb)
 
       oauthService.logInState.update(() => res.status)

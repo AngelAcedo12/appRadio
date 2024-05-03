@@ -18,7 +18,6 @@ input:focus{
 }
 .shearch-box{
     position: relative;
-    
     display: flex;
     flex-direction: row;
     gap: 0.5em;

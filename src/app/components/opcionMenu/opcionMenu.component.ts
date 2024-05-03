@@ -15,7 +15,7 @@ export class OpcionMenuComponent implements OnChanges {
   @Output() stateMenuOpcion = new EventEmitter();
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log(this.stateMenu)
+    
 
   } 
   menuItems : MenuItems[]= [
