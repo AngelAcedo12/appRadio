@@ -7,7 +7,7 @@
   
     <app-img-selected (setImgSelected)="changeImgProfile($event)"></app-img-selected>
     @if (formProfile.valid) {
-        <button (click)="editProfile()" class="singUp">Registrarse</button>
+        <button (click)="editProfile()" class="singUp">Guardar</button>
     }@else {
         <button disabled class="singUp">Guardar</button>
     }
