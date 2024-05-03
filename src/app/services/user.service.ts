@@ -15,7 +15,7 @@ export class UserService {
 
 
   profile : Signal<DtoProfile | undefined > =  signal(undefined); 
-
+  errorToGetProfile = signal(false)
 
   getProfileWithName(name:string){
       
@@ -23,7 +23,17 @@ export class UserService {
       body:{
         name:name
       }
-    }).subscribe((data)=>{  
+    }).pipe(
+      catchError(err=>{
+        this.errorToGetProfile.update(()=>true)
+
+        setTimeout(() => {
+          window.location.href = "radio"
+        }, 1000)
+
+        return err
+      })
+    ).subscribe((data)=>{  
 
       this.profile = computed(()=>data.profile.profile)
     })
@@ -36,7 +46,12 @@ export class UserService {
       body:{
         token:token
       }
-    }).subscribe((data)=>{
+    }).pipe(
+      catchError(err=>{
+        this.errorToGetProfile.update(()=>true)
+        return err
+      })
+    ).subscribe((data)=>{
     
       this.profile = computed(()=>data.profile)
     })

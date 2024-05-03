@@ -21,8 +21,8 @@ export class ProfileComponent {
 
 
   ngOnInit(): void {
-    let queryName =this.activeRoute.snapshot.params["name"];
-
+    let queryName =this.activeRoute.snapshot.queryParams["name"];
+    console.log(queryName)
     if(queryName!=null){
       
       this.userSevice.getProfileWithName(queryName)
@@ -36,7 +36,7 @@ export class ProfileComponent {
     } 
 
     
-
+    
   }
 
   name : string | null = null;

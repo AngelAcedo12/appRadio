@@ -17,6 +17,7 @@ import { LblTagsComponent } from './lbl-tags/lbl-tags.component';
 import { ErrorMessageComponent } from './error-message/error-message.component';
 import { ImgSelectedComponent } from './imgSelected/imgSelected.component';
 import { OpcionMenuComponent } from './opcionMenu/opcionMenu.component';
+import { RecomendationUserComponent } from './recomendation-user/recomendation-user.component';
 
 
 
@@ -35,7 +36,8 @@ import { OpcionMenuComponent } from './opcionMenu/opcionMenu.component';
     LblTagsComponent,
     ErrorMessageComponent,
     ImgSelectedComponent,
-    OpcionMenuComponent
+    OpcionMenuComponent,
+    RecomendationUserComponent
   ],exports:[
     RadioListsComponent,
     StationRadioComponent,

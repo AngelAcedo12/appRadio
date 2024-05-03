@@ -1,6 +1,3 @@
-<div id="detecter" class="detecter">
-     
-</div>
 
 @if (userSevice.profile()!=undefined) {
     <article>
@@ -31,7 +28,12 @@
         </div>
     </article>
 }@else {
-    <app-loading></app-loading>
+    @if (userSevice.errorToGetProfile()==false) {
+
+        <app-loading></app-loading>
+    }@else {
+        <app-error-message content="Usuario no encontrado"></app-error-message>
+    }
 }
 
 
