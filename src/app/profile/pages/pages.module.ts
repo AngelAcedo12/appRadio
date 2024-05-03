@@ -7,19 +7,23 @@ import { LayautComponent } from './layaut/layaut.component';
 import { ComponentsModule } from '../../components/components.module';
 import { SharedModule } from '../../shared/shared.module';
 import { RouterModule } from '@angular/router';
+import { ChangePasswordComponent } from './change-password/change-password.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
   declarations: [
     ProfileComponent,
-    LayautComponent
+    LayautComponent,
+    ChangePasswordComponent
   ],
   imports: [
     CommonModule,
     PagesRoutingModule,
     ComponentsModule,
     SharedModule,
-    RouterModule
+    RouterModule,
+    ReactiveFormsModule
   ]
 })
 export class PagesModule { }

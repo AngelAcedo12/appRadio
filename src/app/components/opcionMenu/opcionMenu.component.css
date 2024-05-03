@@ -87,6 +87,11 @@ a{
   cursor: pointer;
   transition: all 0.2s ease-in-out;
 }
+.item_opcion:hover{
+  background-color: var(--color-primary);
+  color: black;
+  transition: all 0.2s ease-in-out;
+}
 
 @media (max-width: 768px){
   .opcions{

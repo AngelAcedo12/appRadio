@@ -21,7 +21,7 @@ export class OpcionMenuComponent implements OnChanges {
   menuItems : MenuItems[]= [
     {
       title: "Cambiar contraseña",
-      url: "/change-password",
+      url: "/profile/changePassword",
 
     },
   ]

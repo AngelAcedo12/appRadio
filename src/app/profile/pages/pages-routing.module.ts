@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LayautComponent } from './layaut/layaut.component';
 import { ProfileComponent } from './profile/profile.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
 
 const routes: Routes = [
   {
@@ -11,6 +12,10 @@ const routes: Routes = [
       {
         path:'',
         component:ProfileComponent
+      },
+      {
+        path:'changePassword',
+        component:ChangePasswordComponent
       },
       {
         path:':name',

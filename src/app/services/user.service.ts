@@ -3,13 +3,15 @@ import { computed, Injectable, signal, Signal } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { DtoProfile } from '../models/DTOs/DtoProfile';
 import enviroment from '../../environments/environment';
+import { catchError } from 'rxjs';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  constructor(private http:HttpClient,private cookieService: CookieService) { }
+  constructor(private http:HttpClient,private cookieService: CookieService, private _snackBar: MatSnackBar) { }
 
 
   profile : Signal<DtoProfile | undefined > =  signal(undefined); 
@@ -39,5 +41,38 @@ export class UserService {
       this.profile = computed(()=>data.profile)
     })
   }
-
+  
+  changePassword(newPassword:string | null,confirmNewPassword:string | null){
+    
+    if(newPassword != confirmNewPassword || newPassword == null || confirmNewPassword == null){
+      this.openSnackBar("Las contraseñas no coinciden")
+      return
+    }
+    
+    let token = this.cookieService.get("oauth-token-app-radio")
+    
+    this.http.put<any>(`${enviroment.base_url_local}api/user/changePassword`,{
+      body:{
+        token:token,
+        password:newPassword
+      }
+    }).pipe(
+      catchError(err=>{
+        console.log(err)
+        this.openSnackBar("Error al iniciar sesión")
+        return err
+      })
+    ).subscribe((data)=>{
+      console.log(data)
+      this.openSnackBar("Contraseña cambiada")
+      setTimeout(() => {
+        window.location.href = "radio"
+      }, 1000);
+    })
+  }
+  openSnackBar(message: string) {
+    this._snackBar.open(message,"",{
+      duration:  1000,
+    });
+  }
 }
