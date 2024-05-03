@@ -18,6 +18,7 @@ import { ErrorMessageComponent } from './error-message/error-message.component';
 import { ImgSelectedComponent } from './imgSelected/imgSelected.component';
 import { OpcionMenuComponent } from './opcionMenu/opcionMenu.component';
 import { RecomendationUserComponent } from './recomendation-user/recomendation-user.component';
+import { RecomendationItemComponent } from './recomendation-item/recomendation-item.component';
 
 
 
@@ -37,7 +38,8 @@ import { RecomendationUserComponent } from './recomendation-user/recomendation-u
     ErrorMessageComponent,
     ImgSelectedComponent,
     OpcionMenuComponent,
-    RecomendationUserComponent
+    RecomendationUserComponent,
+    RecomendationItemComponent
   ],exports:[
     RadioListsComponent,
     StationRadioComponent,
@@ -48,7 +50,8 @@ import { RecomendationUserComponent } from './recomendation-user/recomendation-u
     LblLanguageComponent,
     ErrorMessageComponent,
     ImgSelectedComponent,
-    OpcionMenuComponent
+    OpcionMenuComponent,
+    RecomendationUserComponent
   ],
   imports: [
     CommonModule,

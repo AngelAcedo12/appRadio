@@ -1,1 +1,14 @@
-<p>recomendation-user works!</p>
+<h1 style="padding-left: 1em;">Usuarios recomendados:</h1>
+@if (recomendations!=undefined) {
+    <section>
+
+        @for (item of recomendations; track $index) {
+    
+            <app-recomendation-item [recomendation]="item"></app-recomendation-item>
+    
+        }
+    
+    </section>
+}@else {
+    <app-loading></app-loading>
+}
