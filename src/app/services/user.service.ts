@@ -70,9 +70,42 @@ export class UserService {
       }, 1000);
     })
   }
+  editProfile(name: string  | null, imgProfileSelected: string | null) {
+
+    if(name == null || imgProfileSelected == null){
+      this.openSnackBar("Error al editar perfil")
+      return
+    }
+    let token = this.cookieService.get("oauth-token-app-radio")
+  
+    this.http.put<any>(`${enviroment.base_url_local}api/user/editProfile`, {
+      body: {
+        token: token,
+        name: name,
+        imgProfileSelected: imgProfileSelected
+      }
+    }).pipe(
+      catchError(err => {
+        console.log(err)
+        this.openSnackBar("Error al editar perfil")
+        return err
+      })
+    ).subscribe((data) => {
+      console.log(data)
+      this.openSnackBar("Perfil editado")
+      setTimeout(() => {
+        window.location.href = "radio"
+      }, 1000);
+    })
+
+
+  }
+
   openSnackBar(message: string) {
     this._snackBar.open(message,"",{
       duration:  1000,
     });
   }
+
+  
 }

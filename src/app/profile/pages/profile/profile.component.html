@@ -11,7 +11,7 @@
                 <h2 class="email">{{userSevice.profile()?.email}}</h2>
                 <div class="links_btn">
                     @if (oauthService.userSave()?.name===userSevice.profile()?.name) {
-                        <a  class="item_links">Editar perfil</a>
+                        <a href="profile/editProfile" class="item_links">Editar perfil</a>
                         <button (click)="changeStateMenuOpcion()" class="item_links">Otras opciones</button>
                     }
                 </div>

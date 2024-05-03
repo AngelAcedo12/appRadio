@@ -9,13 +9,15 @@ import { SharedModule } from '../../shared/shared.module';
 import { RouterModule } from '@angular/router';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
 
 
 @NgModule({
   declarations: [
     ProfileComponent,
     LayautComponent,
-    ChangePasswordComponent
+    ChangePasswordComponent,
+    EditProfileComponent
   ],
   imports: [
     CommonModule,

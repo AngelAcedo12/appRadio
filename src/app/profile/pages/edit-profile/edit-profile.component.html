@@ -1,0 +1,14 @@
+<form [formGroup]="formProfile">
+    <label>Nombre</label>
+    <input [formControl]="formProfile.controls.name" type="text" required>
+    @if (isInvalid("name")!==null) {
+        <samp class="errors">{{getErrorMessage("name")}}</samp>
+    }
+  
+    <app-img-selected (setImgSelected)="changeImgProfile($event)"></app-img-selected>
+    @if (formProfile.valid) {
+        <button (click)="editProfile()" class="singUp">Registrarse</button>
+    }@else {
+        <button disabled class="singUp">Registrarse</button>
+    }
+</form>
