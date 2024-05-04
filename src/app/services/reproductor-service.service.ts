@@ -70,6 +70,9 @@ export class ReproductorServiceService {
   }
 
   private addListertToAudio() {
+    
+
+    
     this.audio.addEventListener("playing", () => {
       this.state.update(() => true)
       this.setColor()

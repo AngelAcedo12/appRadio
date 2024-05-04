@@ -9,12 +9,13 @@ import {
 
 } from '@angular/material/snack-bar';
 import { DtoProfile } from '../models/DTOs/DtoProfile';
+import { NotificationService } from './notification-service.service';
 @Injectable({
   providedIn: 'root'
 })
 export class OauthService {
 
-  constructor(private http: HttpClient, private cookieService: CookieService, private _snackBar: MatSnackBar) { }
+  constructor(private http: HttpClient, private cookieService: CookieService, private nofiticationService:NotificationService ) { }
 
   state = signal(false)
 
@@ -26,7 +27,10 @@ export class OauthService {
   register(userSave: DtoUserSave) {
    return this.http.post<any>(`${enviroment.base_url_local}api/user`, userSave).pipe(
     catchError(err => {
-      this.openSnackBar("Error al registrar usuario")
+      this.nofiticationService.openSnackBarError({
+        message: "Error al registrar el usuario",
+        duration: 2000,
+      })
       return err
     }))
   }
@@ -36,7 +40,11 @@ export class OauthService {
    return this.http.get<any>(`${enviroment.base_url_local}api/user?email=${email}&password=${password}`).pipe(
     catchError(err => {
       console.log(err)
-      this.openSnackBar("Error al iniciar sesión")
+      this.nofiticationService.openSnackBarError({
+        message: "Usuario o contraseña incorrecta",
+        duration: 2000,
+   
+      })
       return err
     })
   )
@@ -50,7 +58,10 @@ export class OauthService {
 
    return this.http.post<any>(`${enviroment.base_url_local}api/user/logWhitToken`, body).pipe(
     catchError(err => {
-      this.openSnackBar("Error al iniciar sesión")
+      this.nofiticationService.openSnackBarError({
+        message: "Error al logear con el token",
+        duration: 2000,
+      })
       return err
     })
    )
@@ -59,7 +70,6 @@ export class OauthService {
 
 
   checkToken() {
-
     const cookie = this.cookieService.get("oauth-token-app-radio")
     if (cookie != null) {
       return true
@@ -69,11 +79,7 @@ export class OauthService {
   }
 
 
-  openSnackBar(message: string) {
-    this._snackBar.open(message,"",{
-      duration:  1000,
-    });
-  }
+  
 }
 
 

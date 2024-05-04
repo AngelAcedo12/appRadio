@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { RecomendationsServiceService } from '../../services/recomendations-service.service';
 import { DtoReocmendation } from '../../models/DTOs/DtoRecomendation';
 import { get } from 'http';
@@ -10,6 +10,7 @@ import { get } from 'http';
 })
 export class RecomendationUserComponent {
 
+  @Input({required:true}) actualUser : string | undefined
 
   constructor(private recomendationService:RecomendationsServiceService) { }
 
@@ -21,7 +22,7 @@ export class RecomendationUserComponent {
 
   getRecomendations(){
 
-    this.recomendationService.getRandomRecomendations().subscribe(recomendations=>{
+    this.recomendationService.getRandomRecomendations(this.actualUser).subscribe(recomendations=>{
       this.recomendations = recomendations
     })
   
