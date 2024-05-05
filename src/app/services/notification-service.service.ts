@@ -22,11 +22,15 @@ export class NotificationService {
 
     const { message, duration, closeMessage } = optionsNotification;
 
-
-    this._snackBar.open(message ?? "", closeMessage ?? "",{
+    this._snackBar.openFromComponent(ErrorMessageComponent, {
+      data: { message: message ?? "" },
       duration: duration ?? 2000,
-   
     });
+
+    // this._snackBar.open(message ?? "", closeMessage ?? "",{
+    //   duration: duration ?? 2000,
+      
+    // });
   }
   
   

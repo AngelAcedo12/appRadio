@@ -25,8 +25,6 @@ export class RadioListsComponent implements OnInit{
   }
 
   api : RadioBrowserApi = new RadioBrowserApi("My radio")
-
-
   radios: Station[] | undefined
   page : number = 1
   loading :Signal<boolean>  = signal(false)
@@ -34,7 +32,7 @@ export class RadioListsComponent implements OnInit{
   countryCode: Signal<string> = signal("ES")
   tagList : Signal<CountryResult[]> = signal([])
   nameStation : Signal<string> = signal('')
-
+  stateMenu : boolean = false
 
 
 
@@ -129,6 +127,15 @@ export class RadioListsComponent implements OnInit{
     this.page=1;
     this.radios=[]
     this.loadRadios()
+  }
+
+  changeStateMenu(){
+      if(this.stateMenu==true){
+        this.stateMenu=false
+      
+    }else{
+      this.stateMenu=true
+    }
   }
 }
 

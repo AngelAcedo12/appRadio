@@ -8,16 +8,12 @@ import { MenuItems } from '../../models/MenuItems';
   styleUrl: './opcionMenu.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class OpcionMenuComponent implements OnChanges {
+export class OpcionMenuComponent {
  
 
   @Input({required: true}) stateMenu : boolean = false;
   @Output() stateMenuOpcion = new EventEmitter();
-
-  ngOnChanges(changes: SimpleChanges): void {
-    
-
-  } 
+ 
   menuItems : MenuItems[]= [
     {
       title: "Cambiar contraseña",

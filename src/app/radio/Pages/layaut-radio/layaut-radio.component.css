@@ -1,10 +1,6 @@
 .listReproductor{
     
     overflow-y: hidden;
-}
-@media (max-width: 756px) {
-    .listReproductor{
-        
-        padding: 0.2em;
-    }
+    padding: 0;
+    padding-top: 1em ;
 }

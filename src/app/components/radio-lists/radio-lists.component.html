@@ -1,11 +1,28 @@
 @if (type=="radio") {
 
-    <section class="filters">
+    <section class="box-filters">
         <app-find-bar (newShearchStation)="setRadioName($event)"></app-find-bar>
+        
+        <div class="filters">
+            <app-select-countrie (newCountry)="setCountryCode($event)"></app-select-countrie>
+            <app-select-tag-list (refrestListFilter)="setTagList($event)"></app-select-tag-list>
+        </div>
+
+        <div class="btn-open-filters-mobile">
+
+            <img src="../../../assets/settings.webp"  (click)="changeStateMenu()" width="25" height="25"> 
+
+        </div>
+        
+        
+    </section>
+    <section class="filters-mobile"  [ngClass]="stateMenu ? 'open' : 'close' ">
+        <div class="box-close">
+            <img class="btn-close-filters" (click)="changeStateMenu()" width="25" height="25" src="../../../../assets/close.webp">
+        </div>
         <app-select-countrie (newCountry)="setCountryCode($event)"></app-select-countrie>
         <app-select-tag-list (refrestListFilter)="setTagList($event)"></app-select-tag-list>
     </section>
-        
 }
 <ul class="list">
 
