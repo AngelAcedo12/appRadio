@@ -160,9 +160,9 @@ a{
 @media (max-width:768px) {
     
     .menu{
-        justify-content: start;
+        justify-content: space-between;
         gap: 1em;
-       
+        
     }
     .links{
         display: none;
