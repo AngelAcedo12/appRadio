@@ -51,7 +51,7 @@ export class MapComponent implements OnInit, OnChanges{
    mapboxgl.accessToken= enviroment.MAP_BOX_TOKEN;
     console.log(this.mapIsLoad)
     if(this.mapIsLoad==true){
-     
+      this.clearMarkers()
       this.map?.easeTo(
         {
           center:[this.location.lon,this.location.lat],
