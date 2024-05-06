@@ -19,11 +19,16 @@ export class MapComponent implements OnInit{
 
   ngOnInit(): void {
 
-    this.loadLocation()
-    
+  
     
   }
-
+  ngAfterViewInit(): void {
+    //Called after ngAfterContentInit when the component's view has been initialized. Applies to components only.
+    //Add 'implements AfterViewInit' to the class.
+    this.loadLocation()
+    
+  }
+  mapIsLoad = false
   location : Coords = {
     lat: 0,
     lon: 0
@@ -40,7 +45,8 @@ export class MapComponent implements OnInit{
       center:[this.location.lon,this.location.lat],
       zoom: 12
     })
-      this.loadRadios()
+   
+    this.loadRadios()
   
   }
   
