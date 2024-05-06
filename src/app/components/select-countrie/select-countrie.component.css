@@ -31,3 +31,19 @@ div{
     align-items: center; 
     gap: 1em;
 }
+@media (max-width: 768px) {
+    div{
+        flex-direction: column;
+        align-items: start;
+        width: 100vw;
+        padding: 0;
+        padding-left: 1em
+    }
+    .select-countries{
+        max-width: 80vw;
+        width: 80vw;
+        height: fit-content;
+        padding: 0.5em;
+    }
+    
+}

@@ -2,9 +2,11 @@
     
     <h3>Etiquetas:</h3>
     <input (input)="shearchTag()" type="text" [formControl]="tagSherch"> 
-    @for (item of tagListShearchSelected; track $index) {
-        <div (click)="removeTag(item)" class="tagSelected">{{item.name}}</div>
-    }
+    <div class="box-tagList">
+        @for (item of tagListShearchSelected; track $index) {
+            <div (click)="removeTag(item)" class="tagSelected">{{item.name}}</div>
+        }
+    </div>
    
 </div>
 

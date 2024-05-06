@@ -102,6 +102,26 @@ input:focus{
     -ms-transition: all 0.3s ease-in-out;
     -o-transition: all 0.3s ease-in-out;
 }
+.box-tagList{
+    display: flex;
+    flex-direction: row;
+    gap: 0.5em;
+}
+@media (max-width: 768px) {
+    .shearch-box{
+        flex-direction: column;
+        width: 100%;
+        gap: 0.5em;
+    }
+    input{
+        
+        width: 80vw;
+        max-width: 80vw
+    
+    }
+
+    
+}
 
 @keyframes fade {
     0%{

@@ -29,7 +29,8 @@
     flex-direction: row;
     align-items:  center;
     overflow-x: hidden;
-   
+    width: auto;
+    padding: 0.5em;
     
 
 }
@@ -117,12 +118,18 @@
         cursor: pointer;
     }
     .box-filters{
-        width: 100%;
+     
         justify-content: start;
-        padding-left: 0;
-        padding-left: 0.2em;
         gap: 2em;
         overflow-x: hidden;
-        width: 99%;
+
+    }
+    .filters-mobile-content{
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        gap: 1em;
+        width: 100%;
+     
     }
 }

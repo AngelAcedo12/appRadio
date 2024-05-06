@@ -20,8 +20,11 @@
         <div class="box-close">
             <img class="btn-close-filters" (click)="changeStateMenu()" width="25" height="25" src="../../../../assets/close.webp">
         </div>
-        <app-select-countrie (newCountry)="setCountryCode($event)"></app-select-countrie>
-        <app-select-tag-list (refrestListFilter)="setTagList($event)"></app-select-tag-list>
+        <div class="filters-mobile-content">
+
+            <app-select-countrie (newCountry)="setCountryCode($event)"></app-select-countrie>
+            <app-select-tag-list (refrestListFilter)="setTagList($event)"></app-select-tag-list>
+        </div>
     </section>
 }
 <ul class="list">
