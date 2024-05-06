@@ -12,7 +12,7 @@ import { FormControl } from '@angular/forms';
 export class SelectCountrieComponent {
 
   @Output() newCountry = new EventEmitter<string>()
-
+  @Output() newCountryByName = new EventEmitter<string>()
   constructor(private countriesService : CountrysService,){
     this.loadCoutries()
   }
@@ -24,6 +24,11 @@ export class SelectCountrieComponent {
   emitCountrySelected(){  
     var country = this.countrySelecter.value
     this.newCountry.emit(country || "ES")
+    if(this.countries!=undefined){
+
+      var  countryName = this.countries.find((item)=>item.cca2==country)?.name.common
+      this.newCountryByName.emit(countryName!=undefined ? countryName : "Spain")
+    }
   }
 
   loadCoutries(){

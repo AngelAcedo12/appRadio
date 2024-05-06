@@ -20,10 +20,8 @@ export class CountrysService {
    loadCountries(): Observable<Country[]>{
     return  this.htpp.get<Country[]>(this.urlCountries)
    }
-   shearchCountry(name: string){
-    this.htpp.get<Country[]>(`https://restcountries.com/v3.1/name/${name}`).subscribe((data) => {
-      this.actualSearchCountry = computed(() => data[0])
-    })
+   shearchCountry(name: string) : Observable<Country[]>{
+    return this.htpp.get<Country[]>(`https://restcountries.com/v3.1/name/${name}`)
    }
 
 

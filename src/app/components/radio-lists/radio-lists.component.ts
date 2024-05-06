@@ -16,13 +16,15 @@ export class RadioListsComponent implements OnInit{
 
   @Input() type : string | undefined
 
-
+  
+  
+  
   ngOnInit(): void {
     this.api.setBaseUrl("https://at1.api.radio-browser.info")
     this.page = 1
     this.selectLoad()
   }
-
+  
   api : RadioBrowserApi = new RadioBrowserApi("My radio")
   radios: Station[] | undefined
   page : number = 1
@@ -32,8 +34,10 @@ export class RadioListsComponent implements OnInit{
   tagList : Signal<CountryResult[]> = signal([])
   nameStation : Signal<string> = signal('')
   stateMenu : boolean = false
+  mapState : boolean = false  
+  
 
-
+  
 
   async loadHistory(){
     this.historyService.getHistory()
@@ -134,6 +138,14 @@ export class RadioListsComponent implements OnInit{
       
     }else{
       this.stateMenu=true
+    }
+  }
+  
+  chageStateMap(){
+    if(this.mapState==true){
+      this.mapState=false
+    }else{
+      this.mapState=true
     }
   }
 }

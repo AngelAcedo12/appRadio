@@ -5,7 +5,6 @@ import { AllRadiosComponent } from './Pages/all-radios/all-radios.component';
 import { FindRadioComponent } from './Pages/find-radio/find-radio.component';
 import { NotFoundComponent } from '../shared/not-found/not-found.component';
 import { HistoryComponent } from './Pages/history/history.component';
-import { MapRadioComponent } from './Pages/map-radio/map-radio.component';
 
 const routes: Routes = [{
   path:'',
@@ -16,10 +15,7 @@ const routes: Routes = [{
       component:AllRadiosComponent,
 
     },
-    {
-      path:'mapa',
-      component: MapRadioComponent
-    },
+
     {
       path:'history',
       component:HistoryComponent

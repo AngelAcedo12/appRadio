@@ -52,6 +52,25 @@
 .filters-mobile{
     display: none;
 }
+.btn-map{
+   
+    width: 25px;
+    height: 25px;   
+  
+    
+}
+.btn-map-box{
+    display: flex;
+    padding: 0.5em;
+    transition: all 0.2s ease-in-out;
+    border-radius: 50%;
+    align-content: center;
+}
+.btn-map-box:hover{
+    background-color: var(--hover);
+   
+    cursor: pointer;
+}
 
 @media (max-width: 768px) {
     .list{

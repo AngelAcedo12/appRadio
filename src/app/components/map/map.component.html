@@ -1,12 +1,16 @@
 
-<div class="containerMap">
+<div class="containerMap" >
     <div class="box_map">
         <div class="shearchCity">
-            <input type="text" > 
+            <app-select-countrie (newCountryByName)="setActualCountry($event)"></app-select-countrie>
+        
+                <img (click)="closeMap()" class="close_btn" width="25" height="25" src="../../../assets/close.webp">
+         
+           
         </div>
         <div  id="map" class="map">
             
         </div>
     </div>
-
+    
 </div>

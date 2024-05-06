@@ -17,22 +17,20 @@ export class LocationRadiosService {
 
 
   api  : RadioBrowserApi = new RadioBrowserApi("My Radio Browser API Key")
-  radios : Signal<Station[]> = signal([])
+  radios : Signal<Station[] | undefined> = signal(undefined)
 
 
 
  async loadRadiosInCords(name: string){
-  await this.countriesService.shearchCountry(name)
-
+  
   await this.api.searchStations({
- 
+    
     order: 'random',
     removeDuplicates: true,
     countryCode: this.countriesService.actualSearchCountry()?.cca2 ?? 'ES',
     
   }).then(data => {
-  
-    this.radios = computed(() => data) // Fix: Assign the computed value to the 'radios' property
+    this.radios = computed(() => data)
   })
  }
 

@@ -6,12 +6,17 @@
         <div class="filters">
             <app-select-countrie (newCountry)="setCountryCode($event)"></app-select-countrie>
             <app-select-tag-list (refrestListFilter)="setTagList($event)"></app-select-tag-list>
+            
         </div>
+        <div class="btn-map-box">
 
+            <img class="btn-map"  (click)="chageStateMap()"  width="25" height="25" src="../../../assets/mapa.webp">
+        </div>
+     
         <div class="btn-open-filters-mobile">
 
             <img src="../../../assets/settings.webp"  (click)="changeStateMenu()" width="25" height="25"> 
-
+           
         </div>
         
         
@@ -19,11 +24,12 @@
     <section class="filters-mobile"  [ngClass]="stateMenu ? 'open' : 'close' ">
         <div class="box-close">
             <img class="btn-close-filters" (click)="changeStateMenu()" width="25" height="25" src="../../../../assets/close.webp">
+           
         </div>
         <div class="filters-mobile-content">
             <app-select-countrie (newCountry)="setCountryCode($event)"></app-select-countrie>
             <app-select-tag-list (refrestListFilter)="setTagList($event)"></app-select-tag-list>
-            <app-map></app-map>
+           
         </div>
     </section>
 }
@@ -50,3 +56,8 @@
     <app-loading></app-loading>
 }
 
+
+@if (mapState) {
+
+    <app-map (setMapState)="chageStateMap()"></app-map>
+}
