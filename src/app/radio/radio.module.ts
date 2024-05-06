@@ -10,6 +10,7 @@ import { SharedModule } from '../shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FindRadioComponent } from './Pages/find-radio/find-radio.component';
 import { HistoryComponent } from './Pages/history/history.component';
+import { MapRadioComponent } from './Pages/map-radio/map-radio.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { HistoryComponent } from './Pages/history/history.component';
     AllRadiosComponent,
     LayautRadioComponent,
     FindRadioComponent,
-    HistoryComponent
+    HistoryComponent,
+    MapRadioComponent
   ],
   imports: [
     CommonModule,
