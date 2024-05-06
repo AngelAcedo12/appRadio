@@ -4,7 +4,7 @@
         <app-find-bar (newShearchStation)="setRadioName($event)"></app-find-bar>
         
         <div class="filters">
-            <app-select-countrie (newCountry)="setCountryCode($event)"></app-select-countrie>
+            <app-select-countrie (newCountry)="setCountry($event)"></app-select-countrie>
             <app-select-tag-list (refrestListFilter)="setTagList($event)"></app-select-tag-list>
             
         </div>
@@ -26,7 +26,7 @@
             <img class="btn-close-filters" (click)="changeStateMenu()" width="25" height="25" src="../../../../assets/close.webp">
         </div>
         <div class="filters-mobile-content">
-            <app-select-countrie (newCountry)="loadRadios()"></app-select-countrie>
+            <app-select-countrie (newCountry)="setCountry($event)"></app-select-countrie>
             <app-select-tag-list (refrestListFilter)="setTagList($event)"></app-select-tag-list>
            
         </div>
@@ -58,5 +58,5 @@
 
 @if (mapState) {
 
-    <app-map (setFilter)="changeStateMenu()" (setMapState)="chageStateMap()"></app-map>
+    <app-map [actualCountry]="country()" (setFilter)="changeStateMenu()" (setMapState)="chageStateMap()"></app-map>
 }

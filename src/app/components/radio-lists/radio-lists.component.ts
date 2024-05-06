@@ -31,7 +31,7 @@ export class RadioListsComponent implements OnInit{
   page : number = 1
   loading :Signal<boolean>  = signal(false)
   totalEmision: number = 0
-  countryCode: Signal<string> = signal("ES")
+  country: Signal<string> = signal("Spain")
   tagList : Signal<CountryResult[]> = signal([])
   nameStation : Signal<string> = signal('')
   stateMenu : boolean = false
@@ -65,7 +65,7 @@ export class RadioListsComponent implements OnInit{
       await this.api.searchStations({
         name:this.nameStation(),
         nameExact:false,
-        countryCode:this.countriesService.actualSearchCountry()?.cca2 ?? 'ES',
+        country:  this.country() ?? "Spain",
         offset:0,
         limit:50,
         tagExact:false,
@@ -92,7 +92,7 @@ export class RadioListsComponent implements OnInit{
       await this.api.searchStations({
         name:this.nameStation(),
         nameExact:false,
-        countryCode: this.countriesService.actualSearchCountry()?.cca2 ?? 'ES',
+        country:  this.country() ?? "Spain",
         offset:this.page*50,
         limit:50,
         tagExact:false,
@@ -119,11 +119,12 @@ export class RadioListsComponent implements OnInit{
     this.loadRadios()
   }
 
-  setCountryCode(countryCode:string){
-    this.countryCode=computed(()=>countryCode)
+  setCountry(countryCode:string){
+    this.country=computed(()=>countryCode)
     this.page=1;
     this.radios=[]
     this.loadRadios()
+    this.changeStateMenu()
 
   }
   setTagList(CountryResult : CountryResult[]){
@@ -131,6 +132,7 @@ export class RadioListsComponent implements OnInit{
     this.page=1;
     this.radios=[]
     this.loadRadios()
+    this.changeStateMenu()
   }
 
   changeStateMenu(){

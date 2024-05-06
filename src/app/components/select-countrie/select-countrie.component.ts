@@ -11,7 +11,7 @@ import { FormControl } from '@angular/forms';
 })
 export class SelectCountrieComponent {
 
-  @Output() newCountry = new EventEmitter()
+  @Output() newCountry = new EventEmitter<string>()
   
   constructor(public countriesService : CountrysService,){
     this.loadCoutries()
@@ -27,8 +27,8 @@ export class SelectCountrieComponent {
     
 
       if(data!=undefined){
-        this.countriesService.actualSearchCountry = computed(()=>data[0])
-        this.newCountry.emit()
+        //this.countriesService.actualSearchCountry = computed(()=>data[0])
+        this.newCountry.emit(this.countrySelecter.value ?? "Spain")
       }
     }) 
    

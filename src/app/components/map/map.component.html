@@ -4,7 +4,7 @@
         <div class="shearchCity">
             <div class="filters">
 
-                <app-select-countrie (newCountry)="setActualCountry()"></app-select-countrie>
+                <app-select-countrie (newCountry)="setActualCountry($event)"></app-select-countrie>
                 
             </div>
             <img (click)="changeFilter()" src="../../../assets/settings.webp" class="btn_map btn_menu_filter">

@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, computed, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { AfterViewInit, Component, computed, EventEmitter, Input, OnInit, Output, OnChanges, SimpleChanges } from '@angular/core';
 import mapboxgl, { Map } from 'mapbox-gl'
 import enviroment from '../../../environments/environment';
 import { Coords } from '../../models/Coords';
@@ -13,16 +13,20 @@ import { Country } from '../../models/Country';
   templateUrl: './map.component.html',
   styleUrl: './map.component.css'
 })
-export class MapComponent implements OnInit{
+export class MapComponent implements OnInit, OnChanges{
 
   @Output() setMapState = new EventEmitter()
   @Output() setFilter = new EventEmitter()
   @Input() state : boolean = false
+  @Input({required: true}) actualCountry : string = "Spain" 
   constructor(private loadRadioService: LocationRadiosService,
      private reproductorService: ReproductorServiceService,
      public countryService: CountrysService) {
     
    }
+  ngOnChanges(changes: SimpleChanges): void {
+   this.loadLocation()
+  }
 
   
 
@@ -32,12 +36,12 @@ export class MapComponent implements OnInit{
     
     
   }
+
   mapIsLoad = false
   location : Coords = {
     lat: 0,
     lon: 0
   }
-  actualCountry : string = "Spain" 
   markerList: HTMLElement[] = []
   countries : Country[] | undefined
   map : Map | undefined
@@ -45,23 +49,28 @@ export class MapComponent implements OnInit{
   
  async initMap(){
    mapboxgl.accessToken= enviroment.MAP_BOX_TOKEN;
-    
-    if(this.mapIsLoad){
+    console.log(this.mapIsLoad)
+    if(this.mapIsLoad==true){
      
-      this.map?.setZoom(15).easeTo(
+      this.map?.easeTo(
         {
           center:[this.location.lon,this.location.lat],
-          zoom: 15
+          zoom: 5,
+          duration:1000,
+          essential: true
+
         }
       )
 
     }else{
+      console.log("first")
       this.map = new mapboxgl.Map({
         container: 'map',
         style: 'mapbox://styles/mapbox/streets-v12',
         center:[this.location.lon,this.location.lat],
-        zoom: 12
+        zoom: 5,
       })
+      this.mapIsLoad = true
     }
   
    
@@ -72,8 +81,8 @@ export class MapComponent implements OnInit{
   
   
 
-setActualCountry(){
-
+setActualCountry(name : string){
+  this.actualCountry = name
   this.loadLocation()
 }
 
@@ -96,13 +105,13 @@ async loadRadios(){
 async loadLocation(){
 
   this.clearMarkers()
-  console.log(this.countryService.selectedCountry()?.name?.common)
-  this.countryService.shearchCountry(this.countryService.selectedCountry()?.name?.common ?? "Spain").subscribe((data) => {
+  console.log()
+  this.countryService.shearchCountry(this.actualCountry).subscribe((data) => {
     
     this.location.lat = data[0].capitalInfo.latlng[0]
     this.location.lon = data[0].capitalInfo.latlng[1]
     
-    this.countryService.selectedCountry = computed(() => data[0])
+    this.countryService.actualSearchCountry = computed(() => data[0])
     this.initMap()
       
   }
@@ -116,7 +125,6 @@ getFavicon(station : Station ){
 }
 
 clearMarkers(){
-  console.log(this.markerList)
   if(this.markerList.length>0){
 
   document.getElementsByName('marker').forEach((item) => {
@@ -132,7 +140,7 @@ closeMap(){
 
 
 async loadMarkers(){
-  await this.loadRadioService.loadRadiosInCords(this.countryService.selectedCountry()?.name?.common ?? "Spain").then(() => {
+  await this.loadRadioService.loadRadiosInCords(this.actualCountry).then(() => {
     var radios =  this.loadRadioService.radios()
    
     if(radios!=undefined){
@@ -173,7 +181,6 @@ async loadMarkers(){
   })
 }
 changeFilter(){
-  console.log("change filter")
   this.setFilter.emit()
 }
 }
