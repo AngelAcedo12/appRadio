@@ -2,12 +2,15 @@
 <div class="containerMap" >
     <div class="box_map">
         <div class="shearchCity">
-            <app-select-countrie (newCountryByName)="setActualCountry($event)"></app-select-countrie>
-        
-                <img (click)="closeMap()" class="close_btn" width="25" height="25" src="../../../assets/close.webp">
-         
-           
+            <div class="filters">
+
+                <app-select-countrie></app-select-countrie>
+            </div>
+            <img src="../../../assets/settings.webp" class="btn_map">
+            <img (click)="closeMap()" class="btn_map" width="25" height="25" src="../../../assets/close.webp">
+            
         </div>
+
         <div  id="map" class="map">
             
         </div>

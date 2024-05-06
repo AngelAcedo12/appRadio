@@ -8,12 +8,16 @@
     --color-language:#DAF7A6;
     --hover:#939393;
 }
+label{
+    color: black;
+}
+
 .map{
     position: absolute;
     z-index: 2;
     height: 100%;
     width: 100%;
-    
+
 }
 .box_map{
     position: relative;
@@ -34,12 +38,13 @@
     left: 0;
     z-index: 3;
     width: 100%;
+    padding: 1em;
     display: flex;
     justify-content: space-between;
     align-items: center;
     backdrop-filter: blur(10px);
 }
-.close_btn{
+.btn_map{
     padding: 1em;
     transition: all 0.2s ease-in-out;
     border-radius: 50%;
@@ -47,7 +52,7 @@
     width: 25px;
     height: 25px;
 }
-.close_btn:hover{
+.btn_map:hover{
     background-color: var(--hover);
     cursor: pointer;
 }
@@ -56,4 +61,10 @@
 }
 .close{
     display: none;
+}
+
+@media (max-width: 768px) {
+    .filters{
+        display: none;
+    }
 }

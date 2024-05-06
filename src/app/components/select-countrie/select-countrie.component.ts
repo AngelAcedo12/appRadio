@@ -13,7 +13,7 @@ export class SelectCountrieComponent {
 
   @Output() newCountry = new EventEmitter<string>()
   @Output() newCountryByName = new EventEmitter<string>()
-  constructor(private countriesService : CountrysService,){
+  constructor(public countriesService : CountrysService,){
     this.loadCoutries()
   }
   countrySelecter = new FormControl("ES")
@@ -32,9 +32,7 @@ export class SelectCountrieComponent {
   }
 
   loadCoutries(){
-    this.countriesService.loadCountries().subscribe(data => {
-      this.countries=data
-    })
+    this.countriesService.loadCountries()
   }
 
 }

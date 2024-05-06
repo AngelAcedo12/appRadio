@@ -19,14 +19,14 @@ export class MapComponent implements OnInit{
   @Input() state : boolean = false
   constructor(private loadRadioService: LocationRadiosService,
      private reproductorService: ReproductorServiceService,
-     private countryService: CountrysService) {
+     public countryService: CountrysService) {
     
    }
 
   
 
   ngOnInit(): void {
-
+    
     this.loadLocation()
     
     
@@ -38,22 +38,37 @@ export class MapComponent implements OnInit{
   }
   actualCountry : string = "Spain" 
   markerList: HTMLElement[] = []
-
+  countries : Country[] | undefined
   map : Map | undefined
+
+  
  async initMap(){
+   mapboxgl.accessToken= enviroment.MAP_BOX_TOKEN;
     
-    
-    mapboxgl.accessToken= enviroment.MAP_BOX_TOKEN;
-    this.map = new mapboxgl.Map({
-      container: 'map',
-      style: 'mapbox://styles/mapbox/streets-v12',
-      center:[this.location.lon,this.location.lat],
-      zoom: 12
-    })
+    if(this.mapIsLoad){
+     
+      this.map?.setZoom(15).easeTo(
+        {
+          center:[this.location.lon,this.location.lat],
+          zoom: 15
+        }
+      )
+
+    }else{
+      this.map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v12',
+        center:[this.location.lon,this.location.lat],
+        zoom: 12
+      })
+    }
+  
    
    await this.loadRadios()
   
-  }
+}
+
+  
   
 
 setActualCountry(name: string){
@@ -65,51 +80,15 @@ setActualCountry(name: string){
 
 async loadRadios(){
 
-  if(this.map==undefined){ 
-     return
-    }
-  else{ 
-   
-    await this.loadRadioService.loadRadiosInCords(this.actualCountry).then(() => {
-      var radios =  this.loadRadioService.radios()
-     
-      if(radios!=undefined){
-        radios.forEach((item) => {
-     
-          if (item.geoLat != undefined && item.geoLong != undefined) {
+    if(this.map==undefined){ 
+      return
+     }
+   else{ 
 
-            var marker = new mapboxgl.Marker(
-              {
-                element: (() => {
-                  const div = document.createElement('div');
-                  const img = new Image()
-                  img.src = this.getFavicon(item)
-                  img.classList.add("marker-img")
-                  div.setAttribute("name","marker")
-                  div.classList.add("marker");
-                 
-                  div.appendChild(img)
-                
-                  return div;
-                })()
-              }
-            ).setLngLat([item.geoLong, item.geoLat]);
-
-            marker.getElement().addEventListener("click", () => {
-                this.reproductorService.play(item.url, item)
-            })
-
-            if (this.map) {
-             
-              marker.addTo(this.map);
-            }
-            this.markerList.push(marker.getElement())
-          }
-        });
-        
-      }
-    })
-  }
+    this.loadMarkers()
+   }
+  
+  
   
 
 }
@@ -149,5 +128,47 @@ closeMap(){
   this.setMapState.emit()
 }
 
+
+async loadMarkers(){
+  await this.loadRadioService.loadRadiosInCords(this.actualCountry).then(() => {
+    var radios =  this.loadRadioService.radios()
+   
+    if(radios!=undefined){
+      radios.forEach((item) => {
+   
+        if (item.geoLat != undefined && item.geoLong != undefined) {
+
+          var marker = new mapboxgl.Marker(
+            {
+              element: (() => {
+                const div = document.createElement('div');
+                const img = new Image()
+                img.src = this.getFavicon(item)
+                img.classList.add("marker-img")
+                div.setAttribute("name","marker")
+                div.classList.add("marker");
+               
+                div.appendChild(img)
+              
+                return div;
+              })()
+            }
+          ).setLngLat([item.geoLong, item.geoLat]);
+
+          marker.getElement().addEventListener("click", () => {
+              this.reproductorService.play(item.url, item)
+          })
+
+          if (this.map) {
+           
+            marker.addTo(this.map);
+          }
+          this.markerList.push(marker.getElement())
+        }
+      });
+      
+    }
+  })
+}
 }
 
