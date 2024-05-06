@@ -24,10 +24,9 @@
     <section class="filters-mobile"  [ngClass]="stateMenu ? 'open' : 'close' ">
         <div class="box-close">
             <img class="btn-close-filters" (click)="changeStateMenu()" width="25" height="25" src="../../../../assets/close.webp">
-           
         </div>
         <div class="filters-mobile-content">
-            <app-select-countrie (newCountry)="setCountryCode($event)"></app-select-countrie>
+            <app-select-countrie (newCountry)="loadRadios()"></app-select-countrie>
             <app-select-tag-list (refrestListFilter)="setTagList($event)"></app-select-tag-list>
            
         </div>
@@ -59,5 +58,5 @@
 
 @if (mapState) {
 
-    <app-map (setMapState)="chageStateMap()"></app-map>
+    <app-map (setFilter)="changeStateMenu()" (setMapState)="chageStateMap()"></app-map>
 }

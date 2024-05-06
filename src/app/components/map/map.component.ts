@@ -16,6 +16,7 @@ import { Country } from '../../models/Country';
 export class MapComponent implements OnInit{
 
   @Output() setMapState = new EventEmitter()
+  @Output() setFilter = new EventEmitter()
   @Input() state : boolean = false
   constructor(private loadRadioService: LocationRadiosService,
      private reproductorService: ReproductorServiceService,
@@ -71,8 +72,8 @@ export class MapComponent implements OnInit{
   
   
 
-setActualCountry(name: string){
-  this.actualCountry = name
+setActualCountry(){
+
   this.loadLocation()
 }
 
@@ -95,12 +96,13 @@ async loadRadios(){
 async loadLocation(){
 
   this.clearMarkers()
-  this.countryService.shearchCountry(this.actualCountry).subscribe((data) => {
+  console.log(this.countryService.selectedCountry()?.name?.common)
+  this.countryService.shearchCountry(this.countryService.selectedCountry()?.name?.common ?? "Spain").subscribe((data) => {
     
     this.location.lat = data[0].capitalInfo.latlng[0]
     this.location.lon = data[0].capitalInfo.latlng[1]
-  
-    this.countryService.actualSearchCountry = computed(() => data[0])
+    
+    this.countryService.selectedCountry = computed(() => data[0])
     this.initMap()
       
   }
@@ -130,7 +132,7 @@ closeMap(){
 
 
 async loadMarkers(){
-  await this.loadRadioService.loadRadiosInCords(this.actualCountry).then(() => {
+  await this.loadRadioService.loadRadiosInCords(this.countryService.selectedCountry()?.name?.common ?? "Spain").then(() => {
     var radios =  this.loadRadioService.radios()
    
     if(radios!=undefined){
@@ -169,6 +171,10 @@ async loadMarkers(){
       
     }
   })
+}
+changeFilter(){
+  console.log("change filter")
+  this.setFilter.emit()
 }
 }
 

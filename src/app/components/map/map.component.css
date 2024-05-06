@@ -62,9 +62,15 @@ label{
 .close{
     display: none;
 }
+.btn_menu_filter{
+    display: none;
+}
 
 @media (max-width: 768px) {
     .filters{
         display: none;
+    }
+    .btn_menu_filter{
+        display: block;
     }
 }

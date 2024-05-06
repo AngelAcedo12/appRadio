@@ -3,6 +3,7 @@ import { CountryResult, RadioBrowserApi, Station } from 'radio-browser-api';
 import { Country } from '../../models/Country';
 import { url } from 'inspector';
 import { HistoryService } from '../../services/history.service';
+import { CountrysService } from '../../services/countries.service';
 
 @Component({
   selector: 'app-radio-lists',
@@ -13,7 +14,7 @@ export class RadioListsComponent implements OnInit{
 
 
   public historyService = inject(HistoryService)
-
+  public countriesService = inject(CountrysService)
   @Input() type : string | undefined
 
   
@@ -64,7 +65,7 @@ export class RadioListsComponent implements OnInit{
       await this.api.searchStations({
         name:this.nameStation(),
         nameExact:false,
-        countryCode:this.countryCode(),
+        countryCode:this.countriesService.actualSearchCountry()?.cca2 ?? 'ES',
         offset:0,
         limit:50,
         tagExact:false,
@@ -91,7 +92,7 @@ export class RadioListsComponent implements OnInit{
       await this.api.searchStations({
         name:this.nameStation(),
         nameExact:false,
-        countryCode:this.countryCode(),
+        countryCode: this.countriesService.actualSearchCountry()?.cca2 ?? 'ES',
         offset:this.page*50,
         limit:50,
         tagExact:false,
@@ -140,7 +141,7 @@ export class RadioListsComponent implements OnInit{
       this.stateMenu=true
     }
   }
-  
+
   chageStateMap(){
     if(this.mapState==true){
       this.mapState=false

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, computed, EventEmitter, Output } from '@angular/core';
 import { CountrysService } from '../../services/countries.service';
 
 import { Country } from '../../models/Country';
@@ -11,24 +11,27 @@ import { FormControl } from '@angular/forms';
 })
 export class SelectCountrieComponent {
 
-  @Output() newCountry = new EventEmitter<string>()
-  @Output() newCountryByName = new EventEmitter<string>()
+  @Output() newCountry = new EventEmitter()
+  
   constructor(public countriesService : CountrysService,){
     this.loadCoutries()
   }
-  countrySelecter = new FormControl("ES")
+  countrySelecter = new FormControl("Spain")
 
 
   countries :Country[] | undefined;
 
   emitCountrySelected(){  
-    var country = this.countrySelecter.value
-    this.newCountry.emit(country || "ES")
-    if(this.countries!=undefined){
+    console.log(this.countrySelecter.value)
+    this.countriesService.shearchCountry(this.countrySelecter.value ?? "Spain").subscribe((data) => {
+    
 
-      var  countryName = this.countries.find((item)=>item.cca2==country)?.name.common
-      this.newCountryByName.emit(countryName!=undefined ? countryName : "Spain")
-    }
+      if(data!=undefined){
+        this.countriesService.actualSearchCountry = computed(()=>data[0])
+        this.newCountry.emit()
+      }
+    }) 
+   
   }
 
   loadCoutries(){

@@ -2,7 +2,7 @@
     <h3>Pais: </h3>
     <select  class="select-countries" [formControl]="countrySelecter" (change)="emitCountrySelected()">
         @for (item of countriesService.countries(); track $index) {
-            <option [value]="item.cca2">{{item.cca2}} | {{item.name.common}}</option>
+            <option (click)="emitCountrySelected()" [value]="item.name.common">{{item.cca2}} | {{item.name.common}}</option>
         }
     </select>
 </div>

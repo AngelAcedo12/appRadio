@@ -4,9 +4,10 @@
         <div class="shearchCity">
             <div class="filters">
 
-                <app-select-countrie></app-select-countrie>
+                <app-select-countrie (newCountry)="setActualCountry()"></app-select-countrie>
+                
             </div>
-            <img src="../../../assets/settings.webp" class="btn_map">
+            <img (click)="changeFilter()" src="../../../assets/settings.webp" class="btn_map btn_menu_filter">
             <img (click)="closeMap()" class="btn_map" width="25" height="25" src="../../../assets/close.webp">
             
         </div>
