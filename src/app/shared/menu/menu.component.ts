@@ -26,7 +26,7 @@ export class MenuComponent {
   menuItems: MenuItems[] = [
     {title:"Radios", url:'radio'},
     {title:"Historial",url:'radio/history'},
-    {title:"Mapa",url:'radio/mapa'},
+    
   ]
 
   closedSesion(){
