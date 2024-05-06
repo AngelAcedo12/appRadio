@@ -22,28 +22,30 @@ export class ProfileComponent {
 
   ngOnInit(): void {
     let queryName =this.activeRoute.snapshot.queryParams["name"];
-    console.log(queryName)
+  
     if(queryName!=null){
       
       this.userSevice.getProfileWithName(queryName)
  
     }else{
     
-    
       this.userSevice.getProfileWithToken()
       this.historyService.getHistory()
      
     } 
 
-    
-    
   }
 
   name : string | null = null;
   stateMenuOpcion = signal(false)
   history : historyItem[] | undefined
+  
+  URL_DEFAULT_AVATAR = "../../../../assets/profile/avatar.webp"
 
+
+  // Obtiene el historial del usuario 
   getHystory() {
+    
     let history = this.userSevice.profile()?.history
     if(history!=null) {
 
@@ -54,11 +56,14 @@ export class ProfileComponent {
     
     return this.history
   
-  }
+  } 
+  
 
+  // Devuelve la imagen de perfil del usuario o la imagen por defecto 
   getProfileImg(){
 
-    return this.userSevice.profile()?.imgProfile == null ?  "../../../../assets/profile/avatar.webp" : this.userSevice.profile()?.imgProfile+".webp";
+    return this.userSevice.profile()?.imgProfile == null 
+    ? this.URL_DEFAULT_AVATAR : this.userSevice.profile()?.imgProfile+".webp";
   }
   changeStateMenuOpcion(){
     if(this.stateMenuOpcion()){

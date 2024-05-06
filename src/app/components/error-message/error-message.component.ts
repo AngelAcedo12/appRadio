@@ -9,4 +9,7 @@ export class ErrorMessageComponent {
 
   @Input({required:true}) content : string | undefined
   
+  constructor( ) {
+    
+  }
 }

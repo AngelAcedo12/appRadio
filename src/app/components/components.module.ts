@@ -39,7 +39,8 @@ import { RecomendationItemComponent } from './recomendation-item/recomendation-i
     ImgSelectedComponent,
     OpcionMenuComponent,
     RecomendationUserComponent,
-    RecomendationItemComponent
+    RecomendationItemComponent,
+    
   ],exports:[
     RadioListsComponent,
     StationRadioComponent,

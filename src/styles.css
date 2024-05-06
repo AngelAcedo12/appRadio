@@ -10,7 +10,7 @@
     
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif ;
     font-weight: 600;
-
+    -webkit-tap-highlight-color: transparent;
 }
 img,a{
     -webkit-tap-highlight-color: transparent;
@@ -57,3 +57,16 @@ html{
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.mat-mdc-snack-bar-container {
+    &.blue-snackbar {
+      --mdc-snackbar-container-color: #2196f3;
+      --mat-mdc-snack-bar-button-color: #fff;
+      --mdc-snackbar-supporting-text-color: #fff;
+    }
+}
+.error{
+    background-color: red;
+    
+
+}
