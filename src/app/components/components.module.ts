@@ -19,6 +19,7 @@ import { ImgSelectedComponent } from './imgSelected/imgSelected.component';
 import { OpcionMenuComponent } from './opcionMenu/opcionMenu.component';
 import { RecomendationUserComponent } from './recomendation-user/recomendation-user.component';
 import { RecomendationItemComponent } from './recomendation-item/recomendation-item.component';
+import { MapComponent } from './map/map.component';
 
 
 
@@ -40,6 +41,7 @@ import { RecomendationItemComponent } from './recomendation-item/recomendation-i
     OpcionMenuComponent,
     RecomendationUserComponent,
     RecomendationItemComponent,
+    MapComponent,
     
   ],exports:[
     RadioListsComponent,
@@ -52,7 +54,9 @@ import { RecomendationItemComponent } from './recomendation-item/recomendation-i
     ErrorMessageComponent,
     ImgSelectedComponent,
     OpcionMenuComponent,
-    RecomendationUserComponent
+    RecomendationUserComponent,
+    MapComponent
+    
   ],
   imports: [
     CommonModule,

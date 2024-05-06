@@ -1,4 +1,4 @@
-import { computed, Injectable, signal, Signal } from '@angular/core';
+import { computed, Injectable, OnInit, signal, Signal } from '@angular/core';
 import { stat } from 'fs';
 import { Station } from 'radio-browser-api';
 import { ModelSaving } from '../models/ModelSavingStorage';
@@ -12,21 +12,19 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class ReproductorServiceService {
 
-  constructor(private http: HttpClient, private cookieService: CookieService) {
-    this.loadStationInLocalStorage()
-
-    this.addListertToAudio()
+  constructor(private http: HttpClient, private cookieService: CookieService) {}
 
 
-  }
-
-  audio: HTMLAudioElement = new Audio();
+  audio: HTMLAudioElement  | undefined ;
   actualStation: Signal<Station | undefined> = signal(undefined)
   state = signal(false)
   stationLoading = signal(false)
 
 
   async play(urlSound: string, station: Station) {
+    if (this.audio == undefined) {
+      this.audio = new Audio()
+    }
     this.state.update(() => false)
     this.stationLoading.update(() => false)
     this.audio.src = urlSound;
@@ -39,12 +37,18 @@ export class ReproductorServiceService {
   }
 
   pause() {
+    if (this.audio == undefined) {
+      this.audio = new Audio()
+    }
     this.audio.pause()
     this.state.update(() => false)
     this.saveActualSong()
   }
 
   async resume() {
+    if (this.audio == undefined) {
+      this.audio = new Audio()
+    }
     await this.audio.play()
     this.state.update(() => true)
     this.saveActualSong()
@@ -60,7 +64,10 @@ export class ReproductorServiceService {
   }
 
   loadStationInLocalStorage() {
+
+
     var station: ModelSaving = JSON.parse(localStorage.getItem("actualStation")!)
+    
     if (station == undefined) return
     this.actualStation = computed(() => station.data)
     this.play(this.actualStation()!.url, this.actualStation()!)
@@ -69,9 +76,11 @@ export class ReproductorServiceService {
     this.setColor()
   }
 
-  private addListertToAudio() {
+  public addListertToAudio() {
     
-
+    if (this.audio == undefined) {
+      this.audio = new Audio()
+    }
     
     this.audio.addEventListener("playing", () => {
       this.state.update(() => true)

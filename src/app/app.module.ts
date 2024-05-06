@@ -24,6 +24,8 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     HttpClientModule,
     MatSnackBarModule,
     BrowserAnimationsModule,
+    ComponentsModule,
+
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: !isDevMode(),
       // Register the ServiceWorker as soon as the application is stable

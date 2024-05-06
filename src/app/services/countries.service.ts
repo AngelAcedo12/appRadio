@@ -14,10 +14,16 @@ export class CountrysService {
    }
 
    urlCountries= "https://restcountries.com/v3.1/all"
-   
+   actualSearchCountry: Signal<Country | undefined> = signal(undefined)
+
 
    loadCountries(): Observable<Country[]>{
     return  this.htpp.get<Country[]>(this.urlCountries)
+   }
+   shearchCountry(name: string){
+    this.htpp.get<Country[]>(`https://restcountries.com/v3.1/name/${name}`).subscribe((data) => {
+      this.actualSearchCountry = computed(() => data[0])
+    })
    }
 
 

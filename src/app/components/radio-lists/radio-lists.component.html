@@ -21,9 +21,9 @@
             <img class="btn-close-filters" (click)="changeStateMenu()" width="25" height="25" src="../../../../assets/close.webp">
         </div>
         <div class="filters-mobile-content">
-
             <app-select-countrie (newCountry)="setCountryCode($event)"></app-select-countrie>
             <app-select-tag-list (refrestListFilter)="setTagList($event)"></app-select-tag-list>
+            <app-map></app-map>
         </div>
     </section>
 }
@@ -43,6 +43,8 @@
         }
     }
 </ul>
+
+
 
 @if (loading()==true) {  
     <app-loading></app-loading>

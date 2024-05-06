@@ -15,6 +15,16 @@ export class ReproductorComponent {
 
 
   }
+  ngOnInit(): void {
+    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
+    //Add 'implements OnInit' to the class.
+    console.log("HOLi")
+    this.reproductorService.audio= new Audio()
+    this.reproductorService.addListertToAudio()
+    if(this.reproductorService.actualStation!=undefined){
+    this.reproductorService.loadStationInLocalStorage()
+
+  }}
 
   state : Signal<boolean> = signal(false)
   stateOpen = signal(false)
