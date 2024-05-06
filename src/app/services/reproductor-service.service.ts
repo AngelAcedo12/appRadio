@@ -15,16 +15,16 @@ export class ReproductorServiceService {
   constructor(private http: HttpClient, private cookieService: CookieService) {}
 
 
-  audio: HTMLAudioElement  | undefined ;
+  audio: HTMLAudioElement  = new Audio();
   actualStation: Signal<Station | undefined> = signal(undefined)
   state = signal(false)
   stationLoading = signal(false)
 
 
   async play(urlSound: string, station: Station) {
-    if (this.audio == undefined) {
-      this.audio = new Audio()
-    }
+   
+     
+    
     this.state.update(() => false)
     this.stationLoading.update(() => false)
     this.audio.src = urlSound;
@@ -37,18 +37,14 @@ export class ReproductorServiceService {
   }
 
   pause() {
-    if (this.audio == undefined) {
-      this.audio = new Audio()
-    }
+ 
     this.audio.pause()
     this.state.update(() => false)
     this.saveActualSong()
   }
 
   async resume() {
-    if (this.audio == undefined) {
-      this.audio = new Audio()
-    }
+
     await this.audio.play()
     this.state.update(() => true)
     this.saveActualSong()

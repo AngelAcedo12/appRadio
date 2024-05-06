@@ -10,7 +10,7 @@ export class HistoryComponent {
   constructor() { }
 
   ngOnInit(): void {
-    console.log("hsitory component")
+   
   }
 
 

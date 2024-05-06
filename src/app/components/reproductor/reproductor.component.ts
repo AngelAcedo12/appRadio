@@ -1,4 +1,4 @@
-import { Component, computed, signal, Signal, SimpleChanges } from '@angular/core';
+import { AfterViewInit, Component, computed, signal, Signal, SimpleChanges } from '@angular/core';
 import { ReproductorServiceService } from '../../services/reproductor-service.service';
 import { Station } from 'radio-browser-api';
 import { Sign } from 'crypto';
@@ -9,22 +9,19 @@ import { of } from 'rxjs';
   templateUrl: './reproductor.component.html',
   styleUrl: './reproductor.component.css'
 })
-export class ReproductorComponent {
+export class ReproductorComponent implements AfterViewInit {
 
   constructor(public reproductorService:ReproductorServiceService){
 
 
   }
-  ngOnInit(): void {
-    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
-    //Add 'implements OnInit' to the class.
-    console.log("HOLi")
-    this.reproductorService.audio= new Audio()
+  ngAfterViewInit(): void {
     this.reproductorService.addListertToAudio()
     if(this.reproductorService.actualStation!=undefined){
     this.reproductorService.loadStationInLocalStorage()
 
-  }}
+  }
+}
 
   state : Signal<boolean> = signal(false)
   stateOpen = signal(false)
