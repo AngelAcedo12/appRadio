@@ -15,7 +15,7 @@
     ],
     "scope": "/",
     "splash_pages": true,
-    "orientation": ["portrait", "landscape"],
+    
     "description": "Escucha todas las radios del mundo en un solo lugar",
     "lang": "es",
     "dir": "ltr"

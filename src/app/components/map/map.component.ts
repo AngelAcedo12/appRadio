@@ -40,11 +40,8 @@ export class MapComponent implements OnInit{
       center:[this.location.lon,this.location.lat],
       zoom: 12
     })
-    setInterval(async() => {
-
       this.loadRadios()
-    },200)
-
+  
   }
   
 async loadRadios(){

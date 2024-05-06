@@ -25,15 +25,14 @@ export class LocationRadiosService {
   await this.countriesService.shearchCountry(name)
 
   await this.api.searchStations({
-    limit: 100,
-    offset: this.radios().length,
+ 
     order: 'random',
     removeDuplicates: true,
     countryCode: this.countriesService.actualSearchCountry()?.cca2 ?? 'ES',
     
   }).then(data => {
-    var newData = this.radios().concat(data)
-    this.radios = computed(() => newData) // Fix: Assign the computed value to the 'radios' property
+  
+    this.radios = computed(() => data) // Fix: Assign the computed value to the 'radios' property
   })
  }
 
