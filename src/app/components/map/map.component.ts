@@ -61,7 +61,7 @@ export class MapComponent implements OnInit, OnChanges{
           zoom: 5,
           duration:1000,
           essential: true,
-          animate: true
+          animate: true,
         }
       )
 
@@ -75,7 +75,8 @@ export class MapComponent implements OnInit, OnChanges{
         maxTileCacheSize: 1000,
         preserveDrawingBuffer: true,
         renderWorldCopies: true,
-        
+        testMode: true,
+
       })
       this.map.on('style.load', () => {
         this.map?.setFog({}); // Set the default atmosphere style
@@ -173,7 +174,6 @@ async loadMarkers(){
                 const div = document.createElement('div');
                 const img = new Image()
                 img.loading = "lazy"
-                
                 img.src = this.getFavicon(item)
                 img.classList.add("marker-img")
                 div.setAttribute("name","marker")
