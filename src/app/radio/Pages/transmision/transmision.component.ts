@@ -12,9 +12,10 @@ export class TransmisionComponent implements OnInit {
 
 
   ngOnInit(): void {
-    
-      this.transmisionService.createNewWebSocket()
-      this.transmisionService.sendMessage("Hola")
+
+    this.transmisionService.getConnection().then((data)=>{
+      console.log(data)
+    }   )
     
   }
 

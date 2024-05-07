@@ -1,8 +1,12 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 import enviroment from '../../environments/environment';
-import { Socket, SocketIoConfig } from 'ngx-socket-io';
+import {io,Manager} from 'socket.io-client';
 import { NotificationService } from './notification-service.service';
+import { Socket } from 'socket.io';
+
+
 
 
 
@@ -12,33 +16,21 @@ import { NotificationService } from './notification-service.service';
 })
 export class TransmisionServiceSocketService {
 
-
-  constructor(private noficicationService: NotificationService) {
   
+  
+  constructor(private notificationService: NotificationService, private http: HttpClient) {
+    
   }
-
-
-  socketConfig : SocketIoConfig= {
-    url: `${enviroment.base_url_local}api/transmision`,
-    options: {
-      
-    }
+  
+  getConnection() {
+    return this.http.get<any>(`${enviroment.base_url_local}api/transmision`).toPromise().then((data) => {
+      return data
+    }).catch((err) => {
+      this.notificationService.openSnackBarError({
+        message: "Error al conectar con el servidor",
+        duration: 2000,
+      })
+    })
   }
-  webSocket : Socket | undefined
-
-  createNewWebSocket(){
-      let url = `${enviroment.base_url_local}/api/transmission`;
-      this.webSocket =  new Socket(this.socketConfig);
-  }
-
-  sendMessage(message: string){
-    this.webSocket?.emit('message', message)
-  }
-  getMessage(){
-
-    return this.webSocket?.fromEvent('message')
-
-  }
-
 
 }
