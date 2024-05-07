@@ -8,6 +8,8 @@ import { ReproductorServiceService } from '../../services/reproductor-service.se
 import { CountrysService } from '../../services/countries.service';
 import { Country } from '../../models/Country';
 import { of } from 'rxjs';
+import { core } from '@angular/compiler';
+import { NotificationService } from '../../services/notification-service.service';
 
 @Component({
   selector: 'app-map',
@@ -23,7 +25,8 @@ export class MapComponent implements OnInit, OnChanges{
 
   constructor(private loadRadioService: LocationRadiosService,
      private reproductorService: ReproductorServiceService,
-     public countryService: CountrysService) {
+     public countryService: CountrysService,
+    private notificationService: NotificationService) {
     
    }
   ngOnChanges(changes: SimpleChanges): void {
@@ -203,8 +206,53 @@ async loadMarkers(){
     }
   })
 }
+
+
 changeFilter(){
   this.setFilter.emit()
 }
-}
 
+
+playRandom(){
+  
+
+  var radios = this.loadRadioService.radios()
+
+  if(radios!=undefined){
+    var random = Math.floor(Math.random() * radios.length)
+    this.reproductorService.play(radios[random].url, radios[random])
+    var coords : Coords = {
+      lat: radios[random].geoLat!,
+      lon: radios[random].geoLong!
+    }
+    if(coords.lat!=undefined && coords.lon!=undefined){
+      this.zoomIn(coords)
+    }else{
+      this.notificationService.openSnackBarError({
+        message: "No se ha podido cargar la ubicacion de la emisora",
+        duration: 2000
+      })
+    }
+
+  
+
+
+
+  }
+
+
+}
+zoomIn(coords: Coords){
+  if(this.map!=undefined){
+    this.map.easeTo(
+      {
+        center:[coords.lon,coords.lat],
+        zoom: 10,
+        duration:1000,
+        essential: true,
+        animate: true,
+      }
+    )
+  }
+}
+}

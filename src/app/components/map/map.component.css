@@ -45,7 +45,7 @@ label{
 
 }
 .btn_map{
-    padding: 1em;
+    padding: 0.5em;
     transition: all 0.2s ease-in-out;
     border-radius: 50%;
     margin-right: 1em;
@@ -53,8 +53,9 @@ label{
     height: 25px;
 }
 .btn_map:hover{
-    background-color: var(--hover);
+    background-color: var(--color-background);
     cursor: pointer;
+    transform: scale(1.1);
 }
 .open{
     opacity: 1;
@@ -66,6 +67,17 @@ label{
 }
 .btn_menu_filter{
     display: none;
+}
+.opcions{
+    display: flex;
+    gap:0.5em;
+    flex-direction: row;
+}
+.filters{
+    display: flex;
+    gap: 0.5em;
+    flex-direction: row;
+    align-items: center;
 }
 
 @media (max-width: 768px) {
