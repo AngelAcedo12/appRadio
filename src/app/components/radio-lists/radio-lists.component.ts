@@ -4,6 +4,7 @@ import { Country } from '../../models/Country';
 import { url } from 'inspector';
 import { HistoryService } from '../../services/history.service';
 import { CountrysService } from '../../services/countries.service';
+import { LocationRadiosService } from '../../services/location-radios.service';
 
 @Component({
   selector: 'app-radio-lists',
@@ -15,13 +16,14 @@ export class RadioListsComponent implements OnInit{
 
   public historyService = inject(HistoryService)
   public countriesService = inject(CountrysService)
+  public locationRadiosService = inject(LocationRadiosService)
   @Input() type : string | undefined
 
   
   
   
   ngOnInit(): void {
-    this.api.setBaseUrl("https://at1.api.radio-browser.info")
+    this.api.setBaseUrl(this.locationRadiosService.baseUrl)
     this.page = 1
     this.selectLoad()
   }
