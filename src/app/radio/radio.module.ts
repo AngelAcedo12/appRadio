@@ -10,7 +10,6 @@ import { SharedModule } from '../shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FindRadioComponent } from './Pages/find-radio/find-radio.component';
 import { HistoryComponent } from './Pages/history/history.component';
-import { TransmisionComponent } from './Pages/transmision/transmision.component';
 
 
 @NgModule({
@@ -19,7 +18,6 @@ import { TransmisionComponent } from './Pages/transmision/transmision.component'
     LayautRadioComponent,
     FindRadioComponent,
     HistoryComponent,
-    TransmisionComponent,
   ],
   imports: [
     CommonModule,
