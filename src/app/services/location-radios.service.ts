@@ -10,15 +10,14 @@ import { CountrysService } from './countries.service';
 export class LocationRadiosService {
 
   constructor(private http: HttpClient, private countriesService: CountrysService) {
-    this.setRamdonUrl()
-    this.api.setBaseUrl("https://at1.api.radio-browser.info")
-
+   
+    this.api.setBaseUrl(this.baseUrl)
    }
 
 
   api  : RadioBrowserApi = new RadioBrowserApi("My Radio Browser API Key")
   radios : Signal<Station[] | undefined> = signal(undefined)
-  baseUrl : string = ""
+  baseUrl : string = "https://at1.api.radio-browser.info"
 
   // Setea una url aleatoria de la api de radio-browser
   async setRamdonUrl(){
