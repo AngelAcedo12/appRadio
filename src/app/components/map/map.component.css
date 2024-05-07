@@ -60,10 +60,12 @@ label{
 .open{
     opacity: 1;
     z-index: 3;
+    animation: fade 0.2s forwards  cubic-bezier(0.19, 1, 0.22, 1);
 }
 .close{
     opacity: 0;
     z-index: -100;
+    animation: fadeOut 0.2s forwards cubic-bezier(0.19, 1, 0.22, 1);
 }
 .btn_menu_filter{
     display: none;
@@ -86,5 +88,21 @@ label{
     }
     .btn_menu_filter{
         display: block;
+    }
+}
+@keyframes fade {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+    
+}
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }100% {
+        opacity: 0;
     }
 }
