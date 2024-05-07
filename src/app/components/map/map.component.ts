@@ -111,6 +111,7 @@ async loadRadios(){
    else{ 
   
     if(this.chargeCountry!=this.actualCountry || this.markerList.length==0){
+      this.radiosIsLoad = false
       this.loadMarkers()
     }
    }
@@ -120,12 +121,15 @@ async loadRadios(){
 
 }
 async loadLocation(){
-  this.radiosIsLoad = false
+
   if(this.actualCountry!=this.chargeCountry){
 
     this.clearMarkers()
-  }
+  }else{
+    
+    
 
+  }
   this.countryService.shearchCountry(this.actualCountry).subscribe((data) => {
     
     this.location.lat = data[0].capitalInfo.latlng[0]
@@ -135,6 +139,7 @@ async loadLocation(){
     this.initMap()
       
   }
+
 )
   
   
@@ -147,7 +152,7 @@ getFavicon(station : Station ){
 async clearMarkers(){
   
   if(this.markerList.length>0){
-    console.log("clear")
+
     this.markerList.forEach((item) => {
       item.remove()
     })
