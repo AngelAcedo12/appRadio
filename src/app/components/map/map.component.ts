@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, computed, EventEmitter, Input, OnInit, Output, OnChanges, SimpleChanges } from '@angular/core';
+import { AfterViewInit, Component, computed, EventEmitter, Input, OnInit, Output, OnChanges, SimpleChanges, signal } from '@angular/core';
 import mapboxgl, { Map, Marker } from 'mapbox-gl'
 import enviroment from '../../../environments/environment';
 import { Coords } from '../../models/Coords';
@@ -36,7 +36,8 @@ export class MapComponent implements OnInit, OnChanges{
   
 
   ngOnInit(): void {
-    
+    this.loadStyle()
+    this.addWindowListener()
     this.loadLocation()
     
     
@@ -52,7 +53,8 @@ export class MapComponent implements OnInit, OnChanges{
   map : Map | undefined
   chargeCountry : string = ""
   radiosIsLoad = false
-  
+  style = signal("dark")
+
  async initMap(){
    mapboxgl.accessToken= enviroment.MAP_BOX_TOKEN;
    
@@ -69,10 +71,18 @@ export class MapComponent implements OnInit, OnChanges{
       )
 
     }else{
-     
+
+      
+      let url = "mapbox://styles/mapbox/dark-v11"
+      if(this.style()=='dark'){
+        url = "mapbox://styles/mapbox/dark-v11"
+      }else if(this.style()=='light'){
+        url = "mapbox://styles/mapbox/light-v10"
+      }
+      console.log(url)
       this.map = new mapboxgl.Map({
         container: 'map',
-        style: 'mapbox://styles/mapbox/dark-v11',
+        style: url,
         center:[this.location.lon,this.location.lat],
         zoom: 5,
         maxTileCacheSize: 1000,
@@ -268,6 +278,7 @@ zoomInToStationSelected(name:string){
 }
 }
 
+// Hace zoom en el mapa a las coordenadas pasadas
 zoomIn(coords: Coords){
   if(this.map!=undefined){
     this.map.easeTo(
@@ -282,7 +293,41 @@ zoomIn(coords: Coords){
   }
 }
 
+// Carga los nombres  de las emisoras para pasarselas al autocomplete
 getKeyWord(){
   return this.loadRadioService.radios()?.map((item) => item.name) || [];
+}
+
+loadStyle(){
+
+
+  if(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches){
+    console.log("DARK")
+    this.style.update(() => "dark")
+  }else{
+    console.log("Light")
+    this.style.update(() => "light")
+  }
+}
+
+addWindowListener(){
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+
+    this.chageStyleToMap()
+  })
+}
+
+
+chageStyleToMap(){
+
+  if(this.style()=="dark"){
+    this.style = signal("light")
+    this.map?.setStyle("mapbox://styles/mapbox/light-v10")
+
+  }else{
+    this.style = signal("dark")
+    this.map?.setStyle("mapbox://styles/mapbox/dark-v11")
+  }
+  this.initMap()
 }
 }
