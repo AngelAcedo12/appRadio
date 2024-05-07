@@ -20,6 +20,7 @@ export class LocationRadiosService {
   radios : Signal<Station[] | undefined> = signal(undefined)
   baseUrl : string = ""
 
+  // Setea una url aleatoria de la api de radio-browser
   async setRamdonUrl(){
     
     if (!this.baseUrl) { 

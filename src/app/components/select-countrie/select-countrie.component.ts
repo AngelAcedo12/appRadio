@@ -22,7 +22,7 @@ export class SelectCountrieComponent {
   countries :Country[] | undefined;
 
   emitCountrySelected(){  
-    console.log(this.countrySelecter.value)
+
     this.countriesService.shearchCountry(this.countrySelecter.value ?? "Spain").subscribe((data) => {
     
 
