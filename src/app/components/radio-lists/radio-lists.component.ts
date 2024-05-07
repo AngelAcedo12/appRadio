@@ -58,6 +58,7 @@ export class RadioListsComponent implements OnInit{
 
 
   async loadRadios(){
+    // FILTROS YA NO UTILIZADOS
    var filterTag = this.tagList().map((item)=>item.name)
   if(this.page<=1){
     if(this.loading()!=true){

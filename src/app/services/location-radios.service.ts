@@ -27,8 +27,8 @@ export class LocationRadiosService {
     
     order: 'random',
     removeDuplicates: true,
-    countryCode: this.countriesService.actualSearchCountry()?.cca2 ?? 'ES',
-    
+    country: name ,
+
   }).then(data => {
     this.radios = computed(() => data)
   })

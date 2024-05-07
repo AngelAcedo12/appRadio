@@ -5,7 +5,7 @@
         
         <div class="filters">
             <app-select-countrie (newCountry)="setCountry($event)"></app-select-countrie>
-            <app-select-tag-list (refrestListFilter)="setTagList($event)"></app-select-tag-list>
+          
             
         </div>
         <div class="btn-map-box">
@@ -27,7 +27,7 @@
         </div>
         <div class="filters-mobile-content">
             <app-select-countrie (newCountry)="setCountry($event)"></app-select-countrie>
-            <app-select-tag-list (refrestListFilter)="setTagList($event)"></app-select-tag-list>
+            <!-- <app-select-tag-list (refrestListFilter)="setTagList($event)"></app-select-tag-list> -->
            
         </div>
     </section>
@@ -56,7 +56,6 @@
 }
 
 
-@if (mapState) {
 
-    <app-map [actualCountry]="country()" (setFilter)="changeStateMenu()" (setMapState)="chageStateMap()"></app-map>
-}
+
+    <app-map [state]="mapState" [actualCountry]="country()" (setFilter)="changeStateMenu()" (setMapState)="chageStateMap()"></app-map>

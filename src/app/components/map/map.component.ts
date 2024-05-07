@@ -20,6 +20,7 @@ export class MapComponent implements OnInit, OnChanges{
   @Output() setFilter = new EventEmitter()
   @Input() state : boolean = false
   @Input({required: true}) actualCountry : string = "Spain" 
+
   constructor(private loadRadioService: LocationRadiosService,
      private reproductorService: ReproductorServiceService,
      public countryService: CountrysService) {
@@ -46,7 +47,8 @@ export class MapComponent implements OnInit, OnChanges{
   markerList: Marker[] = []
   countries : Country[] | undefined
   map : Map | undefined
-
+  chargeCountry : string = ""
+  
   
  async initMap(){
    mapboxgl.accessToken= enviroment.MAP_BOX_TOKEN;
@@ -58,19 +60,25 @@ export class MapComponent implements OnInit, OnChanges{
           center:[this.location.lon,this.location.lat],
           zoom: 5,
           duration:1000,
-          essential: true
-          
+          essential: true,
+          animate: true
         }
       )
 
     }else{
-      console.log("first")
+     
       this.map = new mapboxgl.Map({
         container: 'map',
-        style: 'mapbox://styles/mapbox/streets-v12',
+        style: 'mapbox://styles/mapbox/dark-v11',
         center:[this.location.lon,this.location.lat],
         zoom: 5,
+        maxTileCacheSize: 1000,
+        testMode: true,
       })
+      this.map.on('style.load', () => {
+        this.map?.setFog({}); // Set the default atmosphere style
+      });
+      
       this.mapIsLoad = true
     }
   
@@ -95,8 +103,10 @@ async loadRadios(){
       return
      }
    else{ 
-
-    this.loadMarkers()
+  
+    if(this.chargeCountry!=this.actualCountry || this.markerList.length==0){
+      this.loadMarkers()
+    }
    }
   
   
@@ -105,13 +115,16 @@ async loadRadios(){
 }
 async loadLocation(){
 
-  this.clearMarkers()
-  console.log()
+  if(this.actualCountry!=this.chargeCountry){
+
+    this.clearMarkers()
+  }
+
   this.countryService.shearchCountry(this.actualCountry).subscribe((data) => {
     
     this.location.lat = data[0].capitalInfo.latlng[0]
     this.location.lon = data[0].capitalInfo.latlng[1]
-    
+    this.chargeCountry= data[0].name.common
     this.countryService.actualSearchCountry = computed(() => data[0])
     this.initMap()
       
@@ -126,9 +139,9 @@ getFavicon(station : Station ){
 }
 
 async clearMarkers(){
-  console.log(this.markerList)
-  if(this.markerList.length>0){
   
+  if(this.markerList.length>0){
+    console.log("clear")
     this.markerList.forEach((item) => {
       item.remove()
     })
@@ -143,10 +156,10 @@ closeMap(){
 
 
 async loadMarkers(){
-  this.clearMarkers()
+  
   await this.loadRadioService.loadRadiosInCords(this.actualCountry).then(() => {
     var radios =  this.loadRadioService.radios()
-   
+
     if(radios!=undefined){
       radios.forEach((item) => {
    
@@ -157,18 +170,22 @@ async loadMarkers(){
               element: (() => {
                 const div = document.createElement('div');
                 const img = new Image()
+                img.loading = "lazy"
+                
                 img.src = this.getFavicon(item)
                 img.classList.add("marker-img")
                 div.setAttribute("name","marker")
                 div.classList.add("marker");
-               
+                
                 div.appendChild(img)
-              
+                
                 return div;
               })()
             }
           ).setLngLat([item.geoLong, item.geoLat]);
 
+   
+          
           marker.getElement().addEventListener("click", () => {
 
               this.reproductorService.play(item.url, item)

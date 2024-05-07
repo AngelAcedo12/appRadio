@@ -77,8 +77,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .marker{
     border-radius: 50%;
     background-color: var(--color-secundary);
-    width: 60px;
-    height: 60px;
+    width: 25px;
+    height: 25px;
     background: #52BE80;
     border-radius: 50%;
     padding: 5px;
@@ -89,10 +89,12 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     border-radius: 50%;
     animation: fade 1s ease-in-out forwards;
     
+    
 }
 .marker:hover{
     background: var(--hover);
     outline: black 1px solid;
+    box-shadow: white 0px 0px 5px 0px;
     transition: color all  ease-in-out;
 }
 .marker:active{
@@ -101,8 +103,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     transition: 0.5s ease-in-out;
 }
 .marker-img{
-    width: 50px;
-    height: 50px;
+    width: 25px;
+    height: 25px;
     object-fit: fill;
     border-radius: 20px;
     
