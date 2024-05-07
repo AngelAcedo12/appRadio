@@ -73,7 +73,7 @@ export class MapComponent implements OnInit, OnChanges{
         center:[this.location.lon,this.location.lat],
         zoom: 5,
         maxTileCacheSize: 1000,
-        testMode: true,
+      
       })
       this.map.on('style.load', () => {
         this.map?.setFog({}); // Set the default atmosphere style
