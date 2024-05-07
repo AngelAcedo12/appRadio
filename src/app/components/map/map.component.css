@@ -57,6 +57,19 @@ label{
     cursor: pointer;
     transform: scale(1.1);
 }
+.btn{
+    padding: 0.5em;
+    transition: all 0.2s ease-in-out;
+    border-radius: 50%;
+   
+    width: 25px;
+    height: 25px;
+}
+.btn:hover{
+    background-color: var(--color-background);
+    cursor: pointer;
+    transform: scale(1.1);
+}
 .loader{
     position: absolute;
     top: 50%;

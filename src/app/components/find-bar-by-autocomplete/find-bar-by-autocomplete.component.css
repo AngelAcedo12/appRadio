@@ -1,0 +1,84 @@
+
+*{
+    --color-background:#2A1F2D;
+    --color-primary:#59C9A5;
+    --color-secundary:#52BE80;
+    --color-country:#FF6747;
+    --color-language:#DAF7A6;
+    --hover:#939393;
+}
+.box_shearch{
+    
+    display: flex;
+    flex-direction: column;
+    margin-right: 1em;
+}
+
+::-webkit-scrollbar{
+    display: none;
+
+}
+
+
+
+.autoCompleteBox{
+    width: 100%;
+    position: absolute;
+    z-index: 5;
+    padding: 0.5em;
+    margin-top: 2em;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    overflow-x: scroll;
+    gap: 0.5em;
+   & span{
+        width: fit-content;
+        padding-top: 0.5em;
+        padding-bottom: 0.5em;
+        padding-left: 0.5em;
+        padding-right: 0.5em;
+        background-color: var(--color-primary);
+        border-radius: 10px;
+        color: black;
+        text-overflow: ellipsis;
+
+        text-wrap: nowrap;
+   }
+   & span:hover{
+    background-color: var(--color-secundary);
+    cursor: pointer;
+   }
+}
+@media (max-width: 768px) {
+    .autoCompleteBox{
+        width: 100%;
+        position: absolute;
+        z-index: 5;
+        padding: 0.5em;
+        margin-top: 2em;
+        display: flex;
+        flex-direction: row;
+        overflow-x: scroll;
+        flex-wrap: nowrap;
+        gap: 0.5em;
+       & span{
+            width: fit-content;
+            padding-top: 0.5em;
+            padding-bottom: 0.5em;
+            padding-left: 0.5em;
+            padding-right: 0.5em;
+            background-color: var(--color-primary);
+            border-radius: 10px;
+            color: black;
+            text-overflow: ellipsis;
+            width: 200px;
+            text-wrap: nowrap;
+       }
+       & span:hover{
+        background-color: var(--color-secundary);
+        cursor: pointer;
+       }
+    }
+    
+}

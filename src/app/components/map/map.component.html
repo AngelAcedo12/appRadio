@@ -10,12 +10,14 @@
         }
         <div class="shearchCity">
             <div class="filters">
+                <app-find-bar-by-autocomplete (keyWordSelected)="zoomInToStationSelected($event)" [listKeyWords]="getKeyWord()"></app-find-bar-by-autocomplete>
                 <app-select-countrie (newCountry)="setActualCountry($event)"></app-select-countrie>
                 <img (click)="playRandom()" src="../../../assets/shuffle.webp" class="btn_map " >
             </div>
             <div class="opcions">
-                <img  (click)="changeFilter()" src="../../../assets/settings.webp" class="btn_map btn_menu_filter">
-                <img  (click)="playRandom()" src="../../../assets/shuffle.webp" class="btn_map btn_menu_filter" >
+                <app-find-bar-by-autocomplete (keyWordSelected)="zoomInToStationSelected($event)" class="btn_menu_filter" [listKeyWords]="getKeyWord()"></app-find-bar-by-autocomplete>
+                <img  (click)="changeFilter()" src="../../../assets/settings.webp" class="btn btn_menu_filter">
+                <img  (click)="playRandom()" src="../../../assets/shuffle.webp" class="btn btn_menu_filter" >
             </div>
             <img (click)="closeMap()" class="btn_map" width="25" height="25" src="../../../assets/close.webp">
             

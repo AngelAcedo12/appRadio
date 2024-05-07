@@ -20,6 +20,7 @@ import { OpcionMenuComponent } from './opcionMenu/opcionMenu.component';
 import { RecomendationUserComponent } from './recomendation-user/recomendation-user.component';
 import { RecomendationItemComponent } from './recomendation-item/recomendation-item.component';
 import { MapComponent } from './map/map.component';
+import { FindBarByAutocompleteComponent } from './find-bar-by-autocomplete/find-bar-by-autocomplete.component';
 
 
 
@@ -42,6 +43,7 @@ import { MapComponent } from './map/map.component';
     RecomendationUserComponent,
     RecomendationItemComponent,
     MapComponent,
+    FindBarByAutocompleteComponent,
     
   ],exports:[
     RadioListsComponent,

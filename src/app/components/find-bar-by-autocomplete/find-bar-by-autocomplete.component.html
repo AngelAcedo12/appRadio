@@ -1,0 +1,8 @@
+<div class="box_shearch">
+    <app-find-bar (newShearchStation)="setKeyWordActual($event)"></app-find-bar>
+    <div class="autoCompleteBox">
+        @for (item of keyWordRecomendations; track $index) {
+            <span (click)="selectKeyWord(item)">{{item}}</span>
+        }
+    </div>
+</div>

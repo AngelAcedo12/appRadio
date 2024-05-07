@@ -78,7 +78,7 @@ export class MapComponent implements OnInit, OnChanges{
         maxTileCacheSize: 1000,
         preserveDrawingBuffer: true,
         renderWorldCopies: true,
-        testMode: true,
+      
 
       })
       this.map.on('style.load', () => {
@@ -240,13 +240,34 @@ playRandom(){
     }
 
   
-
-
-
   }
 
 
 }
+
+zoomInToStationSelected(name:string){
+  var radios = this.loadRadioService.radios()
+  if(radios!=undefined){
+    var station = radios.find((item) => item.name == name)
+    if(station!=undefined){
+      var coords : Coords = {
+        lat: station.geoLat!,
+        lon: station.geoLong!
+      }
+      if(coords.lat!=undefined && coords.lon!=undefined){
+        this.zoomIn(coords)
+        
+      }else{
+        this.notificationService.openSnackBarError({
+          message: "No se ha podido cargar la ubicacion de la emisora",
+          duration: 2000
+        })
+      }
+      this.reproductorService.play(station.url, station)
+    }
+}
+}
+
 zoomIn(coords: Coords){
   if(this.map!=undefined){
     this.map.easeTo(
@@ -259,5 +280,9 @@ zoomIn(coords: Coords){
       }
     )
   }
+}
+
+getKeyWord(){
+  return this.loadRadioService.radios()?.map((item) => item.name) || [];
 }
 }
