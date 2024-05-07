@@ -51,7 +51,7 @@ export class MapComponent implements OnInit, OnChanges{
   countries : Country[] | undefined
   map : Map | undefined
   chargeCountry : string = ""
-  
+  radiosIsLoad = false
   
  async initMap(){
    mapboxgl.accessToken= enviroment.MAP_BOX_TOKEN;
@@ -120,7 +120,7 @@ async loadRadios(){
 
 }
 async loadLocation(){
-
+  this.radiosIsLoad = false
   if(this.actualCountry!=this.chargeCountry){
 
     this.clearMarkers()
@@ -202,7 +202,7 @@ async loadMarkers(){
         
         }
       });
-      
+      this.radiosIsLoad = true
     }
   })
 }

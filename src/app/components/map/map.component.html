@@ -1,6 +1,13 @@
 
 <div class="containerMap" [ngClass]="state ? 'open' : 'close'">
+    
     <div class="box_map">
+        @if (radiosIsLoad==false) {
+            <div class="loader">
+
+                <app-loading ></app-loading>
+            </div>
+        }
         <div class="shearchCity">
             <div class="filters">
                 <app-select-countrie (newCountry)="setActualCountry($event)"></app-select-countrie>
