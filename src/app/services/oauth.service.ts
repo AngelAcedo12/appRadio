@@ -27,7 +27,7 @@ export class OauthService {
   register(userSave: DtoUserSave) {
    return this.http.post<any>(`${enviroment.base_url_local}api/user`, userSave).pipe(
     catchError(err => {
-      this.nofiticationService.openSnackBarError({
+      this.nofiticationService.openSnackBar({
         message: "Error al registrar el usuario",
         duration: 2000,
       })
@@ -40,7 +40,7 @@ export class OauthService {
    return this.http.get<any>(`${enviroment.base_url_local}api/user?email=${email}&password=${password}`).pipe(
     catchError(err => {
       console.log(err)
-      this.nofiticationService.openSnackBarError({
+      this.nofiticationService.openSnackBar({
         message: "Usuario o contraseña incorrecta",
         duration: 2000,
    
@@ -58,7 +58,7 @@ export class OauthService {
 
    return this.http.post<any>(`${enviroment.base_url_local}api/user/logWhitToken`, body).pipe(
     catchError(err => {
-      this.nofiticationService.openSnackBarError({
+      this.nofiticationService.openSnackBar({
         message: "Error al logear con el token",
         duration: 2000,
       })

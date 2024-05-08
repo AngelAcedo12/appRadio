@@ -23,6 +23,11 @@ export class TransmisionService {
       this.socket.on('connection',()=>{
         console.log('conected');
         this.sockerConected = true;
+        this.notificationService.openSnackBar({
+          message: "Conectado al servidor", 
+          duration: 3000
+        });
+
       });
     
   }
@@ -65,7 +70,7 @@ export class TransmisionService {
         console.log('data available')
         const auidioBlob = event.data;
         const audioUrl = URL.createObjectURL(auidioBlob);
-        this.notificationService.openSnackBarError({
+        this.notificationService.openSnackBar({
           message: "Audio grabado con exito", 
           duration: 3000
         });

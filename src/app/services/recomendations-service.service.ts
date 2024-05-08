@@ -16,7 +16,7 @@ export class RecomendationsServiceService {
   getRandomRecomendations(actualUser : string | undefined ) : Observable<DtoReocmendation[]>{
     
     if(actualUser == undefined) {
-      this.notificationService.openSnackBarError({
+      this.notificationService.openSnackBar({
         message:"Usuario actual undefined",
         duration:500,
         

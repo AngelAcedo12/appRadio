@@ -243,7 +243,7 @@ playRandom(){
     if(coords.lat!=undefined && coords.lon!=undefined){
       this.zoomIn(coords)
     }else{
-      this.notificationService.openSnackBarError({
+      this.notificationService.openSnackBar({
         message: "No se ha podido cargar la ubicacion de la emisora",
         duration: 2000
       })
@@ -268,7 +268,7 @@ zoomInToStationSelected(name:string){
         this.zoomIn(coords)
         
       }else{
-        this.notificationService.openSnackBarError({
+        this.notificationService.openSnackBar({
           message: "No se ha podido cargar la ubicacion de la emisora",
           duration: 2000
         })
