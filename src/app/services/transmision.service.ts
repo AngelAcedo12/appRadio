@@ -20,8 +20,8 @@ export class TransmisionService {
  async conectedSocket(){ 
 
       this.socket = io('http://localhost:3000');
-      this.socket.on('connection',()=>{
-        console.log('conected');
+      this.socket.on('connection',(data)=>{
+        console.log(data)
         this.sockerConected = true;
         this.notificationService.openSnackBar({
           message: "Conectado al servidor", 

@@ -28,6 +28,7 @@ export class NotificationService {
       duration: duration ?? 2000,
       
     });
+    console.log("Abriendo snackbar")
   }
   
   
