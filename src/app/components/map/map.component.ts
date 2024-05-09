@@ -73,11 +73,11 @@ export class MapComponent implements OnInit, OnChanges{
     }else{
 
       
-      let url = "mapbox://styles/mapbox/dark-v11"
+      let url = "mapbox://styles/mapbox/dark-v11?optimize=true"
       if(this.style()=='dark'){
-        url = "mapbox://styles/mapbox/dark-v11"
+        url = "mapbox://styles/mapbox/dark-v11?optimize=true"
       }else if(this.style()=='light'){
-        url = "mapbox://styles/mapbox/light-v10"
+        url = "mapbox://styles/mapbox/light-v10?optimize=true"
       }
       console.log(url)
       this.map = new mapboxgl.Map({
@@ -85,15 +85,19 @@ export class MapComponent implements OnInit, OnChanges{
         style: url,
         center:[this.location.lon,this.location.lat],
         zoom: 20,
-        maxTileCacheSize: 1000,
         preserveDrawingBuffer: true,
-        renderWorldCopies: true,
+        minZoom: 7,
+        maxZoom: 20,
+        refreshExpiredTiles: true,
+   
+        
+
 
 
       })
       this.map.on('zoom', (event) => {
         if(this.map != undefined){
-          if(this.map.getZoom() < 7){
+          if(this.map.getZoom() < 8){
             this.removedMarkers()
           }
           if(this.map.getZoom() > 7 && this.isClear==true){
