@@ -54,7 +54,7 @@ export class MapComponent implements OnInit, OnChanges{
   chargeCountry : string = ""
   radiosIsLoad = false
   style = signal("dark")
-
+  isClear = false
  async initMap(){
    mapboxgl.accessToken= enviroment.MAP_BOX_TOKEN;
    
@@ -84,13 +84,27 @@ export class MapComponent implements OnInit, OnChanges{
         container: 'map',
         style: url,
         center:[this.location.lon,this.location.lat],
-        zoom: 5,
+        zoom: 20,
         maxTileCacheSize: 1000,
         preserveDrawingBuffer: true,
         renderWorldCopies: true,
-      
+
 
       })
+      this.map.on('zoom', (event) => {
+        if(this.map != undefined){
+          if(this.map.getZoom() < 7){
+            this.removedMarkers()
+          }
+          if(this.map.getZoom() > 7 && this.isClear==true){
+            
+            this.loadMarkersSaved()
+          }
+
+        }
+         
+      })
+
       this.map.on('style.load', () => {
         this.map?.setFog({}); // Set the default atmosphere style
       });
@@ -110,7 +124,6 @@ setActualCountry(name : string){
   this.actualCountry = name
   this.loadLocation()
 }
-
 
 
 async loadRadios(){
@@ -170,6 +183,26 @@ async clearMarkers(){
   }
   
 }
+
+
+removedMarkers(){
+
+  this.markerList.forEach((item) => {
+    item.getElement().classList.replace("no-hidden","hidden")
+  })
+  this.isClear=true
+}
+loadMarkersSaved(){
+
+  if(this.markerList.length>0){
+    this.markerList.forEach((item) => {
+      item.getElement().classList.replace("hidden","no-hidden")
+    })
+    this.isClear=false
+  }
+
+}
+
 closeMap(){
 
   this.setMapState.emit()
@@ -177,7 +210,7 @@ closeMap(){
 
 
 async loadMarkers(){
-  
+  if(this.markerList.length===0){
   await this.loadRadioService.loadRadiosInCords(this.actualCountry).then(() => {
     var radios =  this.loadRadioService.radios()
 
@@ -195,6 +228,7 @@ async loadMarkers(){
                 img.src = this.getFavicon(item)
                 img.classList.add("marker-img")
                 div.setAttribute("name","marker")
+                div.classList.add("hidden")
                 div.classList.add("marker");
                 
                 div.appendChild(img)
@@ -219,7 +253,11 @@ async loadMarkers(){
       });
       this.radiosIsLoad = true
     }
+
   })
+}else{
+
+}
 }
 
 

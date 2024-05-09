@@ -83,9 +83,17 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     align-items: center;
     cursor: pointer;
     border-radius: 50%;
-    animation: fade 1s ease-in-out forwards;
+   
     
     
+}
+.hidden{
+    display: none;
+}
+.no-hidden{
+    display: flex;
+    animation: fade 0.4s ease-in-out forwards;
+
 }
 .marker:hover{
     background: var(--hover);
