@@ -5,6 +5,7 @@ import { NotificationService } from './notification-service.service';
 import { UrlObject } from 'url';
 import { TransmisionService } from './transmision.service';
 import { OauthService } from './oauth.service';
+import enviroment from '../../environments/environment';
 
 
 
@@ -44,7 +45,7 @@ export class TransmisionSocketService {
       
       if(options.type === 'listener'){
         // Para unirse a una transmision como oyente
-        this.socket = io('http://localhost:3000',{
+        this.socket = io(`${enviroment.base_url_local}`,{
           query:{
             nameTransmision: options.nameTransmision,
             type:options.type
@@ -57,7 +58,7 @@ export class TransmisionSocketService {
       if(options.type==='locutor'){
         // Para transmitir audio como locutor
         console.log("Conectando al servidor")
-        this.socket = io('http://localhost:3000',{
+        this.socket = io(`${enviroment.base_url_local}`,{
           query:{
             nameTransmision: options.nameTransmision,
             type:options.type
