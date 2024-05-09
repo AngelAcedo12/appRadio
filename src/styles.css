@@ -92,7 +92,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 }
 .no-hidden{
     display: flex;
-    animation: fade 0.4s ease-in-out forwards;
+    animation: fade 0.2s ease-in-out forwards;
 
 }
 .marker:hover{
