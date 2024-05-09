@@ -69,11 +69,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
       --mdc-snackbar-supporting-text-color: #fff;
     }
 }
-.error{
-    background-color: red;
-    
 
-}
 .marker{
     border-radius: 50%;
     background-color: var(--color-secundary);

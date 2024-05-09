@@ -19,6 +19,11 @@ const routes: Routes = [
     canActivate: [oauthGuard]
   },
   {
+    path:'transmision',
+    loadChildren: () => import("./transmision/Pages/pages.module").then(m => m.PagesModule),
+    canActivate: [oauthGuard]
+  },
+  {
     path:'',
     pathMatch:'full',
     redirectTo:'radio'

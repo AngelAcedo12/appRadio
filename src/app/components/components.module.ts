@@ -6,7 +6,7 @@ import { BtnPlayComponent } from './btn-play/btn-play.component';
 import { ReproductorComponent } from './reproductor/reproductor.component';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { LoadingComponent } from './loading/loading.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SelectCountrieComponent } from './select-countrie/select-countrie.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { SelectTagListComponent } from './select-tag-list/select-tag-list.component';
@@ -21,6 +21,8 @@ import { RecomendationUserComponent } from './recomendation-user/recomendation-u
 import { RecomendationItemComponent } from './recomendation-item/recomendation-item.component';
 import { MapComponent } from './map/map.component';
 import { FindBarByAutocompleteComponent } from './find-bar-by-autocomplete/find-bar-by-autocomplete.component';
+import { TransmisionListComponent } from './transmision-list/transmision-list.component';
+import { MenuCreateTransmisionComponent } from './menu-create-transmision/menu-create-transmision.component';
 
 
 
@@ -44,6 +46,8 @@ import { FindBarByAutocompleteComponent } from './find-bar-by-autocomplete/find-
     RecomendationItemComponent,
     MapComponent,
     FindBarByAutocompleteComponent,
+    TransmisionListComponent,
+    MenuCreateTransmisionComponent,
     
   ],exports:[
     RadioListsComponent,
@@ -57,7 +61,9 @@ import { FindBarByAutocompleteComponent } from './find-bar-by-autocomplete/find-
     ImgSelectedComponent,
     OpcionMenuComponent,
     RecomendationUserComponent,
-    MapComponent
+    MapComponent,
+    TransmisionListComponent,
+    MenuCreateTransmisionComponent
     
   ],
   imports: [

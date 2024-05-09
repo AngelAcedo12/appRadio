@@ -1,0 +1,49 @@
+<div  id="detected" (click)="closeDialog($event)" class="box" [ngClass]="state ? 'open' : 'close' "> 
+    <div class="dialog"  open="true">
+        <h1>Crear transmision</h1>
+        <form class="form" (submit)="createTransmision()" [formGroup]="formTransmision">
+            <label>Titulo</label>
+            <input class="input" type="text" [formControl]="formTransmision.controls.title" placeholder>
+            @if (isInvalid("title")) {
+                <app-error-message [content]="getErrorMessage('title')"></app-error-message>
+            }
+            <label>Descripción</label>
+            <textarea class="input" class="descripcion"  [formControl]="formTransmision.controls.description" placeholder></textarea>
+            @if (isInvalid("description")) {
+                <app-error-message [content]="getErrorMessage('description')"></app-error-message>
+            }
+            @if(formTransmision.valid){
+                <input (click)="createTransmision()" type="button"  class="button" value="Iniciar transmision"/>
+              
+            }@else {
+
+                <input  disabled type="button" class="button" value="Iniciar transmision"/>
+            }
+        </form>
+    
+    </div>
+</div>
+
+<div class="box_complete"  [ngClass]="state ? 'open' : 'close' " >
+    <h1>Crear transmision</h1>
+    <form (submit)="createTransmision()" class="form" [formGroup]="formTransmision">
+        <label>Titulo</label>
+        <input class="input" type="text" [formControl]="formTransmision.controls.title" placeholder>
+        @if (isInvalid("title")) {
+            <app-error-message [content]="getErrorMessage('title')"></app-error-message>
+        }
+        <label>Descripción</label>
+        <textarea class="descripcion"  [formControl]="formTransmision.controls.description" placeholder></textarea>
+        @if (isInvalid("description")) {
+            <app-error-message [content]="getErrorMessage('description')"></app-error-message>
+        }
+        @if(formTransmision.valid){
+            <input (click)="createTransmision()" type="button"  class="button" value="Iniciar transmision"/>
+           
+        }@else {
+
+            <input  disabled type="button" class="button" value="Iniciar transmision"/>
+        }
+        <button class="button_close" (click)="close()">Cancelar</button>
+    </form>
+</div>

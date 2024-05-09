@@ -1,0 +1,13 @@
+<app-menu></app-menu>
+
+<section class="content" >
+    <div class="menu_transmision">
+        <h1>Transmisiones</h1>
+        <button class="btn_transmision" (click)="changeMenuCreateState()">Iniciar transmision</button>
+    </div>
+    <router-outlet></router-outlet>
+
+</section>
+
+<app-menu-create-transmision [state]="menuCreateState" (setState)="changeMenuCreateState()"></app-menu-create-transmision>
+

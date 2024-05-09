@@ -1,0 +1,40 @@
+
+
+*{
+    --color-background:#2A1F2D;
+    --color-primary:#59C9A5;
+    --color-secundary:#52BE80;
+    --color-country:#FF6747;
+    --color-language:#DAF7A6;
+    --hover:#939393;
+  }
+  
+
+.menu_transmision{
+
+    display: flex;
+    flex-direction: column;
+    gap:1em
+    
+    
+}
+.btn_transmision{
+    width: fit-content;
+    background-color: transparent;
+    border: 1px solid var(--color-primary);
+    padding: 1em;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+
+}
+.btn_transmision:hover{
+    background-color: var(--color-primary);
+    color: black;
+    transition: all 0.2s ease-in-out;
+}
+.content{
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+}

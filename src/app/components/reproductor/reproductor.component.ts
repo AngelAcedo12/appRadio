@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, computed, signal, Signal, SimpleChanges } from '@angular/core';
+import { AfterViewInit, Component, computed, Input, signal, Signal, SimpleChanges } from '@angular/core';
 import { ReproductorServiceService } from '../../services/reproductor-service.service';
 import { Station } from 'radio-browser-api';
 import { Sign } from 'crypto';
@@ -11,14 +11,20 @@ import { of } from 'rxjs';
 })
 export class ReproductorComponent implements AfterViewInit {
 
+  @Input() isAtransmision : boolean = false
+  
+
   constructor(public reproductorService:ReproductorServiceService){
 
 
   }
   ngAfterViewInit(): void {
-    this.reproductorService.addListertToAudio()
-    if(this.reproductorService.actualStation!=undefined){
-    this.reproductorService.loadStationInLocalStorage()
+    if(this.isAtransmision==false){
+      this.reproductorService.addListertToAudio()
+      if(this.reproductorService.actualStation!=undefined){
+      this.reproductorService.loadStationInLocalStorage()
+
+    }
 
   }
 }
