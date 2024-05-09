@@ -21,6 +21,7 @@ export class TransmisionService {
   getTransmisions(){
      this.http.get<DtoTranmision[]>(`${enviroment.base_url_local}api/transmision/getTranmision`).subscribe((data) => {
       this.transmisionList.update( () => data)
+      console.log(data)
      });
   }
 
