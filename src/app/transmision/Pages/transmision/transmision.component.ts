@@ -21,7 +21,7 @@ export class TransmisionComponent {
     let user =this.oauthService.userSave()
     if( user != undefined){
       let userName =  user.name
-      this.transmisionService.conectedSocket(transmisionName,userName);
+      this.transmisionService.conectedSocket({nameTransmision:transmisionName, type:'listener'});
     }
 
 

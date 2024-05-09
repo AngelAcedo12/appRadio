@@ -10,7 +10,7 @@ export interface DtoTranmision{
     views: number
     likes: number
     dislikes: number 
-    
+    _id:number    
 
 }
 

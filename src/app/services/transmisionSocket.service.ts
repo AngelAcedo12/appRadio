@@ -3,13 +3,26 @@ import { emit } from 'process';
 import { Socket, io } from 'socket.io-client';
 import { NotificationService } from './notification-service.service';
 import { UrlObject } from 'url';
+import { TransmisionService } from './transmision.service';
+import { OauthService } from './oauth.service';
+
+
+
+
+type opcionConecter = {
+  nameTransmision: string,
+  type : 'locutor' | 'listener',
+
+}
+
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class TransmisionSocketService {
 
-  constructor(private notificationService : NotificationService) { }
+  constructor(private notificationService : NotificationService, private transmisionService : TransmisionService, private oauthService: OauthService) { }
   
  socket : Socket | undefined; 
 
@@ -21,57 +34,77 @@ export class TransmisionSocketService {
   MediaRecorder : MediaRecorder | undefined;
   listAudios = signal([] as string[]);
   inAir = signal(false);
- async conectedSocket(nameUserTransmision:string, nameUser? : string | undefined){ 
+  yourTransmisionId = signal(''); 
+
+
+ async conectedSocket(options : opcionConecter){ 
 
 
  
-      if(nameUser === undefined){
-
-
+      
+      if(options.type === 'listener'){
+        // Para unirse a una transmision como oyente
         this.socket = io('http://localhost:3000',{
           query:{
-            nameTransmision: nameUserTransmision,
+            nameTransmision: options.nameTransmision,
+            type:options.type
           }
         });
+        console.log('listeenr')
+        this.getAudioToSocket();
       }
 
-      if(nameUser != undefined){
+      if(options.type==='locutor'){
+        // Para transmitir audio como locutor
+        console.log("Conectando al servidor")
         this.socket = io('http://localhost:3000',{
           query:{
-            nameTransmision: nameUserTransmision,
-            nameUser: nameUser
+            nameTransmision: options.nameTransmision,
+            type:options.type
           }
         });
+        
+        this.socket?.on("join to transmision", ({userNameJoin}) => {
+            
+            
+          this.notificationService.openSnackBar({
+            message: `${userNameJoin} se ha unido a la transmisión`,
+            duration: 3000
+          })
+          
+        })
+      
+
       }
 
       this.socket?.on('connection',(data)=>{
         console.log(data)
-        this.sockerConected = true;
+    
         this.notificationService.openSnackBar({
           message: "Conectado al servidor", 
           duration: 3000
-        });
-
+        })
       });
-      if(nameUser != undefined){
-      }else{
-        if(nameUser === nameUserTransmision){
-        
-          this.socket?.on("join to transmision", ({userNameJoin}) => {
-            
-            
-            this.notificationService.openSnackBar({
-              message: `${userNameJoin} se ha unido a la transmisión`,
-              duration: 3000
-            })
-    
+      
+        this.socket?.on('disconnect',(socket)=>{
+          console.log(socket)
+          this.exitToTransmision();
+          this.notificationService.openSnackBar({
+            message: "Desconectado del servidor", 
+            duration: 3000
           })
-        }
+
+        })
+      
+
+      
+
       }
+     
         
     
     
-  }
+  
 
 
   concatenateArrayBuffers(...buffers: ArrayBuffer[]): ArrayBuffer {
@@ -107,12 +140,13 @@ export class TransmisionSocketService {
       bufferAnterior= this.concatenateArrayBuffers(bufferAnterior, data);
 
       try {
-       
+        // Crear un Blob a partir del ArrayBuffer de audio
+    
         const audioBlob = new Blob([bufferAnterior], { type: 'audio/mp3' });
-        
+     
         // Crear una URL Blob a partir del Blob de audio
         const audioBlobUrl = URL.createObjectURL(audioBlob);
-        
+      
         audio.src = audioBlobUrl;
 
 
@@ -149,8 +183,9 @@ export class TransmisionSocketService {
   
   }
 
-  startTransmisionAudio(nameUserTransmision:string, nameUser? : string ){
-    this.conectedSocket(nameUserTransmision, nameUser);
+  startTransmisionAudio(nameTransmision:string ){
+    this.inAir.update(() => true);
+    this.conectedSocket({nameTransmision:nameTransmision,type:'locutor'} );
     this.MediaDivice = navigator.mediaDevices;
    
      this.MediaDivice.getUserMedia({audio:true}).then((stream)=>{
@@ -160,8 +195,6 @@ export class TransmisionSocketService {
      
         this.MediaRecorder.addEventListener('start',()=>{
         console.log('start')
-        
-        
       })
 
       this.MediaRecorder.addEventListener('stop',()=>{
@@ -186,12 +219,20 @@ export class TransmisionSocketService {
   }
 
   
+  emitMessageToDisconect(){
+
+
+    this.socket?.emit('disconect', {message: "Desconectado del servidor"});
+
+  }
+
 
   stopTransmisionAudio(){
-
-    this.socket?.disconnect();
+    
+    this.emitMessageToDisconect()
     this.disconectedAudio();
     this.socket?.removeAllListeners();
+    this.transmisionService.removeTransmision(this.oauthService.userSave()?.name || '');
     this.notificationService.openSnackBar({
       message: "Desconectado del servidor", 
       duration: 3000
@@ -199,10 +240,10 @@ export class TransmisionSocketService {
 
   }
   exitToTransmision(){
-    this.socket?.disconnect();
+   
     this.socket?.removeAllListeners();
     this.notificationService.openSnackBar({
-      message: "Desconectado del servidor", 
+      message: "Desconectado de la transmisión", 
       duration: 3000
     });
   }

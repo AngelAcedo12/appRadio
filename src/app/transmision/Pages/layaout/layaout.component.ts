@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { TransmisionService } from '../../../services/transmision.service';
+import { TransmisionSocketService } from '../../../services/transmisionSocket.service';
 
 @Component({
   selector: 'app-layaout',
@@ -7,7 +9,8 @@ import { Component } from '@angular/core';
 })
 export class LayaoutComponent {
 
-
+  private transmisionService = inject(TransmisionService)
+  private transmisionSocketService = inject(TransmisionSocketService)
   menuCreateState = false
 
 
@@ -15,4 +18,8 @@ export class LayaoutComponent {
 
     this.menuCreateState = this.menuCreateState ? false : true
   } 
+  closeTransmision(){
+   
+    this.transmisionSocketService.stopTransmisionAudio()
+  }
 }

@@ -1,1 +1,20 @@
-<p>transmision-list works!</p>
+<div>
+    <ol>
+        @for (item of transmisionService.transmisionList(); track $index) {
+            <li >
+
+                <div>
+
+                    <h1>{{item.title}}</h1>
+                    <p>{{item.description}}</p>
+                </div>
+                <div>
+                    <img [src]="'../../../assets/profile/'+ item.user.imgProfile + '.webp'">
+                    <h1>Locutor: {{item.user.name}}</h1>
+                    <button (click)="conectedTransmision(item.title)">Unirse</button>
+
+                </div>
+            </li>
+        }
+    </ol>
+</div>

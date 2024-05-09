@@ -26,7 +26,7 @@
 
 <div class="box_complete"  [ngClass]="state ? 'open' : 'close' " >
     <h1>Crear transmision</h1>
-    <form (submit)="createTransmision()" class="form" [formGroup]="formTransmision">
+    <form class="form" [formGroup]="formTransmision">
         <label>Titulo</label>
         <input class="input" type="text" [formControl]="formTransmision.controls.title" placeholder>
         @if (isInvalid("title")) {
