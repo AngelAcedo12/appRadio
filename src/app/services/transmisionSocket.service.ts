@@ -45,7 +45,7 @@ export class TransmisionSocketService {
       
       if(options.type === 'listener'){
         // Para unirse a una transmision como oyente
-        this.socket = io(`${enviroment.base_url_local}`,{
+        this.socket = io(`${enviroment.base_url_socket}`,{
           query:{
             nameTransmision: options.nameTransmision,
             type:options.type
@@ -58,7 +58,7 @@ export class TransmisionSocketService {
       if(options.type==='locutor'){
         // Para transmitir audio como locutor
         console.log("Conectando al servidor")
-        this.socket = io(`${enviroment.base_url_local}`,{
+        this.socket = io(`${enviroment.base_url_socket}`,{
           query:{
             nameTransmision: options.nameTransmision,
             type:options.type
@@ -102,12 +102,6 @@ export class TransmisionSocketService {
 
       }
      
-        
-    
-    
-  
-
-
   concatenateArrayBuffers(...buffers: ArrayBuffer[]): ArrayBuffer {
     // Calcular la longitud total de todos los ArrayBuffers
     const totalLength = buffers.reduce((acc, buffer) => acc + buffer.byteLength, 0);

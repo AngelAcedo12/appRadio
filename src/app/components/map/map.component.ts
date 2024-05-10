@@ -89,11 +89,6 @@ export class MapComponent implements OnInit, OnChanges{
         minZoom: 7,
         maxZoom: 20,
         refreshExpiredTiles: true,
-   
-        
-
-
-
       })
       this.map.on('zoom', (event) => {
         if(this.map != undefined){
