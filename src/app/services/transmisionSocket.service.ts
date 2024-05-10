@@ -127,7 +127,7 @@ export class TransmisionSocketService {
   getAudioToSocket(){
    
     let bufferAnterior : ArrayBuffer = new Uint8Array();
-    let audio = new Audio();
+    let audio = document.getElementById('audio') as HTMLAudioElement;
     
     let oldTime = 0;
 
@@ -141,7 +141,7 @@ export class TransmisionSocketService {
       try {
         // Crear un Blob a partir del ArrayBuffer de audio
        
-        const audioBlob = new Blob([bufferAnterior], { type: 'audio/mpeg' });
+        const audioBlob = new Blob([bufferAnterior], { type: 'audio/ogg' });
         
         // Crear una URL Blob a partir del Blob de audio
         const audioBlobUrl = URL.createObjectURL(audioBlob);
