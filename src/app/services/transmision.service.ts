@@ -27,7 +27,7 @@ export class TransmisionService {
   }
 
   createTransmision(transmision:Transmision){
-    this.http.post(`${enviroment.base_url_local}api/transmision/createTransmision`,{
+    this.http.post(`${enviroment.base_url_local}api/transmision`,{
       transmision:transmision,
       token: this.cookieService.get('oauth-token-app-radio')
     }).pipe(
@@ -64,7 +64,7 @@ export class TransmisionService {
       
     }else{
 
-      this.http.delete(`${enviroment.base_url_local}api/transmision/removeTransmision?nameUser=${nameUser}`,).subscribe((data : any)=>{
+      this.http.delete(`${enviroment.base_url_local}api/transmision?nameUser=${nameUser}`,).subscribe((data : any)=>{
         this.notificationSerivice.openSnackBar({
           message: data.message,
           duration: 5000,
