@@ -213,7 +213,7 @@ export class TransmisionSocketService {
        this.socket?.emit('audio', audioBlob);
       }
       
-        this.MediaRecorder.start(5000);  
+        this.MediaRecorder.start(2000);  
      
 
   }).catch(error => {
