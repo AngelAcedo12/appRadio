@@ -57,7 +57,7 @@ export class TransmisionSocketService {
 
       if(options.type==='locutor'){
         // Para transmitir audio como locutor
-        console.log("Conectando al servidor")
+        
         this.socket = io(`${enviroment.base_url_socket}`,{
           query:{
             nameTransmision: options.nameTransmision,
@@ -80,7 +80,7 @@ export class TransmisionSocketService {
 
       this.socket?.on('connection',(data)=>{
         console.log(data)
-    
+        console.log("Conectando al servidor")
         this.notificationService.openSnackBar({
           message: "Conectado al servidor", 
           duration: 3000
