@@ -141,20 +141,27 @@ export class TransmisionSocketService {
       try {
         // Crear un Blob a partir del ArrayBuffer de audio
        
-        const audioBlob = new Blob([bufferAnterior], { type: 'audio/wav' });
-        
+        const audioBlobWav = new Blob([bufferAnterior], { type: 'audio/wav' });
+        const audioBlobMp3 = new Blob([bufferAnterior], { type: 'audio/mp3' });
+        const audioBlobOgg = new Blob([bufferAnterior], { type: 'audio/ogg' });
         // Crear una URL Blob a partir del Blob de audio
-        const audioBlobUrl = URL.createObjectURL(audioBlob);
+        const audioBlobUrl = URL.createObjectURL(audioBlobWav);
 
         
 
 
         console.log(audioBlobUrl, 'audioBlobUrl')
-        console.log(audioBlob, 'audioBlob')
+        
         audio.src = audioBlobUrl;
 
         audio.onload = () => {
           console.log('Audio cargado:', audio.src);
+        }
+
+        audio.onerror = () => {
+
+          console.log('Error al cargar el audio:', audio.src);
+          
         }
 
         audio.load();
