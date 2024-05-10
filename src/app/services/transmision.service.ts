@@ -19,10 +19,10 @@ export class TransmisionService {
 
 
   getTransmisions(){
-     this.http.get<DtoTranmision[]>(`${enviroment.base_url_local}api/transmision/getTranmision`).subscribe((data : any) => {
+     this.http.get<DtoTranmision[]>(`${enviroment.base_url_local}api/transmision`).subscribe((data : any) => {
 
+       console.log(data)
       this.transmisionList.update( () => data.data)
-      console.log(data)
      });
   }
 

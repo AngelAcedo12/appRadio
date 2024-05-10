@@ -11,6 +11,7 @@ export class TransmisionListComponent implements OnInit {
 
   public transmisionService = inject(TransmisionService)
   private transmisionSocket = inject(TransmisionSocketService)
+  
   ngOnInit(): void {
     
     this.transmisionService.getTransmisions()
