@@ -127,8 +127,10 @@ export class TransmisionSocketService {
   getAudioToSocket(){
    
     let bufferAnterior : ArrayBuffer = new Uint8Array();
-    let audio = document.getElementById('audio') as HTMLAudioElement;
-    
+    let audioMp3 = document.getElementById('audioMp3') as HTMLAudioElement;
+    let audioWav = document.getElementById('audioWav') as HTMLAudioElement;
+    let audioOgg = document.getElementById('audioOgg') as HTMLAudioElement;
+    const audio = new Audio();
     let oldTime = 0;
 
 
@@ -142,30 +144,35 @@ export class TransmisionSocketService {
         // Crear un Blob a partir del ArrayBuffer de audio
        
         const audioBlobWav = new Blob([bufferAnterior], { type: 'audio/wav' });
-        const audioBlobMp3 = new Blob([bufferAnterior], { type: 'audio/mp3' });
+        const audioBlobMp3 = new Blob([bufferAnterior], { type: 'audio/mpeg' });
         const audioBlobOgg = new Blob([bufferAnterior], { type: 'audio/ogg' });
         // Crear una URL Blob a partir del Blob de audio
-        const audioBlobUrl = URL.createObjectURL(audioBlobWav);
+        const audioBlobUrlWav = URL.createObjectURL(audioBlobWav);
+        const audioBlobUrlMp3 = URL.createObjectURL(audioBlobMp3);
+        const audioBlobUrlOgg = URL.createObjectURL(audioBlobOgg);
+
 
         
-
-
-        console.log(audioBlobUrl, 'audioBlobUrl')
         
-        audio.src = audioBlobUrl;
+        audio.src = audioBlobUrlWav; 
 
-        audio.onload = () => {
+        audioMp3.src = audioBlobUrlMp3;
+        audioWav.src = audioBlobUrlWav;
+        audioOgg.src = audioBlobUrlOgg; 
+
+
+        audioMp3.onload = () => {
           console.log('Audio cargado:', audio.src);
         }
 
-        audio.onerror = () => {
+        audioMp3.onerror = () => {
 
           console.log('Error al cargar el audio:', audio.src);
-          
+
         }
 
-        audio.load();
-        audio.play();
+        audioMp3.load();
+        audioMp3.play();
 
         
         audio.onloadedmetadata = () => {
