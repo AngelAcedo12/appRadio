@@ -152,7 +152,7 @@ export class TransmisionSocketService {
         console.log(audioBlob, 'audioBlob')
         audio.src = audioBlobUrl;
 
-
+        audio.load();
         audio.play();
 
         
