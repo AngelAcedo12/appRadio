@@ -141,7 +141,7 @@ export class TransmisionSocketService {
       try {
         // Crear un Blob a partir del ArrayBuffer de audio
        
-        const audioBlob = new Blob([bufferAnterior], { type: 'audio/ogg' });
+        const audioBlob = new Blob([bufferAnterior], { type: 'audio/mp3' });
         
         // Crear una URL Blob a partir del Blob de audio
         const audioBlobUrl = URL.createObjectURL(audioBlob);
@@ -152,6 +152,10 @@ export class TransmisionSocketService {
         console.log(audioBlobUrl, 'audioBlobUrl')
         console.log(audioBlob, 'audioBlob')
         audio.src = audioBlobUrl;
+
+        audio.onload = () => {
+          console.log('Audio cargado:', audio.src);
+        }
 
         audio.load();
         audio.play();
