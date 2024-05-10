@@ -132,16 +132,24 @@ export class TransmisionSocketService {
 
 
     this.socket?.on('audio',async (data)=>{
+      console.log(data)
+
       bufferAnterior= this.concatenateArrayBuffers(bufferAnterior, data);
 
+      
       try {
         // Crear un Blob a partir del ArrayBuffer de audio
-    
+       
         const audioBlob = new Blob([bufferAnterior], { type: 'audio/mp3' });
      
         // Crear una URL Blob a partir del Blob de audio
         const audioBlobUrl = URL.createObjectURL(audioBlob);
-      
+
+        
+
+
+        console.log(audioBlobUrl, 'audioBlobUrl')
+        console.log(audioBlob, 'audioBlob')
         audio.src = audioBlobUrl;
 
 
@@ -149,8 +157,8 @@ export class TransmisionSocketService {
 
         
         audio.onloadedmetadata = () => {
-          console.log('Duración del audio:', audio.currentTime);
-         
+          
+          console.log('Duración del audio:', audio.duration);
         }
         audio.onplay = () => {
           setInterval(() => {
