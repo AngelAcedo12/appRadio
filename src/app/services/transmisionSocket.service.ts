@@ -128,6 +128,7 @@ export class TransmisionSocketService {
    
     let bufferAnterior : ArrayBuffer = new Uint8Array();
     let audio = new Audio();
+    
     let oldTime = 0;
 
 
@@ -140,8 +141,8 @@ export class TransmisionSocketService {
       try {
         // Crear un Blob a partir del ArrayBuffer de audio
        
-        const audioBlob = new Blob([bufferAnterior], { type: 'audio/wav' });
-     
+        const audioBlob = new Blob([bufferAnterior], { type: 'audio/mpeg' });
+        
         // Crear una URL Blob a partir del Blob de audio
         const audioBlobUrl = URL.createObjectURL(audioBlob);
 
