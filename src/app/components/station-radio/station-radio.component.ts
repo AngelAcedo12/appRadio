@@ -1,6 +1,7 @@
-import { Component, Input, SimpleChanges } from '@angular/core';
+import { Component, inject, Input, SimpleChanges } from '@angular/core';
 import { Station } from 'radio-browser-api';
 import { historyItem } from '../../models/DTOs/DtoHistory';
+import { ReproductorServiceService } from '../../services/reproductor-service.service';
 
 @Component({
   selector: 'app-station-radio',
@@ -9,16 +10,30 @@ import { historyItem } from '../../models/DTOs/DtoHistory';
 })
 export class StationRadioComponent {
   @Input({required:true}) station : Station | historyItem | undefined | null;
-  ngOnInit(): void {
-    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
-    //Add 'implements OnInit' to the class.
-   
-  }
+
+  public reproductorService = inject(ReproductorServiceService)
+  
   favicon : String | undefined
 
   ngOnChanges(changes: SimpleChanges): void {
     if(this.station==null) return;
     if(this.favicon=== this.station!.favicon) return;
     this.favicon= this.station!.favicon.length>0 ? this.station?.favicon :  "../../../assets/icons8-radio-50.png"
+  }
+
+
+  changeState(){
+     this.reproductorService.state() ? this.pause() : this.play()
+  }
+
+  play(){
+    this.reproductorService.play(this.station?.urlResolved!,this.station!)
+    document.getElementById("rep")?.classList.replace("desactive","active")
+
+  }
+  pause(){
+    this.reproductorService.pause();
+    document.getElementById("rep")?.classList.replace("active","desactive")
+
   }
 }

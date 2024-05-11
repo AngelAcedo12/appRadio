@@ -22,9 +22,13 @@ img,a{
 :root{
 
     color-scheme: dark;
-    background-color:var(--color-background) ;
     
+    color-scheme: dark;
+
+    
+
 }
+
 
 body{
 

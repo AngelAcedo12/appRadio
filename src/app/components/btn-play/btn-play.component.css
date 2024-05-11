@@ -38,7 +38,7 @@ button{
 }
 .img{
     position: absolute;
-    background: #2A1F2D;
+
     padding: 0.5em;
     width: 50px;
     height: 50px;
@@ -58,6 +58,28 @@ button{
     .img{
         width: 100px;
         height: 100px;
+    }
+    button{
+        padding: 0.5em;
+        padding-left: 1em;
+        padding-right: 1em;
+        border-radius: 10px;
+        border: none;
+        background-color: transparent;
+        z-index: 1;
+        & img{
+            width: 40px;
+            height: 40px;
+        }
+        & img:hover{
+            cursor: pointer;
+            transform: scale(1.05);
+            transition: all 0.2s ease-in-out;
+            -webkit-transition: all 0.2s ease-in-out;
+            -moz-transition: all 0.2s ease-in-out;
+            -ms-transition: all 0.2s ease-in-out;
+            -o-transition: all 0.2s ease-in-out;
+    }
     }
     
 }
