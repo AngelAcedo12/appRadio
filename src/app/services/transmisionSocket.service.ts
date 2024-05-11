@@ -127,52 +127,20 @@ export class TransmisionSocketService {
   getAudioToSocket(){
    
     let bufferAnterior : ArrayBuffer = new Uint8Array();
-    let audioMp3 = document.getElementById('audioMp3') as HTMLAudioElement;
-    let audioWav = document.getElementById('audioWav') as HTMLAudioElement;
-    let audioOgg = document.getElementById('audioOgg') as HTMLAudioElement;
+  
     const audio = new Audio();
     let oldTime = 0;
 
-
     this.socket?.on('audio',async (data)=>{
-      console.log(data)
 
-      bufferAnterior= this.concatenateArrayBuffers(bufferAnterior, data);
+
+      // bufferAnterior= this.concatenateArrayBuffers(bufferAnterior, data);
 
       
       try {
-        // Crear un Blob a partir del ArrayBuffer de audio
-       
-        const audioBlobWav = new Blob([bufferAnterior], { type: 'audio/wav' });
-        const audioBlobMp3 = new Blob([bufferAnterior], { type: 'audio/mpeg' });
-        const audioBlobOgg = new Blob([bufferAnterior], { type: 'audio/ogg' });
-        // Crear una URL Blob a partir del Blob de audio
-        const audioBlobUrlWav = URL.createObjectURL(audioBlobWav);
-        const audioBlobUrlMp3 = URL.createObjectURL(audioBlobMp3);
-        const audioBlobUrlOgg = URL.createObjectURL(audioBlobOgg);
-
-
+        // Crear un Blob a partir del ArrayBuffer de au  console.log(audioMp3, audioWav, audioOgg)
         
-        
-        audio.src = audioBlobUrlWav; 
-
-        audioMp3.src = audioBlobUrlMp3;
-        audioWav.src = audioBlobUrlWav;
-        audioOgg.src = audioBlobUrlOgg; 
-
-
-        audioMp3.onload = () => {
-          console.log('Audio cargado:', audio.src);
-        }
-
-        audioMp3.onerror = () => {
-
-          console.log('Error al cargar el audio:', audio.src);
-
-        }
-
-        audioMp3.load();
-        audioMp3.play();
+        audio.src = URL.createObjectURL(data);  
 
         
         audio.onloadedmetadata = () => {
@@ -228,11 +196,11 @@ export class TransmisionSocketService {
 
       this.MediaRecorder.ondataavailable = (event) => {
         console.log("Captrurando audio")
-       const audioBlob = event.data;
+       const audioBlob = new Blob([event.data], {type: 'audio/webm;codecs=opus'});
        this.socket?.emit('audio', audioBlob);
       }
       
-        this.MediaRecorder.start(2000);  
+        this.MediaRecorder.start(100);  
      
 
   }).catch(error => {
