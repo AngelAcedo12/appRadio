@@ -17,7 +17,7 @@ label{
     z-index: 2;
     height: 100%;
     width: 100%;
-
+    
 
 }
 .box_map{
@@ -32,7 +32,7 @@ label{
     height: 100%;
     width: 100%;
     z-index: 2;
-
+    opacity: 0;
     
 }
 .shearchCity{
@@ -80,10 +80,14 @@ label{
     z-index: 100;
 }
 .open{
-    display: flex;
+    opacity: 1;
+    z-index: 3;
+    
 }
 .close{
-    display: none;
+    opacity: 0;
+    z-index: -100;
+    animation: fadeOut 0.2s forwards cubic-bezier(0.19, 1, 0.22, 1);
 }
 .btn_menu_filter{
     display: none;
