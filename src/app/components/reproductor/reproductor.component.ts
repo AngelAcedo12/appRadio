@@ -65,10 +65,7 @@ async  determineMode(){
             })
 
           } else {
-            this.notificationService.openSnackBar({
-              message: "No se pudo determinar la velocidad de movimiento.",
-              closeMessage: "Cerrar"
-            })
+            console.log("No se puede determinar la velocidad de movimiento.");
             
           }
         },
