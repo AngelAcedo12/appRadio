@@ -15,7 +15,12 @@
     ],
     "scope": "/",
     "splash_pages": true,
+    
     "description": "Escucha todas las radios del mundo en un solo lugar",
+    "categories": [
+      "music",
+      "radio"
+    ],
     "lang": "es",
     "dir": "ltr"
   }
