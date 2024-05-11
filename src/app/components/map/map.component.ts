@@ -99,9 +99,7 @@ export class MapComponent implements OnInit, OnChanges{
             
             this.loadMarkersSaved()
           }
-
         }
-         
       })
 
       this.map.on('style.load', () => {
@@ -224,12 +222,11 @@ async loadMarkers(){
                 const div = document.createElement('div');
                 const img = new Image()
                 img.loading = "lazy"
-                img.src = this.getFavicon(item)
+                img.src = "../../../assets/marcador.webp"
                 img.classList.add("marker-img")
                 div.setAttribute("name","marker")
                 div.classList.add("hidden")
                 div.classList.add("marker");
-                
                 div.appendChild(img)
                 
                 return div;

@@ -6,13 +6,16 @@ import { DtoHistorySaving } from '../models/DTOs/DtoHistorySaving';
 import { HttpClient } from '@angular/common/http';
 import enviroment from '../../environments/environment';
 import { CookieService } from 'ngx-cookie-service';
+import { error } from 'console';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ReproductorServiceService {
 
-  constructor(private http: HttpClient, private cookieService: CookieService) {}
+  constructor(private http: HttpClient, private cookieService: CookieService) {
+    
+  }
 
 
   audio: HTMLAudioElement  = new Audio();
@@ -77,6 +80,10 @@ export class ReproductorServiceService {
     if (this.audio == undefined) {
       this.audio = new Audio()
     }
+    this.audio.addEventListener("error", (error) => {
+      console.log(error)
+      this.stationLoading.update(() => false)
+    })
     
     this.audio.addEventListener("playing", () => {
       this.state.update(() => true)

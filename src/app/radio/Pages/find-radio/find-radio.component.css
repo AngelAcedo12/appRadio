@@ -32,7 +32,7 @@ section{
 
 @media (max-width:768px) {
     .lbls{
-        flex-direction: column;
+        flex-direction: row;
     
     }
     section{

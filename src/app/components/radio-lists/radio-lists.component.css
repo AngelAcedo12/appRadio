@@ -73,6 +73,7 @@
 }
 
 @media (max-width: 768px) {
+    
     .list{
         margin-left: 0;
         display: flex;

@@ -26,6 +26,7 @@ import { MenuCreateTransmisionComponent } from './menu-create-transmision/menu-c
 
 
 
+
 @NgModule({
   declarations: [
     RadioListsComponent,
@@ -48,6 +49,7 @@ import { MenuCreateTransmisionComponent } from './menu-create-transmision/menu-c
     FindBarByAutocompleteComponent,
     TransmisionListComponent,
     MenuCreateTransmisionComponent,
+    
     
   ],exports:[
     RadioListsComponent,

@@ -72,10 +72,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .marker{
     border-radius: 50%;
-    background-color: var(--color-secundary);
     width: 25px;
     height: 25px;
-    background: #52BE80;
     border-radius: 50%;
     padding: 5px;
     display: flex;
@@ -83,6 +81,9 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     align-items: center;
     cursor: pointer;
     border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
 }
 .hidden{
     display: none;
@@ -93,7 +94,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 }
 .marker:hover{
-    background: var(--hover);
+    
     outline: black 1px solid;
     box-shadow: white 0px 0px 5px 0px;
     transition: color all  ease-in-out;
@@ -109,6 +110,15 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     object-fit: fill;
     border-radius: 20px;
     
+}
+.marker-name{
+    font-size: 0.8rem;
+    color: white;
+    text-align: center;
+    font-weight: 600;
+    margin: 0;
+    padding: 0;
+
 }
 @keyframes fade {
     0%{

@@ -32,6 +32,10 @@ h3{
     animation-name: fade;
     animation-duration: 0.5s;    
     height: 100%;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    margin-bottom: 1em;
+    height: fit-content;
     
 }
 
@@ -143,10 +147,26 @@ h3{
 
 @media (max-width:768px) {
     
+
+
     .poster{
         padding: 0;
-      
+        flex-direction: row ;
+        justify-content: start;
+        display: flex;
+        align-items: center;
+        gap: 0.6em;
+
+        & .title_and_more {
+
+            & a {
+                width: 150px;
+            }
+
+        }
+        
     }
+    
    .props{
     flex-direction: row;
     & .country{
@@ -164,7 +184,7 @@ h3{
    .station{
     display: flex;
     flex-direction: column;
-    
+    gap: 0.5em;
 }
 .box{
     width: max-content;

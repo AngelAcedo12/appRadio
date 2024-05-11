@@ -25,8 +25,6 @@ import { HistoryComponent } from './Pages/history/history.component';
     RouterModule,
     ComponentsModule,
     SharedModule,
-  
-
   ]
 })
 export class RadioModule { }
