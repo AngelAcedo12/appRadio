@@ -20,9 +20,6 @@
       "icon": "../favicon.ico",
       "template_name": "./splash.html"
     },
-
-
-
     "description": "Escucha todas las radios del mundo en un solo lugar",
     "categories": [
       "music",
