@@ -3,8 +3,8 @@
     "short_name": "RadioGlobal",
     "start_url": "/",
     "display": "standalone",
-    "background_color": "#ffffff",
-    "theme_color": "#007bff",
+    "background_color": "#000",
+    "theme_color": "#000",
     "icons": [
       {
         "src": "../favicon.ico",
@@ -15,7 +15,6 @@
     ],
     "scope": "/",
     "splash_pages": true,
-    
     "description": "Escucha todas las radios del mundo en un solo lugar",
     "lang": "es",
     "dir": "ltr"
