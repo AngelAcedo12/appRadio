@@ -15,7 +15,14 @@
     ],
     "scope": "/",
     "splash_pages": true,
-    
+    "splash_page": {
+      "background_color": "#000",
+      "icon": "../favicon.ico",
+      "template_name": "./splash.html"
+    },
+
+
+
     "description": "Escucha todas las radios del mundo en un solo lugar",
     "categories": [
       "music",
