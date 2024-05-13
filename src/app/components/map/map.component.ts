@@ -79,7 +79,7 @@ export class MapComponent implements OnInit, OnChanges{
       }else if(this.style()=='light'){
         url = "mapbox://styles/mapbox/light-v10?optimize=true"
       }
-      console.log(url)
+    
       this.map = new mapboxgl.Map({
         container: 'map',
         style: url,

@@ -328,16 +328,11 @@
         -ms-transition: all 0.5s ease-in-out;
         -o-transition: all 0.5s ease-in-out;
 }
-   
     .btn-close{
         display: block;
     }
     
 }
-
-
-
-
 @keyframes fade {
     0%{
         opacity: 0;
