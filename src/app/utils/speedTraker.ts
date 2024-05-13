@@ -24,7 +24,7 @@ export class SpeedTraker  {
                 this.breakSpeedLimit.next(true)
             }
             this.coord = []
-         },5000); 
+        },5000); 
       
 
     }
@@ -50,7 +50,7 @@ export class SpeedTraker  {
             }
            // console.log(sumLat, sumLon)
             let distance = Math.sqrt(sumLon * sumLon + sumLat * sumLat);
-            return  distance / this.coord.length;
+            return  distance / 5;
 
         }
 
