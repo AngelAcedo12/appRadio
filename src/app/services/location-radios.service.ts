@@ -14,7 +14,6 @@ export class LocationRadiosService {
     this.api.setBaseUrl(this.baseUrl)
    }
 
-
   api  : RadioBrowserApi = new RadioBrowserApi("My Radio Browser API Key")
   radios : Signal<Station[] | undefined> = signal(undefined)
   baseUrl : string = "https://at1.api.radio-browser.info"
@@ -42,5 +41,15 @@ export class LocationRadiosService {
     this.radios = computed(() => data)
   })
  }
+  recomendations(){
+    return this.api.searchStations({
+      country: this.countriesService.actualSearchCountry()?.name.common ?? "Spain",
+      reverse: true,
+      order: 'votes',
+      limit: 30
+    }).then(data => {
+      return data
+    })
+  }
 
 }

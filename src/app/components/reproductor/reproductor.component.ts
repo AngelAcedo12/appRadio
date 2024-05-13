@@ -6,6 +6,7 @@ import { Observable, of } from 'rxjs';
 import { Coords } from '../../models/Coords';
 import { NotificationService } from '../../services/notification-service.service';
 import { SpeedTraker } from '../../utils/speedTraker';
+import { LocationRadiosService } from '../../services/location-radios.service';
 @Component({
   selector: 'app-reproductor',
   templateUrl: './reproductor.component.html',
@@ -16,24 +17,26 @@ export class ReproductorComponent implements AfterViewInit, OnInit {
   @Input() isAtransmision : boolean = false
   modeCar = signal(false)
   coords : Coords[]= []
-  speedTraker = new Observable<SpeedTraker>((observer) => observer.next(new SpeedTraker(-1)))
-
-  constructor(public reproductorService:ReproductorServiceService, public notificationService: NotificationService){
+  speedTraker = new Observable<SpeedTraker>((observer) => observer.next(new SpeedTraker(40)))
+  recomendations : Station[] = []
+  constructor(public reproductorService:ReproductorServiceService,
+     public notificationService: NotificationService,public locationService:LocationRadiosService){
 
 
   }
   ngOnInit(): void {
+    this.getRecomendations()
     this.speedTraker.subscribe((speedTraker) => {
       speedTraker.breakSpeedLimit.subscribe((value) => {
           if (value) {
-              // this.notificationService.openSnackBar({
-              //     message: "Has superado el limite de velocidad, cambiando a modo conducción 🚧",
-              //     closeMessage: "Cerrar",
-              // })
-
+              this.notificationService.openSnackBar({
+                  message: "Has superado el limite de velocidad, cambiando a modo conducción 🚧",
+                  closeMessage: "Cerrar",
+              })
+              document.getElementsByTagName("body")[0].style.overflow="hidden"
           }
-          // -TODO : Implementar el cambio de modo de conducción
-          //this.modeCar.update(() => value)
+          
+          this.modeCar.update(() => value)
       })
     })
     
@@ -41,16 +44,11 @@ export class ReproductorComponent implements AfterViewInit, OnInit {
   }
   
   ngAfterViewInit(): void {
-
-
-
-     
       this.reproductorService.addListertToAudio()
       if(this.reproductorService.actualStation!=undefined){
       this.reproductorService.loadStationInLocalStorage()
         
-    
-
+  
   }
 }
 
@@ -58,7 +56,13 @@ export class ReproductorComponent implements AfterViewInit, OnInit {
   stateOpen = signal(false)
 
 
+getRecomendations(){
 
+  this.locationService.recomendations().then((data) => {
+    this.recomendations = data
+  })
+  
+}
 
 
 async  determineMode(){

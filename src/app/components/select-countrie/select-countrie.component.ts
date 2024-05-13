@@ -3,6 +3,7 @@ import { CountrysService } from '../../services/countries.service';
 
 import { Country } from '../../models/Country';
 import { FormControl } from '@angular/forms';
+import { LocationRadiosService } from '../../services/location-radios.service';
 
 @Component({
   selector: 'app-select-countrie',
@@ -13,7 +14,7 @@ export class SelectCountrieComponent {
 
   @Output() newCountry = new EventEmitter<string>()
   
-  constructor(public countriesService : CountrysService,){
+  constructor(public countriesService : CountrysService,private locationRadiosService: LocationRadiosService){
     this.loadCoutries()
   }
   countrySelecter = new FormControl("Spain")
@@ -28,6 +29,7 @@ export class SelectCountrieComponent {
 
       if(data!=undefined){
         //this.countriesService.actualSearchCountry = computed(()=>data[0])
+        
         this.newCountry.emit(this.countrySelecter.value ?? "Spain")
       }
     }) 

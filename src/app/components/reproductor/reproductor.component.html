@@ -101,7 +101,9 @@
                 
             </div>
             <div class="recomendations-list">
-
+                @for (item of recomendations; track $index) {
+                    <app-station-radio [station]="item"></app-station-radio>
+                }
             </div>  
     </div>
     }

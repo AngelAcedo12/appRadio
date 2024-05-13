@@ -16,15 +16,10 @@ export class SpeedTraker  {
             this.speedLimit = speedLimit;
         }
         setInterval(() => {
-            console.log("Getting coords")
             this.getIntervalCoord()
-            console.log("Calculating speed")
             this.speed = this.calculateSpeed()
-           // console.log(this.speed)
-            // console.log(this.coord) 
             if (this.speed > this.speedLimit && this.breakSpeedLimit.value != true) {
                 this.breakSpeedLimit.next(true)
-                //console.log("Speed limit breaked")
             }
             this.coord = []
          },5000); 
@@ -34,17 +29,11 @@ export class SpeedTraker  {
     async getIntervalCoord() {
 
             setInterval(() => {
-                
                 navigator.geolocation.getCurrentPosition((position) => {
-
                     this.coord.push({lat: position.coords.latitude, lon: position.coords.longitude})
-                
-
                 }, (error) => { 
                     console.log(error)
                 })
-
-
             },200)
             
         }

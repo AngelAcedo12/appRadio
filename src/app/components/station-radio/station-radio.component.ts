@@ -24,13 +24,9 @@ export class StationRadioComponent {
 
   changeState(){
 
-
-
     if(this.reproductorService.actualStation()?.id!==this.station?.id){
       this.play()
     }
-    
-    
     
   }
 

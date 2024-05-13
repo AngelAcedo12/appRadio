@@ -26,7 +26,7 @@
     
 }
 .reproductor-mode-car{
-    height: 100vh;
+    height: 100%;
     width: 100%;
     margin: 0;
     bottom:  0;
@@ -37,6 +37,15 @@
     align-items: center;
     justify-content: center;
     padding: 1em;
+    overflow-y: scroll;
+
+    & .poster{
+        width: 200px;
+        height: 200px;
+        object-fit: contain;
+        animation:forwards  fade 0.2s ease-in-out ;
+        -webkit-animation:forwards  fade 0.2s ease-in-out ;
+    }
     & .propsFirst{
         display: none;
     }
@@ -47,9 +56,9 @@
         margin: 0;
         padding: 0;
         width: 100%;
-        justify-content: center;
+        justify-content: space-between;
         align-items: center;
-        height: 80%;
+        height: 50%;
 
     }
     & html{
@@ -58,6 +67,14 @@
     }
     & body{
         overflow: hidden;
+    }
+    & .recomendations-list{
+        display: grid;
+        grid-template-columns:1fr 1fr;
+        gap: 1em;
+        height: fit-content;
+        
+
     }
 }
 
@@ -182,7 +199,7 @@
 
 @media (max-width:768px) {
     .reproductor-mode-car{
-        height: 100vh;
+        height: 100%;
         width: 100%;
         margin: 0;
         bottom:  0;
@@ -190,12 +207,11 @@
         position: fixed;
         z-index: 20;
         background: black;
-        align-items: center;
-        justify-content: center;
+        align-items: start;
         padding: 0;
         padding-top: 1em;
         padding-bottom: 1em;
-
+        display: block;
         & .poster{
             width: 100px;
             height: 100px;
@@ -208,15 +224,15 @@
             display: none;
         }
         & .propsFirst-modeCar{
-            display: flex;
-            flex-direction: column;
-            gap: 0.5em;
-            margin: 0;
-            padding: 0;
+            height: 50%;
             width: 100%;
-            justify-content: center;
+            margin: 0;
+            bottom:  0;
+            top: 0;
+            background: black;
             align-items: center;
-            height: 80%;
+            justify-content: center;
+      
             
         }
         & html{
@@ -245,6 +261,14 @@
         & .btn-play{
             width: 100%;
             height: 100px;
+        }
+        & .recomendations-list{
+            display: grid;
+            grid-template-columns:1fr ;
+           
+            gap: 1em;
+            height: fit-content;
+            width: 100%;
         }
     }
     .reproductor{
