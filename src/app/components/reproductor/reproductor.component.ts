@@ -32,7 +32,8 @@ export class ReproductorComponent implements AfterViewInit, OnInit {
               })
 
           }
-          this.modeCar.update(() => value)
+          // -TODO : Implementar el cambio de modo de conducción
+          //this.modeCar.update(() => value)
       })
     })
     
