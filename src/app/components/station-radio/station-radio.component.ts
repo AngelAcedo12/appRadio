@@ -23,10 +23,21 @@ export class StationRadioComponent {
 
 
   changeState(){
-     this.reproductorService.state() ? this.pause() : this.play()
+
+
+
+    if(this.reproductorService.actualStation()?.id!==this.station?.id){
+      this.play()
+    }else{
+      this.pause()
+    }
+    
+    
+    
   }
 
   play(){
+    console.log("Play")
     this.reproductorService.play(this.station?.urlResolved!,this.station!)
     document.getElementById("rep")?.classList.replace("desactive","active")
 

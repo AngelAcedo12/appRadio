@@ -26,10 +26,10 @@ export class ReproductorComponent implements AfterViewInit, OnInit {
     this.speedTraker.subscribe((speedTraker) => {
       speedTraker.breakSpeedLimit.subscribe((value) => {
           if (value) {
-              this.notificationService.openSnackBar({
-                  message: "Has superado el limite de velocidad, cambiando a modo conducción 🚧",
-                  closeMessage: "Cerrar",
-              })
+              // this.notificationService.openSnackBar({
+              //     message: "Has superado el limite de velocidad, cambiando a modo conducción 🚧",
+              //     closeMessage: "Cerrar",
+              // })
 
           }
           // -TODO : Implementar el cambio de modo de conducción
@@ -71,6 +71,7 @@ async  determineMode(){
 
   setState(){
     if(this.reproductorService.actualStation!=undefined && this.reproductorService.state()){
+      
       document.getElementById("rep")?.classList.replace("desactive","active")
     }else{
       document.getElementById("rep")?.classList.replace("active","desactive")
