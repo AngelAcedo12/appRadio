@@ -30,7 +30,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: !isDevMode(),
       
-      registrationStrategy: 'registerWhenStable:1000'
+      registrationStrategy: 'registerImmediately'
     })
   ],
   providers: [
