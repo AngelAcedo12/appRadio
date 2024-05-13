@@ -85,10 +85,9 @@ export class MapComponent implements OnInit, OnChanges{
         style: url,
         center:[this.location.lon,this.location.lat],
         zoom: 20,
-        preserveDrawingBuffer: true,
         minZoom: 7,
         maxZoom: 20,
-        refreshExpiredTiles: true,
+        
       })
       this.map.on('zoom', (event) => {
         if(this.map != undefined){

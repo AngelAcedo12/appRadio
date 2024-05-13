@@ -30,7 +30,7 @@ const routes: Routes = [
   },
   {
     path:'**',
-    component:NotFoundComponent
+    loadComponent: () => import("./shared/not-found/not-found.component").then(m => m.NotFoundComponent)
   }
 ];
 
