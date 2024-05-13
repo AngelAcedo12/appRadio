@@ -1,11 +1,11 @@
-import { AfterViewInit, Component, computed, Input, OnInit, signal, Signal, SimpleChanges } from '@angular/core';
+import { AfterViewInit, Component, computed, effect, Input, OnInit, signal, Signal, SimpleChanges } from '@angular/core';
 import { ReproductorServiceService } from '../../services/reproductor-service.service';
 import { Station } from 'radio-browser-api';
 import { Sign } from 'crypto';
-import { of } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { Coords } from '../../models/Coords';
 import { NotificationService } from '../../services/notification-service.service';
-
+import { SpeedTraker } from '../../utils/speedTraker';
 @Component({
   selector: 'app-reproductor',
   templateUrl: './reproductor.component.html',
@@ -16,17 +16,26 @@ export class ReproductorComponent implements AfterViewInit, OnInit {
   @Input() isAtransmision : boolean = false
   modeCar = signal(false)
   coords : Coords[]= []
-
+  speedTraker = new Observable<SpeedTraker>((observer) => observer.next(new SpeedTraker(-1)))
 
   constructor(public reproductorService:ReproductorServiceService, public notificationService: NotificationService){
 
 
   }
   ngOnInit(): void {
-    setInterval(()=>{
-      this.determineMode()
-    },10000)
+    this.speedTraker.subscribe((speedTraker) => {
+      speedTraker.breakSpeedLimit.subscribe((value) => {
+          if (value) {
+              this.notificationService.openSnackBar({
+                  message: "Has superado el limite de velocidad, cambiando a modo conducción 🚧",
+                  closeMessage: "Cerrar",
+              })
 
+          }
+          this.modeCar.update(() => value)
+      })
+    })
+    
 
   }
   
@@ -54,41 +63,8 @@ export class ReproductorComponent implements AfterViewInit, OnInit {
 async  determineMode(){
 
     let speed = 0
-    if ("geolocation" in navigator) {
-      navigator.geolocation.watchPosition(
-        (position) => {
-          if (position.coords.speed !== null) {
-            const speed = position.coords.speed; // velocidad en metros por segundo
-            this.notificationService.openSnackBar({
-              message: "Velocidad de movimiento: "+speed+" m/s",
-              closeMessage: "Cerrar"
-            })
 
-          } else {
-            console.log("No se puede determinar la velocidad de movimiento.");
-            
-          }
-        },
-        (error) => {
 
-          console.log("Error al obtener la posición actual:", error);
-        }
-        
-      );
-    } else {
-      this.notificationService.openSnackBar({
-        message: "Geolocalización no está disponible en este navegador.",
-        closeMessage: "Cerrar"
-
-      })
-      console.log("Geolocalización no está disponible en este navegador.");
-    }
-  
-    
-    
-    return this.modeCar
-  
-    
   }
 
 

@@ -25,6 +25,42 @@
  
     
 }
+.reproductor-mode-car{
+    height: 100vh;
+    width: 100%;
+    margin: 0;
+    bottom:  0;
+    top: 0;
+    position: fixed;
+    z-index: 20;
+    background: black;
+    align-items: center;
+    justify-content: center;
+    padding: 1em;
+    & .propsFirst{
+        display: none;
+    }
+    & .propsFirst-modeCar{
+        display: flex;
+        flex-direction: column;
+        gap: 0.5em;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        height: 80%;
+
+    }
+    & html{
+        overflow: hidden;
+    
+    }
+    & body{
+        overflow: hidden;
+    }
+}
+
 .propsFirst{
     
     background-color: black;
@@ -145,6 +181,72 @@
 }
 
 @media (max-width:768px) {
+    .reproductor-mode-car{
+        height: 100vh;
+        width: 100%;
+        margin: 0;
+        bottom:  0;
+        top: 0;
+        position: fixed;
+        z-index: 20;
+        background: black;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        padding-top: 1em;
+        padding-bottom: 1em;
+
+        & .poster{
+            width: 100px;
+            height: 100px;
+            object-fit: contain;
+            animation:forwards  fade 0.2s ease-in-out ;
+            -webkit-animation:forwards  fade 0.2s ease-in-out ;
+        }
+
+        & .propsFirst{
+            display: none;
+        }
+        & .propsFirst-modeCar{
+            display: flex;
+            flex-direction: column;
+            gap: 0.5em;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+            height: 80%;
+            
+        }
+        & html{
+            overflow: hidden;
+        
+        }
+        & body{
+            overflow: hidden;
+        }
+        & .title_image{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5em;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+          
+            
+        }
+        & h1{
+            font-size: x-large;
+            width: 100%;
+            text-align: center;
+        }
+        & .btn-play{
+            width: 100%;
+            height: 100px;
+        }
+    }
     .reproductor{
         width: 100%;
         margin: 0;
