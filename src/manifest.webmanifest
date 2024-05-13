@@ -22,8 +22,11 @@
     },
     "categories": [
       "music",
-      "radio"
+      "radio",
+      "streaming"
+      
     ],
+    "description": "RadioGlobal-HUB es una plataforma de radio online que te permite escuchar música de todo el mundo, en cualquier momento y lugar. ¡Descubre nuevos sonidos y disfruta de la mejor música!",
     "lang": "es",
     "dir": "ltr"
   }
