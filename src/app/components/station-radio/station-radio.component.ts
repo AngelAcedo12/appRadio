@@ -28,8 +28,6 @@ export class StationRadioComponent {
 
     if(this.reproductorService.actualStation()?.id!==this.station?.id){
       this.play()
-    }else{
-      this.pause()
     }
     
     
