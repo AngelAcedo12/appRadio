@@ -15,9 +15,11 @@ export class SpeedTraker  {
         if (speedLimit) {
             this.speedLimit = speedLimit;
         }
-        setInterval(() => {
+        setInterval(async() => {
             this.getIntervalCoord()
-            this.speed = this.calculateSpeed()
+            this.speed = await this.calculateSpeed().then((value) => {
+                return value;
+            })
             if (this.speed > this.speedLimit && this.breakSpeedLimit.value != true) {
                 this.breakSpeedLimit.next(true)
             }
@@ -37,14 +39,14 @@ export class SpeedTraker  {
             },200)
             
         }
-        calculateSpeed() {
+    async calculateSpeed() {
             
             let sumLon = 0;
             let sumLat = 0;
+
             for (let i = 0; i < this.coord.length - 1; i++) {
                 sumLon += this.coord[i].lon - this.coord[i + 1].lon;
                 sumLat += this.coord[i].lat - this.coord[i + 1].lat;
-
             }
            // console.log(sumLat, sumLon)
             let distance = Math.sqrt(sumLon * sumLon + sumLat * sumLat);
