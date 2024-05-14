@@ -1,0 +1,97 @@
+/* HTML: <div class="loader"></div> */
+
+
+*{
+    --color-background:#2A1F2D;
+    --color-primary:#59C9A5;
+    --color-secundary:#52BE80;
+    --color-country:#FF6747;
+    --color-language:#DAF7A6;
+    --hover:#939393;
+}
+article{
+    position: fixed;  
+
+    display: flex;
+    flex-direction: column;
+    padding-left: 1em;
+    padding-right: 1em;
+    gap: 1em;
+    bottom: 0;
+    background-color: black;
+    width: 100%;
+    padding-top: 1em;
+    padding-bottom: 2em;
+    transition: all 0.5s ease-in-out;
+    border-radius: 0 0px 0 0;
+    z-index: 100;
+}
+
+.open{
+   transform: translateY(0); 
+}
+.close{
+    transform: translateY(200%);
+}
+button{
+    padding: 1em;
+    border: 1px var(--color-primary) solid;
+    color: white;
+    font-size: large;
+    border-radius: 10px;
+    background-color: transparent;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
+button:hover{
+    background-color: var(--color-primary);
+    color: black;
+    border: 1px var(--color-primary) solid;
+
+}
+button:active{
+    background-color: var(--color-primary);
+    color: black;
+    border: 1px var(--color-primary) solid;
+
+}
+h1{
+    color: white;
+    font-size: large;
+    text-wrap: wrap;
+}
+
+@media (max-width: 768px){
+    article{
+        padding-bottom: 2em;
+
+    }
+    h1{
+        max-width: 300px;
+    }
+    
+}
+@media (prefers-color-scheme: dark){
+    article{
+        background-color: black;
+       
+    }
+    button{
+        color: white;
+    }
+    h1{
+        color: white;
+    }
+}
+@media (prefers-color-scheme: light){
+    article{
+        background-color: white;
+        color: black;
+    }
+    button{
+        color: black;
+    }
+    h1{
+        color: black;
+    }
+}

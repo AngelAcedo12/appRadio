@@ -25,13 +25,12 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     HttpClientModule,
     MatSnackBarModule,
     BrowserAnimationsModule,
-    ComponentsModule,
-
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: !isDevMode(),
       
       registrationStrategy: 'registerImmediately'
-    })
+    }),
+    ComponentsModule
   ],
   providers: [
     {

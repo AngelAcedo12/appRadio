@@ -24,6 +24,7 @@ import { FindBarByAutocompleteComponent } from './find-bar-by-autocomplete/find-
 import { TransmisionListComponent } from './transmision-list/transmision-list.component';
 import { MenuCreateTransmisionComponent } from './menu-create-transmision/menu-create-transmision.component';
 import { ModeCarComponent } from './mode-car/mode-car.component';
+import { InstallAppComponent } from './install-app/install-app.component';
 
 
 
@@ -51,6 +52,7 @@ import { ModeCarComponent } from './mode-car/mode-car.component';
     TransmisionListComponent,
     MenuCreateTransmisionComponent,
     ModeCarComponent,
+    InstallAppComponent
     
     
   ],exports:[
@@ -68,7 +70,9 @@ import { ModeCarComponent } from './mode-car/mode-car.component';
     MapComponent,
     TransmisionListComponent,
     MenuCreateTransmisionComponent,
-    ModeCarComponent
+    ModeCarComponent,
+    InstallAppComponent
+
     
   ],
   imports: [
