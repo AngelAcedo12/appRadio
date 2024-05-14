@@ -25,8 +25,9 @@ export class ReproductorServiceService {
 
 
   async play(urlSound: string, station: Station) {
-   
-    this.audio = new Audio()
+   if (this.audio == undefined) {
+      this.audio = new Audio()
+    }
     this.audio.title = station.name
     this.state.update(() => false)
     this.stationLoading.update(() => false)
