@@ -12,22 +12,19 @@ import { LocationRadiosService } from '../../services/location-radios.service';
   templateUrl: './reproductor.component.html',
   styleUrl: './reproductor.component.css'
 })
-export class ReproductorComponent implements AfterViewInit, OnInit {
+export class ReproductorComponent implements AfterViewInit {
 
   @Input() isAtransmision : boolean = false
   modeCar = signal(false)
   coords : Coords[]= []
-  
+  volumeBar = signal(false)
   recomendations : Station[] = []
   constructor(public reproductorService:ReproductorServiceService,
     public locationService:LocationRadiosService, private notificationService: NotificationService){
 
   }
-  ngOnInit(): void {
-
-  
-    
-
+  openBar(){
+    this.volumeBar.update(() => this.volumeBar() ? false : true )
   }
   updateModeCar(){
     this.modeCar() ? this.modeCar.update(() => false) : this.modeCar.update(() => true) 

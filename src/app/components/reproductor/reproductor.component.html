@@ -34,11 +34,18 @@
                  
                  <div class="box-btn">
                    
+                    <div class="volume-box"> 
+                        <img (click)="openBar()" src="../../../assets/audio.webp" width="25" height="25">
+                        @if (reproductorService.audio) {
+                            <input type="range"  min="0" max="1" class="volume-progress "  [value]="reproductorService.audio.volume" [ngClass]="volumeBar() ? 'openBar' : 'closeBar' "/>
+                        }
+                        
+                    </div>
                          
                     <div class="box-car">
                          
                          <img  (click)="updateModeCar()" width="25px" height="25px" src="../../../assets/icons8-coche-50.webp">
-     
+                        
                     </div>
                     @if (reproductorService.state()) {
          
