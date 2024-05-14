@@ -23,7 +23,11 @@ export class SpeedTraker  {
             if (this.speed > this.speedLimit && this.breakSpeedLimit.value != true) {
                 this.breakSpeedLimit.next(true)
             }
+            if(this.speed < this.speedLimit ){
+                this.breakSpeedLimit.next(false)
+            }
             this.coord = []
+  
         },5000); 
       
 
@@ -36,7 +40,7 @@ export class SpeedTraker  {
                 }, (error) => { 
                     console.log(error)
                 })
-            },200)
+            },500)
             
         }
     async calculateSpeed() {

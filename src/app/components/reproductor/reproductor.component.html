@@ -3,7 +3,7 @@
 
     @if (modeCar()==false) {
         <div  class="reproductor">
-    
+            
             <div class="propsFirst  active" id="rep">
             
                 @if(reproductorService.stationLoading()==false ) {
@@ -47,65 +47,19 @@
                          }
          
                      </div>
+                     <div class="box-car">
+                        
+                        <img  (click)="updateModeCar()" width="25px" height="25px" src="../../../assets/icons8-coche-50.webp">
+
+                     </div>
                 }
               
                 
             </div>  
-    </div>
-    }
-    @if (modeCar()==true) {
-        <div  class="reproductor-mode-car">
-            <h1>Mode Car</h1>
-            <div class="propsFirst-modeCar" id="rep">
-            
-                @if(reproductorService.stationLoading()==false ) {
-                    
-                        <div style="align-items: center; display: flex; justify-content: center;">
-                            <app-loading></app-loading>
-                        </div>
-                    
-                }@else {
-                     <div class="title_image">
-         
-                         @if (reproductorService.actualStation()?.favicon!.length>0) {
-         
-                         <img class="poster" [src]="reproductorService.actualStation()?.favicon" />
-         
-                         }@else {
-                         <img class="poster" src="../../../assets/icons8-radio-50.png" />
-         
-                     }
-                     
-                 </div>
-                 <div>
-                    <h1>{{reproductorService.actualStation()?.name}}</h1>
-                   
-                </div>
-                    
-                 <div class="box-btn">
-                     
-                         @if (reproductorService.state()) {
-         
-                             <div  (click)="pause()" class="btn-play">
-                                 <img height="25" width="25" src="../../../assets/icons8-pausa-30.webp" />
-                             </div>
-                         }@else{
-                             <div (click)="play()" class="btn-play">
-                                 <img height="25" width="25" src="../../../assets/icons8-play-30.webp" />
-                             </div>
-                         }
-         
-                    </div>
-                }
-              
-                
-            </div>
-            <div class="recomendations-list">
-                @for (item of recomendations; track $index) {
-                    <app-station-radio [station]="item"></app-station-radio>
-                }
-            </div>  
-    </div>
+        </div>
+    }@else {
+
+        <app-mode-car (modeCar)="setModeCar($event)"></app-mode-car>
     }
    
 

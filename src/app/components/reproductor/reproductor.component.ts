@@ -17,29 +17,23 @@ export class ReproductorComponent implements AfterViewInit, OnInit {
   @Input() isAtransmision : boolean = false
   modeCar = signal(false)
   coords : Coords[]= []
-  speedTraker = new Observable<SpeedTraker>((observer) => observer.next(new SpeedTraker(40)))
+  
   recomendations : Station[] = []
   constructor(public reproductorService:ReproductorServiceService,
-     public notificationService: NotificationService,public locationService:LocationRadiosService){
-
+    public locationService:LocationRadiosService, private notificationService: NotificationService){
 
   }
   ngOnInit(): void {
-    this.getRecomendations()
-    this.speedTraker.subscribe((speedTraker) => {
-      speedTraker.breakSpeedLimit.subscribe((value) => {
-          if (value) {
-              this.notificationService.openSnackBar({
-                  message: "Has superado el limite de velocidad, cambiando a modo conducción 🚧",
-                  closeMessage: "Cerrar",
-              })
-              document.getElementsByTagName("body")[0].style.overflow="hidden"
-          }
-          
-          this.modeCar.update(() => value)
-      })
-    })
+
+  
     
+
+  }
+  updateModeCar(){
+    this.modeCar() ? this.modeCar.update(() => false) : this.modeCar.update(() => true) 
+  }
+  setModeCar(boolean: boolean){
+    this.modeCar.update(() => boolean)
 
   }
   
@@ -56,21 +50,6 @@ export class ReproductorComponent implements AfterViewInit, OnInit {
   stateOpen = signal(false)
 
 
-getRecomendations(){
-
-  this.locationService.recomendations().then((data) => {
-    this.recomendations = data
-  })
-  
-}
-
-
-async  determineMode(){
-
-    let speed = 0
-
-
-  }
 
 
   setState(){

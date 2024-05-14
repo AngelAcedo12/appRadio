@@ -23,6 +23,7 @@ import { MapComponent } from './map/map.component';
 import { FindBarByAutocompleteComponent } from './find-bar-by-autocomplete/find-bar-by-autocomplete.component';
 import { TransmisionListComponent } from './transmision-list/transmision-list.component';
 import { MenuCreateTransmisionComponent } from './menu-create-transmision/menu-create-transmision.component';
+import { ModeCarComponent } from './mode-car/mode-car.component';
 
 
 
@@ -49,6 +50,7 @@ import { MenuCreateTransmisionComponent } from './menu-create-transmision/menu-c
     FindBarByAutocompleteComponent,
     TransmisionListComponent,
     MenuCreateTransmisionComponent,
+    ModeCarComponent,
     
     
   ],exports:[
@@ -65,7 +67,8 @@ import { MenuCreateTransmisionComponent } from './menu-create-transmision/menu-c
     RecomendationUserComponent,
     MapComponent,
     TransmisionListComponent,
-    MenuCreateTransmisionComponent
+    MenuCreateTransmisionComponent,
+    ModeCarComponent
     
   ],
   imports: [
