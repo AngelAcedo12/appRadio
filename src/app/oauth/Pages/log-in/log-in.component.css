@@ -29,7 +29,7 @@ input{
     padding: 1em;
     border: none;    
     border-radius: 50px;
-    background-color: black;
+
 }
 img{
     width: 25px;
@@ -42,11 +42,12 @@ img{
     padding-right: 1em;
     border: none;
     border-radius: 50px;
-    background-color: black;
+    background-color: field;
     -webkit-border-radius: 50px;
     -moz-border-radius: 50px;
     -ms-border-radius: 50px;
     -o-border-radius: 50px;
+    border: black solid 1px;
 }
 
 input:focus{
