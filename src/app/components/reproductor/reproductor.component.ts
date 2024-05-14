@@ -67,7 +67,9 @@ export class ReproductorComponent implements AfterViewInit {
     document.getElementById("rep")?.classList.replace("active","desactive")
   }
 
-
+  changeVolume(event : any){
+    this.reproductorService.changeVolume(event.target.value)
+  }
   
 
 }

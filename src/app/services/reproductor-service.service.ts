@@ -129,4 +129,7 @@ export class ReproductorServiceService {
       
     })
   }
+  changeVolume(volume : number){
+    this.audio!.volume = volume
+  }
 }
