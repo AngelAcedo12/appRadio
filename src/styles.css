@@ -22,11 +22,6 @@ img,a{
 :root{
 
     color-scheme: light dark;
-    
-
-
-    
-
 }
 
 
@@ -75,6 +70,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 }
 
 .marker{
+    background-color: var(--color-primary);
     border-radius: 50%;
     width: 25px;
     height: 25px;

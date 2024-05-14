@@ -221,7 +221,7 @@ async loadMarkers(){
                 const div = document.createElement('div');
                 const img = new Image()
                 img.loading = "lazy"
-                img.src = "../../../assets/marcador.webp"
+                img.src = this.getFavicon(item)
                 img.classList.add("marker-img")
                 div.setAttribute("name","marker")
                 div.classList.add("hidden")
