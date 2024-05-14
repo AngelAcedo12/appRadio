@@ -11,7 +11,7 @@
 
     margin: 0;
     bottom:  0;
-    position: sticky;
+    position: fixed;
     padding: 1em;
     background: transparent;
     right: 0;
@@ -166,7 +166,7 @@
         width: 100%;
         margin: 0;
         bottom:  0;
-        position: sticky;
+        position: fixed;
         padding: 0;
         background: transparent;
         padding-bottom:0 ;
