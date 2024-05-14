@@ -18,7 +18,7 @@ export class ReproductorServiceService {
   }
 
 
-  audio: HTMLAudioElement  = new Audio();
+  audio: HTMLAudioElement  | undefined = undefined;
   actualStation: Signal<Station | undefined> = signal(undefined)
   state = signal(false)
   stationLoading = signal(false)
@@ -26,7 +26,7 @@ export class ReproductorServiceService {
 
   async play(urlSound: string, station: Station) {
    
-     
+    this.audio = new Audio()
     this.audio.title = station.name
     this.state.update(() => false)
     this.stationLoading.update(() => false)
@@ -40,15 +40,15 @@ export class ReproductorServiceService {
   }
 
   pause() {
- 
-    this.audio.pause()
+
+    this.audio?.pause()
     this.state.update(() => false)
     this.saveActualSong()
   }
 
   async resume() {
 
-    await this.audio.play()
+    await this.audio?.play()
     this.state.update(() => true)
     this.saveActualSong()
   }
