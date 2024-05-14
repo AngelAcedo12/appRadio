@@ -11,7 +11,7 @@ export class LocationRadiosService {
 
   constructor(private http: HttpClient, private countriesService: CountrysService) {
    
-    // this.api.setBaseUrl(this.baseUrl)
+    this.api.setBaseUrl(this.baseUrl)
    }
 
   api  : RadioBrowserApi = new RadioBrowserApi("My Radio Browser API Key")
