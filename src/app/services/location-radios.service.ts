@@ -11,7 +11,7 @@ export class LocationRadiosService {
 
   constructor(private http: HttpClient, private countriesService: CountrysService) {
    
-    this.api.setBaseUrl(this.baseUrl)
+    // this.api.setBaseUrl(this.baseUrl)
    }
 
   api  : RadioBrowserApi = new RadioBrowserApi("My Radio Browser API Key")
@@ -24,7 +24,7 @@ export class LocationRadiosService {
     if (!this.baseUrl) { 
       const results = await this.api.resolveBaseUrl() 
       const random = Math.floor(Math.random() * results.length) 
-      this.baseUrl = `https://${results[random].name}` 
+      this.baseUrl = `http://${results[random].name}` 
     } 
   }
 
