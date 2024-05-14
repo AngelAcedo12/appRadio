@@ -32,6 +32,7 @@ export class ModeCarComponent implements OnInit{
   }
   
   play(){
+    document.getElementById("rep_car")?.scrollTo(0,0)
     this.reproductorService.resume()
     document.getElementById("rep")?.classList.replace("desactive","active")
   }

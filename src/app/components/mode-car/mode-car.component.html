@@ -1,6 +1,6 @@
 
 
-<div  class="reproductor-mode-car">
+<div id="rep_car"  class="reproductor-mode-car">
     <div class="close-box"> 
         <h1>Mode Car</h1>
         <img (click)="updateModeCar()" width="25" height="25" src="../../../assets/close.webp" >
@@ -36,11 +36,11 @@
                  @if (reproductorService.state()) {
  
                      <div  (click)="pause()" class="btn-play">
-                         <img height="25" width="25" src="../../../assets/icons8-pausa-30.webp" />
+                         <img height="50" width="50" src="../../../assets/icons8-pausa-30.webp" />
                      </div>
                  }@else{
                      <div (click)="play()" class="btn-play">
-                         <img height="25" width="25" src="../../../assets/icons8-play-30.webp" />
+                         <img height="50" width="50" src="../../../assets/icons8-play-30.webp" />
                      </div>
                  }
  

@@ -70,25 +70,43 @@ h3{
         align-items: center;
         gap: 0.2em;
 
-        & a{
-            text-decoration: none;
-            font-weight: bold;
-            font-size: medium;
-            color: whitesmoke;
-            width: 200px;
-            border-radius: 10px;
-            text-overflow: ellipsis;
-            overflow: hidden;
-            text-wrap: nowrap;
-            transition: all 0.2s ease-in-out;
-                
-        }
-        & a:hover{   
-            color: var(--color-secundary);
-            transition: all 0.2s ease-in-out;
-        }
+        
       
     }
+    
+}
+.item-link-page{
+    text-decoration: none;
+    font-weight: bold;
+    font-size: medium;
+    color: #000;
+    width: 200px;
+    border-radius: 10px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    text-wrap: nowrap;
+    transition: all 0.2s ease-in-out;
+        
+}
+.item-link-page:hover{   
+    color: var(--color-secundary);
+    transition: all 0.2s ease-in-out;
+}
+
+@media (prefers-color-scheme: dark) {
+    .item-link-page{
+       
+            color: whitesmoke !important;
+    }
+    
+    
+}
+@media (prefers-color-scheme: light) {
+    .item-link-page{
+       
+            color: black !important;
+    }
+    
     
 }
 

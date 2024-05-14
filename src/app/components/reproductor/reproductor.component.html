@@ -26,32 +26,33 @@
                          <img class="poster" src="../../../assets/icons8-radio-50.png" />
          
                      }
-                     
+                     <div>
+                        <h1>{{reproductorService.actualStation()?.name}}</h1>
+                       
+                    </div>
                  </div>
                  
                  <div class="box-btn">
-                     <div>
-                         <h1>{{reproductorService.actualStation()?.name}}</h1>
-                        
-                     </div>
+                   
                          
                          @if (reproductorService.state()) {
          
-                             <div  (click)="pause()" class="btn-play">
-                                 <img height="25" width="25" src="../../../assets/icons8-pausa-30.webp" />
-                             </div>
+                     <div  (click)="pause()" class="btn-play">
+                            <img height="25" width="25" src="../../../assets/icons8-pausa-30.webp" />
+                    </div>
                          }@else{
-                             <div (click)="play()" class="btn-play">
-                                 <img height="25" width="25" src="../../../assets/icons8-play-30.webp" />
-                             </div>
+                    <div (click)="play()" class="btn-play">
+                        <img height="25" width="25" src="../../../assets/icons8-play-30.webp" />
+                    </div>
                          }
-         
-                     </div>
-                     <div class="box-car">
+                    <div class="box-car">
                         
                         <img  (click)="updateModeCar()" width="25px" height="25px" src="../../../assets/icons8-coche-50.webp">
-
+    
+                    </div>
+         
                      </div>
+                    
                 }
               
                 

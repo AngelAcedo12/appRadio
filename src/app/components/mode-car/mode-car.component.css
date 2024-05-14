@@ -41,6 +41,7 @@
         justify-content: space-between;
         align-items: center;
         height: 50%;
+        background-color: transparent;
 
     }
     & html{
@@ -90,7 +91,7 @@
     top: 0;
     position: fixed;
     z-index: 20;
-    background: black;
+ 
     align-items: start;
     padding: 0;
     padding-top: 1em;
@@ -113,7 +114,7 @@
         margin: 0;
         bottom:  0;
         top: 0;
-        background: black;
+
         align-items: center;
         justify-content: center;
   
@@ -137,11 +138,7 @@
       
         
     }
-    & h1{
-        font-size: x-large;
-        width: 100%;
-        text-align: start;
-    }
+   
     & .btn-play{
         width: 100%;
         height: 100px;
@@ -154,4 +151,37 @@
         height: fit-content;
         width: 100%;
     }
+}
+
+
+
+h1{
+    font-size: x-large;
+    width: 100%;
+    text-align: start;
+}
+
+@media (prefers-color-scheme: dark) {
+    .reproductor-mode-car{
+        background: black;
+    }
+    .close-box{
+        background: black;
+    }
+    h1{
+        color: white;
+    }
+    
+}
+@media (prefers-color-scheme: light) {
+    .reproductor-mode-car{
+        background: white;
+    }
+    .close-box{
+        background: white;
+    }
+    h1{
+        color: black;
+    }
+    
 }

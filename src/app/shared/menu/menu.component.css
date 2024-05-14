@@ -83,6 +83,18 @@ a{
     font-size: medium;
     
 }
+@media (prefers-color-scheme:dark){
+    .link_btn{
+        color: azure;
+    }
+    
+}   
+@media (prefers-color-scheme: light){
+    .link_btn{
+        color: black;
+    }
+    
+}   
 .btn-close-menu{
     display: none;
     cursor: pointer;
@@ -141,12 +153,13 @@ a{
     background-color: transparent;   
     border: none;
     text-wrap: nowrap;
-
+    color: white;
     transition: all 0.2s ease-in-out;
 }
 .item_contex:hover{
     color: var(--color-secundary);
 }
+
 .loadingOpcion{
     width: 40%;
     height: 70px;

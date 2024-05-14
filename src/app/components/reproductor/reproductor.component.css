@@ -13,7 +13,6 @@
     bottom:  0;
     position: fixed;
     padding: 1em;
-    
     background: transparent;
     right: 0;
     z-index: 20;
@@ -21,16 +20,13 @@
     display: flex;
     justify-content: end;
   
-  
- 
-    
 }
 
 
 .propsFirst{
     
     background-color: black;
-    padding: 1em;
+    padding: 1rem;
     display: flex;
     flex-direction: row;
     border: transparent solid;
@@ -45,6 +41,7 @@
         
     }
 }
+
 .box-btn{
     width: fit;
     align-items: center;
@@ -103,6 +100,7 @@
 .box-btn{
     display: flex;
     flex-direction: row;
+    gap: 1em;
     & h1{
         width: 200px;
         
@@ -176,6 +174,9 @@
         text-align: end;
      
     }
+    .box-btn{
+        gap:0.3em
+    }
     .propsFirst{
         justify-content: space-between;
         margin: 0;
@@ -183,7 +184,10 @@
         flex-direction: row;
         width: 100%;
         border: none;
-        gap:0.3em
+        gap:0.3em;
+        padding: 0.5em;
+        padding-top: 1em;
+        padding-bottom: 1em;;
     }
     .title_image{
         display: flex;
@@ -224,6 +228,37 @@
     .btn-close{
         display: block;
     }
+    
+}
+
+@media (max-width:350px) {
+
+    h1{
+        width: 100px;
+    }
+    
+}
+@media (prefers-color-scheme: dark) {
+  
+    h1{
+        color: black;
+    }
+}
+@media (prefers-color-scheme: light) {
+    h1{
+        color: white;
+    }
+}
+@media (prefers-color-scheme: dark) {
+   .propsFirst{
+    background-color: black
+   }    
+
+}
+@media (prefers-color-scheme: light) {
+    .propsFirst{
+        background-color: grey
+       }    
     
 }
 @keyframes fade {
