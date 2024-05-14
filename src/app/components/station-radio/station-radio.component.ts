@@ -32,7 +32,7 @@ export class StationRadioComponent {
 
   play(){
     console.log("Play")
-    this.reproductorService.play(this.station?.urlResolved!,this.station!)
+    this.reproductorService.play(this.station?.url!,this.station!)
     document.getElementById("rep")?.classList.replace("desactive","active")
 
   }
