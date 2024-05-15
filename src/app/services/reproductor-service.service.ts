@@ -23,6 +23,7 @@ export class ReproductorServiceService {
   actualStation: Signal<Station | undefined> = signal(undefined)
   state = signal(false)
   stationLoading = signal(false)
+  numberRetries = 0
 
 
   async play(urlSound: string, station: Station) {
@@ -36,6 +37,7 @@ export class ReproductorServiceService {
     this.audio.src = urlSound;
     this.audio.load()
     await this.audio.play().then(() => { this.stationLoading.update(() => true); })
+    this.numberRetries = 0
     this.addToHistory({ data: station})
     this.state.update(() => true)
     this.saveActualSong()
@@ -76,7 +78,7 @@ export class ReproductorServiceService {
     this.state.update(() => station.state)
     this.setColor()
   }
-  
+
   changeTitle(title: string) {
     document.title=title
   }
@@ -87,14 +89,25 @@ export class ReproductorServiceService {
       this.audio = new Audio()
     }
     this.audio.addEventListener("error", (error) => {
-      this.notificationService.openSnackBar({
-        message: "Error al reproducir la estación, probando de otra forma...",
-        duration: 2000,
-        closeMessage: "Cerrar"
-      })
-      if(this.audio != undefined) {
 
+      if(this.audio != undefined &&  this.numberRetries < 3) {
+
+        this.notificationService.openSnackBar({
+          message: "Error al reproducir la estación, probando de otra forma...",
+          duration: 2000,
+          closeMessage: "Cerrar"
+        })
+  
         this.play(this.actualStation()?.urlResolved || "", this.actualStation()!)
+        this.numberRetries++
+      }
+      if(this.numberRetries == 3){
+        this.notificationService.openSnackBar({
+          message: "Error al reproducir la estación, prube de nuevo más tarde...",
+          duration: 2000,
+          closeMessage: "Cerrar"
+        })
+        
       }
       this.stationLoading.update(() => false)
     })
