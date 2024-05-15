@@ -30,6 +30,10 @@ export class ReproductorServiceService {
    if (this.audio == undefined) {
       this.audio = new Audio()
     }
+    if(station.name != this.actualStation.name){
+
+      this.numberRetries = 0
+    }
     this.changeTitle(station.name)
     this.state.update(() => false)
     this.actualStation = computed(() => station)
@@ -37,7 +41,6 @@ export class ReproductorServiceService {
     this.audio.src = urlSound;
     this.audio.load()
     await this.audio.play().then(() => { this.stationLoading.update(() => true); })
-    this.numberRetries = 0
     this.addToHistory({ data: station})
     this.state.update(() => true)
     this.saveActualSong()
@@ -107,7 +110,7 @@ export class ReproductorServiceService {
           duration: 2000,
           closeMessage: "Cerrar"
         })
-        
+
       }
       this.stationLoading.update(() => false)
     })
