@@ -31,12 +31,12 @@ export class ReproductorServiceService {
     }
     this.changeTitle(station.name)
     this.state.update(() => false)
+    this.actualStation = computed(() => station)
     this.stationLoading.update(() => false)
     this.audio.src = urlSound;
     this.audio.load()
     await this.audio.play().then(() => { this.stationLoading.update(() => true); })
     this.addToHistory({ data: station})
-    this.actualStation = computed(() => station)
     this.state.update(() => true)
     this.saveActualSong()
   }
@@ -76,6 +76,7 @@ export class ReproductorServiceService {
     this.state.update(() => station.state)
     this.setColor()
   }
+  
   changeTitle(title: string) {
     document.title=title
   }
@@ -87,10 +88,14 @@ export class ReproductorServiceService {
     }
     this.audio.addEventListener("error", (error) => {
       this.notificationService.openSnackBar({
-        message: "Error al reproducir la estación",
+        message: "Error al reproducir la estación, probando de otra forma...",
         duration: 2000,
         closeMessage: "Cerrar"
       })
+      if(this.audio != undefined) {
+
+        this.play(this.actualStation()?.urlResolved || "", this.actualStation()!)
+      }
       this.stationLoading.update(() => false)
     })
     
