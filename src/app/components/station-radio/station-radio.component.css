@@ -27,7 +27,7 @@ h3{
     padding: 1em;
     border: transparent solid;
     border-width: 1px;
-    border-radius: 10px;
+
     animation: forwards ;
     animation-name: fade;
     animation-duration: 0.5s;    
@@ -38,6 +38,21 @@ h3{
     height: fit-content;
     
 }
+@media (prefers-color-scheme: dark) {
+    .station:active{
+        background-color: #5E5E5E;
+        transition: all 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
+    }
+    
+}
+@media (prefers-color-scheme: light) {
+    .station:active{
+        background-color: #E0E0E0;
+        transition: all 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
+    }
+    
+}
+
 
 .title{
     text-decoration: none;
