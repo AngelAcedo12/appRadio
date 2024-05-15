@@ -2,6 +2,7 @@ import { Component, computed, inject, signal } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { OauthService } from '../../../services/oauth.service';
 import { CookieService } from 'ngx-cookie-service';
+import { NotificationService } from '../../../services/notification-service.service';
 
 @Component({
   selector: 'app-log-in',
@@ -9,7 +10,7 @@ import { CookieService } from 'ngx-cookie-service';
   styleUrl: './log-in.component.css'
 })
 export class LogInComponent {
-
+  private notificationService = inject(NotificationService)
   private oauthService = inject(OauthService)
   private cookieService = inject(CookieService)
 
@@ -45,14 +46,18 @@ export class LogInComponent {
             this.cookieService.set("oauth-token-app-radio", token, { path: "/", expires: 300 })
             this.oauthService.userSave = computed(() => res.result.user) 
             this.oauthService.logInState.update(() => true) 
-
-           window.location.href = "radio"
+            this.notificationService.openSnackBar({
+              message: "Bienvenido",
+              duration: 2000,
+            })
+            window.location.href = "radio"
             
           } else {
 
             this.oauthService.userSave = computed(() => undefined) 
             this.oauthService.logInState.update(() => false) 
             this.formGroup.reset()
+            
           }
 
       

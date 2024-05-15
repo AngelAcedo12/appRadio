@@ -7,13 +7,14 @@ import { HttpClient } from '@angular/common/http';
 import enviroment from '../../environments/environment';
 import { CookieService } from 'ngx-cookie-service';
 import { error } from 'console';
+import { NotificationService } from './notification-service.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ReproductorServiceService {
 
-  constructor(private http: HttpClient, private cookieService: CookieService) {
+  constructor(private http: HttpClient, private cookieService: CookieService, private notificationService: NotificationService) {
     
   }
 
@@ -28,7 +29,7 @@ export class ReproductorServiceService {
    if (this.audio == undefined) {
       this.audio = new Audio()
     }
-    this.audio.title = station.name
+    this.changeTitle(station.name)
     this.state.update(() => false)
     this.stationLoading.update(() => false)
     this.audio.src = urlSound;
@@ -39,6 +40,7 @@ export class ReproductorServiceService {
     this.state.update(() => true)
     this.saveActualSong()
   }
+
 
   pause() {
 
@@ -65,7 +67,6 @@ export class ReproductorServiceService {
 
   loadStationInLocalStorage() {
 
-
     var station: ModelSaving = JSON.parse(localStorage.getItem("actualStation")!)
     
     if (station == undefined) return
@@ -75,6 +76,9 @@ export class ReproductorServiceService {
     this.state.update(() => station.state)
     this.setColor()
   }
+  changeTitle(title: string) {
+    document.title=title
+  }
 
   public addListertToAudio() {
     
@@ -82,7 +86,11 @@ export class ReproductorServiceService {
       this.audio = new Audio()
     }
     this.audio.addEventListener("error", (error) => {
-      console.log(error)
+      this.notificationService.openSnackBar({
+        message: "Error al reproducir la estación",
+        duration: 2000,
+        closeMessage: "Cerrar"
+      })
       this.stationLoading.update(() => false)
     })
     

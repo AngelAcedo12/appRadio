@@ -37,7 +37,7 @@
                     <div class="volume-box"> 
                         <img (click)="openBar()" src="../../../assets/audio.webp" width="25" height="25">
                         @if (reproductorService.audio) {
-                            <input (change)="changeVolume($event)" type="range"  min="0" max="1" step="0.1" class="volume-progress "  [value]="reproductorService.audio.volume" [ngClass]="volumeBar() ? 'openBar' : 'closeBar' "/>
+                            <input id="volumeBar"  (change)="changeVolume($event)" type="range"  min="0" max="1" step="0.1" class="volume-progress closeBar"  [value]="reproductorService.audio.volume" [ngClass]=" "/>
                         }
                         
                     </div>

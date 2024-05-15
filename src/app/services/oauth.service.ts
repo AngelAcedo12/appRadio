@@ -43,7 +43,7 @@ export class OauthService {
       this.nofiticationService.openSnackBar({
         message: "Usuario o contraseña incorrecta",
         duration: 2000,
-   
+        
       })
       return err
     })

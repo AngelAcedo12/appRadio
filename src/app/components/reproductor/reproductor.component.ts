@@ -24,6 +24,7 @@ export class ReproductorComponent implements AfterViewInit {
 
   }
   openBar(){
+    this.volumeBar() ? document.getElementById("volumeBar")?.classList.replace("openBar","closeBar") : document.getElementById("volumeBar")?.classList.replace("closeBar","openBar")
     this.volumeBar.update(() => this.volumeBar() ? false : true )
   }
   updateModeCar(){
