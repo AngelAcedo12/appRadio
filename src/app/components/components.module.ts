@@ -25,8 +25,6 @@ import { TransmisionListComponent } from './transmision-list/transmision-list.co
 import { MenuCreateTransmisionComponent } from './menu-create-transmision/menu-create-transmision.component';
 import { ModeCarComponent } from './mode-car/mode-car.component';
 import { InstallAppComponent } from './install-app/install-app.component';
-import { NotificationErrorComponent } from './notifications/notification-error/notification-error.component';
-import { NotificationModuleModule } from './notifications/notification-module.module';
 
 
 
@@ -75,7 +73,7 @@ import { NotificationModuleModule } from './notifications/notification-module.mo
     MenuCreateTransmisionComponent,
     ModeCarComponent,
     InstallAppComponent,
-    NotificationModuleModule
+    
     
   ],
   imports: [
