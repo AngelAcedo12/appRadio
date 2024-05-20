@@ -13,13 +13,13 @@ export class LogInComponent {
   private notificationService = inject(NotificationService)
   private oauthService = inject(OauthService)
   private cookieService = inject(CookieService)
-
+  
   formGroup = new FormGroup({
     email: new FormControl('',[Validators.required]),
     password: new FormControl('',[Validators.required])
   })
 
-
+  loading = signal(false)
   statePassword = signal(false)
   setStatePassword(){
     this.statePassword.update(()=> this.statePassword()==false ? true : false) 
@@ -31,6 +31,7 @@ export class LogInComponent {
     }
  }
  async logIn(){
+    this.loading.update(() => true)
     event?.preventDefault()
     const email = this.formGroup.value.email
     const password = this.formGroup.value.password
@@ -38,31 +39,36 @@ export class LogInComponent {
     if((email!=undefined || email!=null) && (password!=undefined || password!=null) ){
 
        this.oauthService.login(email,password).subscribe(res=>{ 
-          
+          this.loading.update(() => false)
           let token = res.token
-        
-          if (res.result.status == true) {
-           
-            this.cookieService.set("oauth-token-app-radio", token, { path: "/", expires: 300 })
-            this.oauthService.userSave = computed(() => res.result.user) 
-            this.oauthService.logInState.update(() => true) 
-            this.notificationService.openSnackBar({
-              message: "Bienvenido",
-              duration: 2000,
-            })
-            window.location.href = "radio"
-            
-          } else {
-
-            this.oauthService.userSave = computed(() => undefined) 
-            this.oauthService.logInState.update(() => false) 
-            this.formGroup.reset()
-            
-          }
+          this.veriftyToken(res, token)
 
       
       })
     }
   }
+
+  veriftyToken(res: any, token: string){
+    if (res.result.status == true) {
+            
+      this.cookieService.set("oauth-token-app-radio", token, { path: "/", expires: 300 })
+      this.oauthService.userSave = computed(() => res.result.user) 
+      this.oauthService.logInState.update(() => true) 
+      this.notificationService.openSnackBar({
+        message: "Bienvenido",
+        duration: 2000,
+      })
+      
+      window.location.href = "radio"
+      
+    } else {
+
+      this.oauthService.userSave = computed(() => undefined) 
+      this.oauthService.logInState.update(() => false) 
+      this.formGroup.reset()
+      
+    }
+  }
  }
+
 

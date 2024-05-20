@@ -8,7 +8,7 @@ import { TransmisionSocketService } from '../../../services/transmisionSocket.se
   styleUrl: './layaout.component.css'
 })
 export class LayaoutComponent {
-
+  
   private transmisionService = inject(TransmisionService)
   private transmisionSocketService = inject(TransmisionSocketService)
   menuCreateState = false

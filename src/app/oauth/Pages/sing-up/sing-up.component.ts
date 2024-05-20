@@ -14,7 +14,7 @@ export class SingUpComponent {
   private oauthService = inject(OauthService)
   private cookieService = inject(CookieService)
 
-
+  loading = signal(false)
 
   isInvalid(controlName: string) {
     return this.singUpForm.get(controlName)?.invalid && this.singUpForm.get(controlName)?.touched
@@ -60,7 +60,9 @@ export class SingUpComponent {
 
     }
   }
+
   submit() {
+
     if (this.singUpForm.invalid) {
       return Object.values(this.singUpForm.controls).forEach(control => {
         control.markAsTouched()
@@ -76,28 +78,32 @@ export class SingUpComponent {
         password: this.singUpForm.value.password ? this.singUpForm.value.password : "",
         imgProfile: this.imgSelected
       }
-      this.oauthService.register(userSave).subscribe((res) => {
       
-        let token = res.token
-        if (token != null) {
   
-          this.cookieService.set("oauth-token-app-radio", token, { path: "/", expires: 300 })
-          this.oauthService.logInState.update(() => true)
-          this.oauthService.userSave = signal(res.result.user)
-        }
-        console.log(res.result)
-        if (res.result.status == true) {
-  
-          window.location.href = "radio"
-          
-        }
-  
-  
-      }
-      )
     }
 
 
+  }
+
+  register(userSave : DtoUserSave){
+    this.loading.update(() => true)
+    this.oauthService.register(userSave).subscribe((res) => {
+      this.loading.update(() => false)
+      let token = res.token
+      if (token != null) {
+
+        this.cookieService.set("oauth-token-app-radio", token, { path: "/", expires: 300 })
+        this.oauthService.logInState.update(() => true)
+        this.oauthService.userSave = signal(res.result.user)
+      }
+      console.log(res.result)
+      if (res.result.status == true) {
+
+        window.location.href = "radio"
+        
+      }
+    }
+    )
   }
 }
 

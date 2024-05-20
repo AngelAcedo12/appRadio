@@ -82,6 +82,12 @@ export class ReproductorServiceService {
     this.setColor()
   }
 
+  retryLoadStation(url : string) {
+    if (this.actualStation() == undefined) return
+    if(this.audio == undefined) this.audio = new Audio()
+    this.audio?.load()
+    this.audio.src = url
+  }
   changeTitle(title: string) {
     document.title=title
   }
@@ -101,7 +107,7 @@ export class ReproductorServiceService {
           closeMessage: "Cerrar"
         })
   
-        this.play(this.actualStation()?.urlResolved || "", this.actualStation()!)
+        this.retryLoadStation(this.actualStation()?.urlResolved || "")
         this.numberRetries++
       }
       if(this.numberRetries == 3){
@@ -110,7 +116,6 @@ export class ReproductorServiceService {
           duration: 2000,
           closeMessage: "Cerrar"
         })
-
       }
       this.stationLoading.update(() => false)
     })

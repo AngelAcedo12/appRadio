@@ -13,8 +13,11 @@ export class AppComponent {
   showInstall = false
 
   ngOnInit(): void {
+    
    this.installPWA()
   }
+
+
   installPWA() {
     let deferredPrompt: any;
     window.addEventListener('beforeinstallprompt', (e) => {
