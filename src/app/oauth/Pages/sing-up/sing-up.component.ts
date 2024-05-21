@@ -79,7 +79,7 @@ export class SingUpComponent {
         imgProfile: this.imgSelected
       }
       
-  
+      this.register(userSave)
     }
 
 

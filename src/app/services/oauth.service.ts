@@ -20,9 +20,9 @@ export class OauthService {
   state = signal(false)
 
   userSave: Signal<DtoProfile | undefined> = signal(undefined)
+  
   logInState = signal(false)
   
-
 
   register(userSave: DtoUserSave) {
    return this.http.post<any>(`${enviroment.base_url_local}api/user`, userSave).pipe(
