@@ -1,5 +1,5 @@
 import { computed, inject } from '@angular/core';
-import { CanActivateFn } from '@angular/router';
+import { CanActivateFn, Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { OauthService } from '../services/oauth.service';
 
@@ -7,10 +7,11 @@ export const oauthGuard: CanActivateFn = (route, state) => {
 
   const cookiesService = inject(CookieService)
   const oauthService = inject(OauthService)
+  const router = inject(Router)
   const token = cookiesService.get("oauth-token-app-radio") 
 
   if(token.length<=0 ){
-    window.location.href = "oauth/logIn"
+    router.navigateByUrl("/oauth/logIn")
     return false;
   }else{
     oauthService.logInWhitToken(token).subscribe(res => {
