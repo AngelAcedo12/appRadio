@@ -23,27 +23,50 @@ form{
 input{
     width: 100%;
     padding: 1em;
-    border: none;    
+  
     border-radius: 50px;
-    background-color: black;
+    
 }
 img{
     width: 25px;
     height: 25px;
 }
-.input_box{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding-right: 1em;
-    border: none;    
-    border-radius: 50px;
-    background-color: black;
-
-}
 
 input:focus{
     outline: none;
+}
+@media (prefers-color-scheme: dark) {
+
+    .input_box{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding-right: 1em;
+        border-radius: 50px;
+        background-color: black;
+        border: solid 1px ;
+        border-color: black;
+    }
+    input{
+        border: 1px solid white;
+    }
+
+}
+@media (prefers-color-scheme: light) {
+    input{
+        border: 1px solid black;
+    }
+
+    .input_box{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding-right: 1em;
+        border-radius: 50px;
+        background-color: white;
+        border: 1px solid ;
+ 
+    }
 }
 
 .singUp{

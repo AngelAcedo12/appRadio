@@ -25,7 +25,7 @@ input{
     padding: 1em;
     border: none;    
     border-radius: 50px;
-    
+    background-color: field;
 }
 img{
     width: 25px;
@@ -39,7 +39,6 @@ img{
     border: none;    
     border-radius: 50px;
     background-color: field;
-    border: black solid 1px;
     -webkit-border-radius: 50px;
     -moz-border-radius: 50px;
     -ms-border-radius: 50px;
@@ -48,6 +47,33 @@ img{
 
 input:focus{
     outline: none;
+}
+
+@media (prefers-color-scheme: dark) {
+
+    .input_box{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding-right: 1em;
+        border-radius: 50px;
+        border: solid 1px ;
+        border-color: white;
+    }
+
+    
+}
+@media (prefers-color-scheme: light) {
+    .input_box{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding-right: 1em;
+        border-radius: 50px;
+        
+        border: solid 1px ;
+        border-color: black;
+    }
 }
 
 .singUp{

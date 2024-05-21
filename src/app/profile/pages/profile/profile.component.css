@@ -86,6 +86,16 @@ article{
     gap: 0.5em;
 }
 
+@media (prefers-color-scheme: dark) {
+    .item_links{
+        color: whitesmoke;
+    }
+}
+@media (prefers-color-scheme: light) {
+    .item_links{
+        color: black;
+    }
+}
 .item_links{
     background-color: transparent;
     border: 1px solid var(--color-primary);

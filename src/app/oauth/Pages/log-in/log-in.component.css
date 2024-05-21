@@ -27,7 +27,7 @@ form{
 input{
     width: 100%;
     padding: 1em;
-    border: none;    
+    border: none;
     border-radius: 50px;
 
 }
@@ -47,9 +47,38 @@ img{
     -moz-border-radius: 50px;
     -ms-border-radius: 50px;
     -o-border-radius: 50px;
-    border: black solid 1px;
+   
 }
 
+@media (prefers-color-scheme: dark) {
+
+    .input_box{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding-right: 1em;
+        border-radius: 50px;
+       
+        border: solid 1px ;
+        border-color: white;
+    }
+    
+    
+}
+@media (prefers-color-scheme: light) {
+
+
+    .input_box{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding-right: 1em;
+        border-radius: 50px;
+ 
+        border: 1px solid ;
+     
+    }
+}
 input:focus{
     outline: none;
 }
