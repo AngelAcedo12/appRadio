@@ -1,2 +1,2 @@
 <router-outlet />
-<app-install-app [showInstall]="showInstall"></app-install-app>
+<app-install-app (closeInstallEvent)="closeInstall()" [showInstall]="showInstall"></app-install-app>

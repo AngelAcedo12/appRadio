@@ -46,7 +46,9 @@ export class AppComponent {
       console.log('PWA was installed');
     });
   }
-
+  closeInstall(){
+    this.showInstall = false
+  }
 }
 
 

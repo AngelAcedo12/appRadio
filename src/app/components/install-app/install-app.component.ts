@@ -1,4 +1,4 @@
-import { Component, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-install-app',
@@ -8,8 +8,11 @@ import { Component, Input, Output } from '@angular/core';
 export class InstallAppComponent {
 
   @Input({required:true}) showInstall : boolean = false
-
+  @Output() closeInstallEvent = new EventEmitter<boolean>()
   ngOnInit(): void {
     
+  }
+  closeInstall(){
+    this.showInstall = false
   }
 }

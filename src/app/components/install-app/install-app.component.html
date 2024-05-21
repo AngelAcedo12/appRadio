@@ -1,7 +1,10 @@
 
-<article [ngClass]="showInstall==false ? 'close' : 'open'">
+<article  [ngClass]="showInstall==false ? 'close' : 'open'">
     <div>
         <h1>Disfruta más y mejor instalando la app</h1>
-        <button id="installButton">Instalar app</button>
+        <div style="display: flex; gap: 1em; flex-direction: row" >
+            <button id="installButton">Instalar app</button>
+            <button id="cancelButton" (click)="closeInstall()">Cancelar</button>
+        </div>
     </div>
 </article>
