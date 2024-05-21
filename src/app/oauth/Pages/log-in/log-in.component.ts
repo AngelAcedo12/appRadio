@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { OauthService } from '../../../services/oauth.service';
 import { CookieService } from 'ngx-cookie-service';
 import { NotificationService } from '../../../services/notification-service.service';
+import { catchError } from 'rxjs';
 
 @Component({
   selector: 'app-log-in',
@@ -38,7 +39,16 @@ export class LogInComponent {
 
     if((email!=undefined || email!=null) && (password!=undefined || password!=null) ){
 
-       this.oauthService.login(email,password).subscribe(res=>{ 
+       this.oauthService.login(email,password).pipe(
+        catchError(err => {
+          this.notificationService.openSnackBar({
+            message: "Email o contraseña incorrectos",
+            duration: 2000,
+          })
+          this.loading.update(() => false)
+          return err
+        })
+       ).subscribe(res=>{ 
           this.loading.update(() => false)
           let token = res.token
           this.veriftyToken(res, token)

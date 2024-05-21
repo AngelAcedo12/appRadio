@@ -6,7 +6,7 @@
       
             <nav class="links">
             @for (item of  menuItems; track $index) {
-                <a class="link_btn" [href]="item.url">{{item.title}}</a>
+                <a class="link_btn" [routerLink]="'/'+item.url">{{item.title}}</a>
             }
             
             @if(userService.logInState()===true){
@@ -15,7 +15,7 @@
                         <img (click)="openContex()" class="img_profile" [src]="'../../../assets/profile/'+getImageProfile()">
                         
                         <menu id="contex"  class=" closeContex contexMenu">
-                            <a href="profile" class="item_contex">Perfil</a>
+                            <a routerLink="/profile" class="item_contex">Perfil</a>
                             <button (click)="closedSesion()" class="item_contex">Cerrar Sesion</button>
                         </menu>
                     </div>
@@ -23,8 +23,8 @@
                  
             }@else {
                 
-                <a class="link_btn " href="oauth/logIn">Iniciar sesion</a>
-                <a class="link_btn "href="oauth/singUp">Registrarse</a>
+                <a class="link_btn " routerLink="/oauth/logIn">Iniciar sesion</a>
+                <a class="link_btn " routerLink="/oauth/singUp">Registrarse</a>
             
             }
         </nav>

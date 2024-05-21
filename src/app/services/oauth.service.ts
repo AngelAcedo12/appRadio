@@ -37,17 +37,8 @@ export class OauthService {
 
   login(email: string, password: string) {
   
-   return this.http.get<any>(`${enviroment.base_url_local}api/user?email=${email}&password=${password}`).pipe(
-    catchError(err => {
-      console.log(err)
-      this.nofiticationService.openSnackBar({
-        message: "Usuario o contraseña incorrecta",
-        duration: 2000,
-        
-      })
-      return err
-    })
-  )
+   return this.http.get<any>(`${enviroment.base_url_local}api/user?email=${email}&password=${password}`)
+  
     
   }
   logInWhitToken(TOKEN: string) {
