@@ -167,10 +167,5 @@ export class ReproductorServiceService {
     this.audio!.volume = volume
   }
 
-  asignerSpeedTraker() {
-    this.observableSpeedTraker.breakSpeedLimit.subscribe((value) => {
-      this.breakSpeedLimit.update(() => value)
-    })
-  }
-  
+
 }

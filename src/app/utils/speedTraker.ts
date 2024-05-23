@@ -67,7 +67,7 @@ export class SpeedTraker  {
                 }, (error) => { 
                     console.log(error)
                 })
-            },500)
+            },1000)
             
         }
     /*

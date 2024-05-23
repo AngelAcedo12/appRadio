@@ -19,10 +19,16 @@ export class ReproductorComponent implements AfterViewInit {
   coords : Coords[]= []
   volumeBar = signal(false)
   recomendations : Station[] = []
+
+  
+
   constructor(public reproductorService:ReproductorServiceService,
-    public locationService:LocationRadiosService, private notificationService: NotificationService){
+    public locationService:LocationRadiosService,
+     public notificationService: NotificationService){
+
 
   }
+
   openBar(){
     this.volumeBar() ? document.getElementById("volumeBar")?.classList.replace("openBar","closeBar") : document.getElementById("volumeBar")?.classList.replace("closeBar","openBar")
     this.volumeBar.update(() => this.volumeBar() ? false : true )
@@ -32,15 +38,15 @@ export class ReproductorComponent implements AfterViewInit {
   }
   setModeCar(boolean: boolean){
     this.modeCar.update(() => boolean)
-
   }
   
   ngAfterViewInit(): void {
       this.reproductorService.addListertToAudio()
       if(this.reproductorService.actualStation!=undefined){
       this.reproductorService.loadStationInLocalStorage()
-        
-  
+      this.asigningSuscriptionToBreakLimit()
+
+
   }
 }
 
@@ -71,6 +77,22 @@ export class ReproductorComponent implements AfterViewInit {
   changeVolume(event : any){
     this.reproductorService.changeVolume(event.target.value)
   }
+  asigningSuscriptionToBreakLimit(){
   
+    this.reproductorService.observableSpeedTraker.breakSpeedLimit.subscribe((value) => {
+      if(value && !this.modeCar()){
+      
+        this.modeCar.update(() => true)
+        this.notificationService.openSnackBar({
+          message: "Has superado el límite de velocidad",
+          duration: 2000,
+          closeMessage: "Cerrar"
+        })
+      }
+      
+
+    })
+
+  }
 
 }
