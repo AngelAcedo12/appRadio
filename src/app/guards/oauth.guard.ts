@@ -12,7 +12,7 @@ export const oauthGuard: CanActivateFn = (route, state) => {
 
   if(token.length<=0 ){
     setTimeout(() => {
-      window.location.href = "oauth/log-in"
+      window.location.href = "/oauth/logIn"
     },100)
 
     return false;
