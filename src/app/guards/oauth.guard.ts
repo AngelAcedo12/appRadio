@@ -11,7 +11,10 @@ export const oauthGuard: CanActivateFn = (route, state) => {
   const token = cookiesService.get("oauth-token-app-radio") 
 
   if(token.length<=0 ){
-    router.navigateByUrl("/oauth/logIn")
+    setTimeout(() => {
+      window.location.href = "/oauth/login"
+    },100)
+
     return false;
   }else{
     oauthService.logInWhitToken(token).subscribe(res => {

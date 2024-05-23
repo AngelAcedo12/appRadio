@@ -8,6 +8,7 @@ import enviroment from '../../environments/environment';
 import { CookieService } from 'ngx-cookie-service';
 import { error } from 'console';
 import { NotificationService } from './notification-service.service';
+import { SpeedTraker } from '../utils/speedTraker';
 
 @Injectable({
   providedIn: 'root'
@@ -17,14 +18,13 @@ export class ReproductorServiceService {
   constructor(private http: HttpClient, private cookieService: CookieService, private notificationService: NotificationService) {
     
   }
-
-
+  breakSpeedLimit = signal(false)
+  observableSpeedTraker = new SpeedTraker(40) 
   audio: HTMLAudioElement  | undefined = undefined;
   actualStation: Signal<Station | undefined> = signal(undefined)
   state = signal(false)
   stationLoading = signal(false)
   numberRetries = 0
-
 
   async play(urlSound: string, station: Station) {
    if (this.audio == undefined) {
@@ -166,4 +166,11 @@ export class ReproductorServiceService {
   changeVolume(volume : number){
     this.audio!.volume = volume
   }
+
+  asignerSpeedTraker() {
+    this.observableSpeedTraker.breakSpeedLimit.subscribe((value) => {
+      this.breakSpeedLimit.update(() => value)
+    })
+  }
+  
 }

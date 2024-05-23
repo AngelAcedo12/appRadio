@@ -42,11 +42,9 @@ export class OauthService {
     
   }
   logInWhitToken(TOKEN: string) {
-
     const body = {
       "token": TOKEN
     }
-
    return this.http.post<any>(`${enviroment.base_url_local}api/user/logWhitToken`, body).pipe(
     catchError(err => {
       this.nofiticationService.openSnackBar({

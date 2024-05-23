@@ -26,7 +26,6 @@ import { signal } from "@angular/core";
  * @property speedLimit - Límite de velocidad en km/h
  * 
  */
-
 export class SpeedTraker  {
     speed = 0;
     coord : Coords[] = []
