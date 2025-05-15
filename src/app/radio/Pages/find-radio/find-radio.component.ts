@@ -7,38 +7,35 @@ import { stat } from 'fs';
 @Component({
   selector: 'app-find-radio',
   templateUrl: './find-radio.component.html',
-  styleUrl: './find-radio.component.css'
+  styleUrl: './find-radio.component.css',
 })
-export class FindRadioComponent implements OnInit{
+export class FindRadioComponent implements OnInit {
+  private radioService = inject(ReproductorServiceService);
+  private router = inject(ActivatedRoute);
 
-  private radioService = inject(ReproductorServiceService)
-  private router = inject(ActivatedRoute)
+  ngOnInit(): void {
+    this.id = this.router.snapshot.params['id'];
+    this.getStation();
+    this.setFavicon();
+  }
 
-    ngOnInit(): void {
-      this.id=this.router.snapshot.params["id"]
-      this.api.setBaseUrl("https://at1.api.radio-browser.info")
-      this.getStation()
-      this.setFavicon()
+  id: string | undefined;
+  api: RadioBrowserApi = new RadioBrowserApi('My api');
+  station: Station | undefined;
+  favicon: String | undefined;
+
+  getStation() {
+    if (this.id != undefined) {
+      this.api.getStationsById([this.id]).then((data) => {
+        this.station = data[0];
+      });
     }
+  }
 
-    id: string | undefined
-    api : RadioBrowserApi  = new RadioBrowserApi("My api")
-    station: Station | undefined
-    favicon: String | undefined
-    
-    getStation(){
-      if(this.id!=undefined){
-
-        this.api.getStationsById([this.id]).then(data => {
-          this.station=data[0]
-        }
-        )
-      }
-
-    }
-
-    setFavicon(){
-      if(this.favicon=== this.station!.favicon) return;
-     return this.station!.favicon.length>0 ? this.station?.favicon :  "../../../assets/icons8-radio-50.png"
-    }
+  setFavicon() {
+    if (this.favicon === this.station!.favicon) return;
+    return this.station!.favicon.length > 0
+      ? this.station?.favicon
+      : '../../../assets/icons8-radio-50.png';
+  }
 }

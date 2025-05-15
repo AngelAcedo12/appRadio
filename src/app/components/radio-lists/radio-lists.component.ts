@@ -30,7 +30,6 @@ export class RadioListsComponent implements OnInit {
     this.selectLoad();
   }
 
-  api: RadioBrowserApi = new RadioBrowserApi('My radio');
   radios: Station[] | undefined;
   page: number = 1;
   loading: Signal<boolean> = signal(false);
@@ -60,7 +59,7 @@ export class RadioListsComponent implements OnInit {
     if (this.page <= 1) {
       if (this.loading() != true) {
         this.loading = computed(() => true);
-        await this.api
+        await this.locationRadiosService.api
           .searchStations(
             {
               name: this.nameStation(),
@@ -88,7 +87,7 @@ export class RadioListsComponent implements OnInit {
     } else {
       if (this.loading() != true) {
         this.loading = computed(() => true);
-        await this.api
+        await this.locationRadiosService.api
           .searchStations(
             {
               name: this.nameStation(),

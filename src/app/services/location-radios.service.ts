@@ -13,7 +13,7 @@ export class LocationRadiosService {
     private http: HttpClient,
     private countriesService: CountrysService
   ) {
-    if (true) {
+    if (enviroment.prodution) {
       this.resolveURL();
       this.api.setBaseUrl(this.baseUrl);
     }
@@ -24,7 +24,9 @@ export class LocationRadiosService {
   baseUrl = '';
   // Setea una url aleatoria de la api de radio-browser
   async resolveURL() {
-    const results = await this.api.resolveBaseUrl();
+    const results = await fetch(
+      'https://all.api.radio-browser.info/json/servers'
+    ).then((res) => res.json());
     const random = Math.floor(Math.random() * results.length);
     console.log(random);
     if (enviroment.prodution) {
