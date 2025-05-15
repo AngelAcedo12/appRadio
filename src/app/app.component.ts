@@ -14,7 +14,6 @@ export class AppComponent {
   showInstall = false;
   constructor(private locationRadioService: LocationRadiosService) {}
   ngOnInit(): void {
-    this.locationRadioService.setRamdonUrl();
     this.installPWA();
   }
 
