@@ -13,9 +13,11 @@ export class LocationRadiosService {
     private http: HttpClient,
     private countriesService: CountrysService
   ) {
-    if (enviroment.prodution) {
+    if (true) {
       this.resolveURL();
+      this.api = new RadioBrowserApi('My Radio Browser API Key');
       this.api.setBaseUrl(this.baseUrl);
+      console.log(this.api.getBaseUrl());
     }
   }
 
@@ -28,7 +30,6 @@ export class LocationRadiosService {
       'https://all.api.radio-browser.info/json/servers'
     ).then((res) => res.json());
     const random = Math.floor(Math.random() * results.length);
-    console.log(random);
     if (enviroment.prodution) {
       this.baseUrl = `https://${results[random].name}`;
     } else {
