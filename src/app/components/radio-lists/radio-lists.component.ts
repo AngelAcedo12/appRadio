@@ -26,7 +26,6 @@ export class RadioListsComponent implements OnInit {
   @Input() type: string | undefined;
 
   ngOnInit(): void {
-    // this.api.setBaseUrl(this.locationRadiosService.baseUrl);
     this.page = 1;
     this.selectLoad();
   }

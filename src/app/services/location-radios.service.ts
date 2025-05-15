@@ -11,13 +11,10 @@ export class LocationRadiosService {
   constructor(
     private http: HttpClient,
     private countriesService: CountrysService
-  ) {
-    this.api.setBaseUrl(this.baseUrl);
-  }
+  ) {}
 
   api: RadioBrowserApi = new RadioBrowserApi('My Radio Browser API Key');
   radios: Signal<Station[] | undefined> = signal(undefined);
-  baseUrl: string = 'https://at1.api.radio-browser.info';
 
   // Setea una url aleatoria de la api de radio-browser
   async setRamdonUrl() {
