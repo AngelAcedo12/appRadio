@@ -3,6 +3,7 @@ import { ReproductorServiceService } from '../../../services/reproductor-service
 import { ActivatedRoute } from '@angular/router';
 import { RadioBrowserApi, Station } from 'radio-browser-api';
 import { stat } from 'fs';
+import { LocationRadiosService } from '../../../services/location-radios.service';
 
 @Component({
   selector: 'app-find-radio',
@@ -12,7 +13,7 @@ import { stat } from 'fs';
 export class FindRadioComponent implements OnInit {
   private radioService = inject(ReproductorServiceService);
   private router = inject(ActivatedRoute);
-
+  private locationRadioService = inject(LocationRadiosService);
   ngOnInit(): void {
     this.id = this.router.snapshot.params['id'];
     this.getStation();
@@ -20,13 +21,12 @@ export class FindRadioComponent implements OnInit {
   }
 
   id: string | undefined;
-  api: RadioBrowserApi = new RadioBrowserApi('My api');
   station: Station | undefined;
   favicon: String | undefined;
 
   getStation() {
     if (this.id != undefined) {
-      this.api.getStationsById([this.id]).then((data) => {
+      this.locationRadioService.api.getStationsById([this.id]).then((data) => {
         this.station = data[0];
       });
     }
