@@ -4,6 +4,7 @@ import { Coords } from '../models/Coords';
 import { RadioBrowserApi, Station } from 'radio-browser-api';
 import { CountrysService } from './countries.service';
 import enviroment from '../../environments/environment';
+import { RadioBrowserApiCustom } from '../models/RadioBroswerApiCustom';
 
 @Injectable({
   providedIn: 'root',
@@ -14,7 +15,7 @@ export class LocationRadiosService {
     private countriesService: CountrysService
   ) {}
 
-  api: RadioBrowserApi | undefined = {} as RadioBrowserApi;
+  api: RadioBrowserApi | undefined = {} as RadioBrowserApiCustom;
   radios: Signal<Station[] | undefined> = signal(undefined);
   baseUrl = '';
   // Setea una url aleatoria de la api de radio-browser
@@ -31,9 +32,11 @@ export class LocationRadiosService {
   }
 
   async createApi() {
-    this.resolveURL();
-    this.api = new RadioBrowserApi('My Radio Browser API Key');
-    this.api.setBaseUrl(this.baseUrl);
+    await this.resolveURL();
+    this.api = new RadioBrowserApiCustom(
+      'My Radio Browser API Key',
+      this.baseUrl
+    );
     console.log(this.api.getBaseUrl());
   }
   async loadRadiosInCords(name: string) {
