@@ -14,8 +14,8 @@ export class AppComponent {
   showInstall = false;
   constructor(private locationRadioService: LocationRadiosService) {}
   ngOnInit(): void {
-    this.installPWA();
     this.createApi();
+    this.installPWA();
   }
 
   installPWA() {

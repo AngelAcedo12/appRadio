@@ -15,7 +15,7 @@ export class LocationRadiosService {
     private countriesService: CountrysService
   ) {}
 
-  api: RadioBrowserApi | undefined = {} as RadioBrowserApiCustom;
+  api: RadioBrowserApi | undefined = new RadioBrowserApi('mmmmm');
   radios: Signal<Station[] | undefined> = signal(undefined);
   baseUrl = '';
   // Setea una url aleatoria de la api de radio-browser
@@ -33,11 +33,7 @@ export class LocationRadiosService {
 
   async createApi() {
     await this.resolveURL();
-    this.api = new RadioBrowserApiCustom(
-      'My Radio Browser API Key',
-      this.baseUrl
-    );
-    console.log(this.api.getBaseUrl());
+    return new RadioBrowserApiCustom('My Radio Browser API Key', this.baseUrl);
   }
   async loadRadiosInCords(name: string) {
     await this.api
