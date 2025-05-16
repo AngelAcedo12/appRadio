@@ -15,11 +15,13 @@ export class LocationRadiosService {
     private countriesService: CountrysService
   ) {}
 
-  api: RadioBrowserApi | undefined = new RadioBrowserApi('mmmmm');
+  private apiInitialized = signal(false);
+  api: RadioBrowserApi | undefined;
   radios: Signal<Station[] | undefined> = signal(undefined);
   baseUrl = '';
+
   // Setea una url aleatoria de la api de radio-browser
-  async resolveURL() {
+  private async resolveURL() {
     const results = await fetch(
       'https://all.api.radio-browser.info/json/servers'
     ).then((res) => res.json());
@@ -32,31 +34,42 @@ export class LocationRadiosService {
   }
 
   async createApi() {
-    await this.resolveURL();
-    return new RadioBrowserApiCustom('My Radio Browser API Key', this.baseUrl);
+    if (!this.apiInitialized()) {
+      await this.resolveURL();
+      this.api = new RadioBrowserApiCustom('My Radio Browser API Key', this.baseUrl);
+      this.apiInitialized.set(true);
+    }
+    return this.api;
   }
+
+  async ensureApiInitialized() {
+    if (!this.apiInitialized()) {
+      await this.createApi();
+    }
+  }
+
   async loadRadiosInCords(name: string) {
-    await this.api
-      ?.searchStations({
+    await this.ensureApiInitialized();
+    if (this.api) {
+      const data = await this.api.searchStations({
         order: 'random',
         removeDuplicates: true,
         country: name,
-      })
-      .then((data) => {
-        this.radios = computed(() => data);
       });
+      this.radios = computed(() => data);
+    }
   }
-  recomendations() {
-    return this.api
-      ?.searchStations({
-        country:
-          this.countriesService.actualSearchCountry()?.name.common ?? 'Spain',
+
+  async recomendations() {
+    await this.ensureApiInitialized();
+    if (this.api) {
+      return this.api.searchStations({
+        country: this.countriesService.actualSearchCountry()?.name.common ?? 'Spain',
         reverse: true,
         order: 'votes',
         limit: 30,
-      })
-      .then((data) => {
-        return data;
       });
+    }
+    return [];
   }
 }

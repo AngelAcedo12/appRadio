@@ -27,10 +27,12 @@ export class SelectTagListComponent implements OnInit {
     if (this.tagSherch.value!.length <= 1 || this.tagSherch.value == '') {
       this.tagListShearch = [];
     } else {
-      var shearch = await this.locationRadiosService.api?.getTags(this.tagSherch.value!, {
-        limit: 20,
-      });
-      this.tagListShearch = shearch;
+      await this.locationRadiosService.ensureApiInitialized();
+      if (this.locationRadiosService.api) {
+        this.tagListShearch = await this.locationRadiosService.api.getTags(this.tagSherch.value!, {
+          limit: 20,
+        });
+      }
     }
   }
 

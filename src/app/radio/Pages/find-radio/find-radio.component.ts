@@ -14,30 +14,32 @@ export class FindRadioComponent implements OnInit {
   private radioService = inject(ReproductorServiceService);
   private router = inject(ActivatedRoute);
   private locationRadioService = inject(LocationRadiosService);
-  ngOnInit(): void {
-    this.id = this.router.snapshot.params['id'];
-    this.getStation();
-    this.setFavicon();
-  }
-
+  
   id: string | undefined;
   station: Station | undefined;
   favicon: String | undefined;
 
-  getStation() {
+  async ngOnInit(): Promise<void> {
+    this.id = this.router.snapshot.params['id'];
+    await this.getStation();
+    this.setFavicon();
+  }
+
+  async getStation() {
     if (this.id !== undefined) {
-      this.locationRadioService.api?.getStationsById([this.id]).then((data) => {
-        if (data && data.length > 0) {
-          this.station = data[0];
-        }
-      });
+      await this.locationRadioService.ensureApiInitialized();
+      const data = await this.locationRadioService.api?.getStationsById([this.id]);
+      if (data && data.length > 0) {
+        this.station = data[0];
+      }
     }
   }
 
   setFavicon() {
-    if (this.favicon === this.station!.favicon) return;
-    return this.station!.favicon.length > 0
-      ? this.station?.favicon
+    if (!this.station) return '../../../assets/icons8-radio-50.png';
+    if (this.favicon === this.station.favicon) return;
+    return this.station.favicon.length > 0
+      ? this.station.favicon
       : '../../../assets/icons8-radio-50.png';
   }
 }

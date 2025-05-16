@@ -59,8 +59,9 @@ export class RadioListsComponent implements OnInit {
     if (this.page <= 1) {
       if (this.loading() != true) {
         this.loading = computed(() => true);
-        await this.locationRadiosService.api
-          ?.searchStations(
+        await this.locationRadiosService.ensureApiInitialized();
+        if (this.locationRadiosService.api) {
+          const data = await this.locationRadiosService.api.searchStations(
             {
               name: this.nameStation(),
               nameExact: false,
@@ -77,18 +78,18 @@ export class RadioListsComponent implements OnInit {
               mode: 'cors',
               cache: 'default',
             }
-          )
-          .then((data) => {
-            this.radios = data;
-            this.page = this.page + 1;
-            this.loading = computed(() => false);
-          });
+          );
+          this.radios = data;
+          this.page = this.page + 1;
+          this.loading = computed(() => false);
+        }
       }
     } else {
       if (this.loading() != true) {
         this.loading = computed(() => true);
-        await this.locationRadiosService.api
-          ?.searchStations(
+        await this.locationRadiosService.ensureApiInitialized();
+        if (this.locationRadiosService.api) {
+          const data = await this.locationRadiosService.api.searchStations(
             {
               name: this.nameStation(),
               nameExact: false,
@@ -105,13 +106,11 @@ export class RadioListsComponent implements OnInit {
               mode: 'cors',
               cache: 'default',
             }
-          )
-          .then((data) => {
-            this.radios = this.radios?.concat(data);
-            this.page = this.page + 1;
-            computed(() => false);
-            this.loading = computed(() => false);
-          });
+          );
+          this.radios = this.radios?.concat(data);
+          this.page = this.page + 1;
+          this.loading = computed(() => false);
+        }
       }
     }
   }
