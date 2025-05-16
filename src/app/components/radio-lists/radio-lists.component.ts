@@ -60,7 +60,7 @@ export class RadioListsComponent implements OnInit {
       if (this.loading() != true) {
         this.loading = computed(() => true);
         await this.locationRadiosService.api
-          .searchStations(
+          ?.searchStations(
             {
               name: this.nameStation(),
               nameExact: false,
@@ -88,7 +88,7 @@ export class RadioListsComponent implements OnInit {
       if (this.loading() != true) {
         this.loading = computed(() => true);
         await this.locationRadiosService.api
-          .searchStations(
+          ?.searchStations(
             {
               name: this.nameStation(),
               nameExact: false,

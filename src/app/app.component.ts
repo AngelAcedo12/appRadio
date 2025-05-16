@@ -15,6 +15,7 @@ export class AppComponent {
   constructor(private locationRadioService: LocationRadiosService) {}
   ngOnInit(): void {
     this.installPWA();
+    this.createApi();
   }
 
   installPWA() {
@@ -44,5 +45,9 @@ export class AppComponent {
   }
   closeInstall() {
     this.showInstall = false;
+  }
+
+  async createApi() {
+    await this.locationRadioService.createApi();
   }
 }

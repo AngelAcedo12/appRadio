@@ -6,49 +6,42 @@ import { ReproductorServiceService } from '../../services/reproductor-service.se
 import { LocationRadiosService } from '../../services/location-radios.service';
 import { Station } from 'radio-browser-api';
 
-
 @Component({
   selector: 'app-mode-car',
   templateUrl: './mode-car.component.html',
-  styleUrl: './mode-car.component.css'
+  styleUrl: './mode-car.component.css',
 })
-export class ModeCarComponent implements OnInit{
+export class ModeCarComponent implements OnInit {
+  @Output() modeCar = new EventEmitter<boolean>();
 
+  constructor(
+    private notificationService: NotificationService,
+    public reproductorService: ReproductorServiceService,
+    public locationService: LocationRadiosService
+  ) {}
 
-  @Output() modeCar = new EventEmitter<boolean>()
-
-  constructor(private notificationService: NotificationService,public reproductorService:ReproductorServiceService,
-    public locationService:LocationRadiosService) { }
-
-
- 
-  recomendations : Station[] = []
- 
+  recomendations: Station[] = [];
 
   ngOnInit(): void {
-   
-    this.getRecomendations()
-    
-  }
-  
-  play(){
-    document.getElementById("rep_car")?.scrollTo(0,0)
-    this.reproductorService.resume()
-    document.getElementById("rep")?.classList.replace("desactive","active")
-  }
-  pause(){
-    this.reproductorService.pause()
-    document.getElementById("rep")?.classList.replace("active","desactive")
+    this.getRecomendations();
   }
 
-  getRecomendations(){
-
-    this.locationService.recomendations().then((data) => {
-      this.recomendations = data
-    })
-    
+  play() {
+    document.getElementById('rep_car')?.scrollTo(0, 0);
+    this.reproductorService.resume();
+    document.getElementById('rep')?.classList.replace('desactive', 'active');
   }
-  updateModeCar(){
-    this.modeCar.emit(false)
+  pause() {
+    this.reproductorService.pause();
+    document.getElementById('rep')?.classList.replace('active', 'desactive');
+  }
+
+  getRecomendations() {
+    this.locationService.recomendations()?.then((data) => {
+      this.recomendations = data;
+    });
+  }
+  updateModeCar() {
+    this.modeCar.emit(false);
   }
 }

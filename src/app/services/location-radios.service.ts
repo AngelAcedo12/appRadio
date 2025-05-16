@@ -12,16 +12,9 @@ export class LocationRadiosService {
   constructor(
     private http: HttpClient,
     private countriesService: CountrysService
-  ) {
-    if (true) {
-      this.resolveURL();
-      this.api = new RadioBrowserApi('My Radio Browser API Key');
-      this.api.setBaseUrl(this.baseUrl);
-      console.log(this.api.getBaseUrl());
-    }
-  }
+  ) {}
 
-  api: RadioBrowserApi = new RadioBrowserApi('My Radio Browser API Key');
+  api: RadioBrowserApi | undefined = {} as RadioBrowserApi;
   radios: Signal<Station[] | undefined> = signal(undefined);
   baseUrl = '';
   // Setea una url aleatoria de la api de radio-browser
@@ -37,9 +30,15 @@ export class LocationRadiosService {
     }
   }
 
+  async createApi() {
+    this.resolveURL();
+    this.api = new RadioBrowserApi('My Radio Browser API Key');
+    this.api.setBaseUrl(this.baseUrl);
+    console.log(this.api.getBaseUrl());
+  }
   async loadRadiosInCords(name: string) {
     await this.api
-      .searchStations({
+      ?.searchStations({
         order: 'random',
         removeDuplicates: true,
         country: name,
@@ -50,7 +49,7 @@ export class LocationRadiosService {
   }
   recomendations() {
     return this.api
-      .searchStations({
+      ?.searchStations({
         country:
           this.countriesService.actualSearchCountry()?.name.common ?? 'Spain',
         reverse: true,

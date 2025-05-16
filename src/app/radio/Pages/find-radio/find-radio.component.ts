@@ -25,9 +25,11 @@ export class FindRadioComponent implements OnInit {
   favicon: String | undefined;
 
   getStation() {
-    if (this.id != undefined) {
-      this.locationRadioService.api.getStationsById([this.id]).then((data) => {
-        this.station = data[0];
+    if (this.id !== undefined) {
+      this.locationRadioService.api?.getStationsById([this.id]).then((data) => {
+        if (data && data.length > 0) {
+          this.station = data[0];
+        }
       });
     }
   }
