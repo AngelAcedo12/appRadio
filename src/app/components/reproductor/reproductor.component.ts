@@ -5,7 +5,6 @@ import { Sign } from 'crypto';
 import { Observable, of } from 'rxjs';
 import { Coords } from '../../models/Coords';
 import { NotificationService } from '../../services/notification-service.service';
-import { SpeedTraker } from '../../utils/speedTraker';
 import { LocationRadiosService } from '../../services/location-radios.service';
 @Component({
   selector: 'app-reproductor',
