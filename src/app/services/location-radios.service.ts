@@ -35,7 +35,6 @@ export class LocationRadiosService {
     } else {
       this.baseUrl = `http://${results[random].name}`;
     }
-    console.log(this.baseUrl);
   }
 
   async loadRadiosInCords(name: string) {
